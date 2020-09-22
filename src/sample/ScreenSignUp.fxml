@@ -66,7 +66,7 @@
                   <Image url="@../assets/images/Logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="91.0" layoutY="302.0" prefHeight="229.0" prefWidth="355.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fermentum sit amet odio sit amet venenatis. Ut eget facilisis nibh, id blandit dui. Aliquam ornare sem a ipsum sollicitudin pretium. Sed arcu magna, porta semper accumsan id, tincidunt quis metus. Sed laoreet convallis dui, ac congue nisi accumsan sed. Mauris dignissim orci at magna venenatis iaculis. Curabitur sagittis fringilla odio eu interdum. Duis semper ornare facilisis. Vestibulum euismod feugiat lectus ac convallis. Donec cursus neque id felis placerat efficitur. Etiam." textAlignment="CENTER" textFill="#afafaf" wrapText="true">
+            <Label layoutX="91.0" layoutY="303.0" prefHeight="229.0" prefWidth="355.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fermentum sit amet odio sit amet venenatis. Ut eget facilisis nibh, id blandit dui. Aliquam ornare sem a ipsum sollicitudin pretium. Sed arcu magna, porta semper accumsan id, tincidunt quis metus. Sed laoreet convallis dui, ac congue nisi accumsan sed. Mauris dignissim orci at magna venenatis iaculis. Curabitur sagittis fringilla odio eu interdum. Duis semper ornare facilisis. Vestibulum euismod feugiat lectus ac convallis. Donec cursus neque id felis placerat efficitur. Etiam." textAlignment="CENTER" textFill="#afafaf" wrapText="true">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
