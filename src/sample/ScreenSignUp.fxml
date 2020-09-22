@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" spacing="32.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <children>
+      <Pane prefHeight="980.0" prefWidth="600.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
+         <children>
+            <Label layoutX="32.0" layoutY="32.0" text="Nome completo" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font></Label>
+            <TextField layoutX="32.0" layoutY="59.0" prefHeight="29.0" prefWidth="530.0" promptText="Nome completo" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font></TextField>
+            <Label layoutX="32.0" layoutY="104.0" text="Email" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="32.0" layoutY="131.0" prefHeight="29.0" prefWidth="530.0" promptText="Email" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="32.0" layoutY="176.0" text="Data de nascimento" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="32.0" layoutY="203.0" prefHeight="29.0" prefWidth="530.0" promptText="Data de Nascimento" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="32.0" layoutY="248.0" text="Data de nascimento" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="32.0" layoutY="275.0" prefHeight="29.0" prefWidth="530.0" promptText="Data de Nascimento" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </TextField>
+         </children></Pane>
+      <Pane prefHeight="880.0" prefWidth="536.0" styleClass="background" stylesheets="@../stylesheet/Background.css" />
+   </children>
+</HBox>
