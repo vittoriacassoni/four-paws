@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="443.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
+   <children>
+      <ButtonBar layoutX="327.0" layoutY="170.0" prefHeight="40.0" prefWidth="200.0" />
+    <Button layoutX="402.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="229.0" text="Entrar" />
+      <Label layoutX="522.0" layoutY="236.0" prefHeight="17.0" prefWidth="109.0" text="Esqueceu a senha?">
+         <font>
+            <Font name="Microsoft Sans Serif" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="408.0" layoutY="327.0" text="Ainda não é um pawer? Cadastre-se agora">
+         <font>
+            <Font name="Microsoft Sans Serif" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="402.0" layoutY="114.0" prefHeight="25.0" prefWidth="229.0" text="Email">
+         <font>
+            <Font name="Microsoft Sans Serif" size="12.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="402.0" layoutY="170.0" prefHeight="25.0" prefWidth="229.0" text="Senha" />
+   </children>
+</AnchorPane>
