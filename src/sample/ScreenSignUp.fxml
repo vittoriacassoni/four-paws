@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -12,45 +13,74 @@
    <children>
       <Pane prefHeight="980.0" prefWidth="600.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
          <children>
-            <Label layoutX="32.0" layoutY="32.0" text="Nome completo" textFill="#ff6f61">
+            <Label layoutX="35.0" layoutY="222.0" text="Nome completo" textFill="#ff6f61">
                <font>
-                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font></Label>
-            <TextField layoutX="32.0" layoutY="59.0" prefHeight="29.0" prefWidth="530.0" promptText="Nome completo" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField layoutX="35.0" layoutY="257.0" prefHeight="40.0" prefWidth="530.0" promptText="Nome completo" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font></TextField>
-            <Label layoutX="32.0" layoutY="104.0" text="Email" textFill="#ff6f61">
+            <Label layoutX="35.0" layoutY="313.0" text="Email" textFill="#ff6f61">
                <font>
-                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="32.0" layoutY="131.0" prefHeight="29.0" prefWidth="530.0" promptText="Email" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField layoutX="35.0" layoutY="348.0" prefHeight="40.0" prefWidth="530.0" promptText="Email" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="32.0" layoutY="176.0" text="Data de nascimento" textFill="#ff6f61">
+            <Label layoutX="35.0" layoutY="404.0" text="Data de nascimento" textFill="#ff6f61">
                <font>
-                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="32.0" layoutY="203.0" prefHeight="29.0" prefWidth="530.0" promptText="Data de Nascimento" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField layoutX="35.0" layoutY="439.0" prefHeight="40.0" prefWidth="530.0" promptText="Data de Nascimento" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="32.0" layoutY="248.0" text="Data de nascimento" textFill="#ff6f61">
+            <Label layoutX="35.0" layoutY="495.0" text="Senha" textFill="#ff6f61">
                <font>
-                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="32.0" layoutY="275.0" prefHeight="29.0" prefWidth="530.0" promptText="Data de Nascimento" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField layoutX="35.0" layoutY="530.0" prefHeight="40.0" prefWidth="530.0" promptText="Senha" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
             </TextField>
+            <Button layoutX="35.0" layoutY="613.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="530.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
          </children></Pane>
-      <Pane prefHeight="880.0" prefWidth="536.0" styleClass="background" stylesheets="@../stylesheet/Background.css" />
+      <Pane prefHeight="880.0" prefWidth="536.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
+         <children>
+            <ImageView fitHeight="189.0" fitWidth="151.0" layoutX="193.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="91.0" layoutY="302.0" prefHeight="229.0" prefWidth="355.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fermentum sit amet odio sit amet venenatis. Ut eget facilisis nibh, id blandit dui. Aliquam ornare sem a ipsum sollicitudin pretium. Sed arcu magna, porta semper accumsan id, tincidunt quis metus. Sed laoreet convallis dui, ac congue nisi accumsan sed. Mauris dignissim orci at magna venenatis iaculis. Curabitur sagittis fringilla odio eu interdum. Duis semper ornare facilisis. Vestibulum euismod feugiat lectus ac convallis. Donec cursus neque id felis placerat efficitur. Etiam." textAlignment="CENTER" textFill="#afafaf" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="581.0" prefHeight="29.0" prefWidth="324.0" text="Crie sua conta agora mesmo e vire um pawer" textAlignment="CENTER" textFill="#808080" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="20.0" fitWidth="17.0" layoutX="425.0" layoutY="590.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/heart-solid.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
    </children>
 </HBox>
