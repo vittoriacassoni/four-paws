@@ -13,6 +13,6 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" text="Button" />
+      <Button mnemonicParsing="false" />
    </children>
 </GridPane>
