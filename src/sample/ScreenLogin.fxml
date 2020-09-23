@@ -1,28 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="443.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
-   <children>
-      <ButtonBar layoutX="327.0" layoutY="170.0" prefHeight="40.0" prefWidth="200.0" />
-    <Button layoutX="402.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="229.0" text="Entrar" />
-      <Label layoutX="522.0" layoutY="236.0" prefHeight="17.0" prefWidth="109.0" text="Esqueceu a senha?">
-         <font>
-            <Font name="Microsoft Sans Serif" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="408.0" layoutY="327.0" text="Ainda não é um pawer? Cadastre-se agora">
-         <font>
-            <Font name="Microsoft Sans Serif" size="12.0" />
-         </font>
-      </Label>
-      <TextField layoutX="402.0" layoutY="114.0" prefHeight="25.0" prefWidth="229.0" text="Email">
-         <font>
-            <Font name="Microsoft Sans Serif" size="12.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="402.0" layoutY="170.0" prefHeight="25.0" prefWidth="229.0" text="Senha" />
-   </children>
-</AnchorPane>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
+    <children>
+        <Pane prefHeight="700.0" prefWidth="700.0" stylesheets="@../stylesheet/Background.css">
+            <children>
+                <ImageView fitHeight="620.0" fitWidth="650.0" layoutX="25.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: color #fff;">
+                    <image>
+                        <Image url="@../assets/images/undraw_friends_r511.png" />
+                    </image>
+                </ImageView>
+            <StackPane prefHeight="700.0" prefWidth="1200.0" />
+            </children>
+        </Pane>
+        <Pane prefHeight="700.0" prefWidth="500.0" stylesheets="@../stylesheet/Background.css">
+            <children>
+                <PasswordField layoutX="79.0" layoutY="365.0" prefHeight="40.0" prefWidth="343.0" promptText="Senha">
+                    <stylesheets>
+                        <URL value="@../stylesheet/Background.css" />
+                        <URL value="@../stylesheet/TextField.css" />
+                    </stylesheets>
+                    <font>
+                        <Font name="Microsoft JhengHei Light" size="14.0" />
+                    </font>
+                </PasswordField>
+                <ImageView fitHeight="189.0" fitWidth="151.0" layoutX="175.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/images/Logo.png" />
+                    </image>
+                </ImageView>
+                <TextField layoutX="79.0" layoutY="265.0" prefHeight="40.0" prefWidth="343.0" promptText="Email" stylesheets="@../stylesheet/TextField.css">
+                    <font>
+                        <Font name="Microsoft JhengHei Light" size="14.0" />
+                    </font>
+                </TextField>
+                <Button layoutX="79.0" layoutY="500.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="343.0" stylesheets="@../stylesheet/Button.css" text="Entrar">
+                    <font>
+                        <Font name="Microsoft JhengHei Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Label layoutX="296.0" layoutY="441.0" text="Esqueceu a senha?" textFill="GREY">
+                    <font>
+                        <Font name="Microsoft JhengHei Bold" size="14.0" />
+                    </font>
+                </Label>
+                <ImageView fx:id="btn_SignUpImg" fitHeight="19.0" fitWidth="13.0" layoutX="412.0" layoutY="590.0" onMouseClicked="#signUp" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/icons/chevron-right-solid.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="79.0" layoutY="589.0" text="Ainda não é um pawer?" textFill="GREY">
+                    <font>
+                        <Font name="Microsoft JhengHei Bold" size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="btn_SignUpLabel" layoutX="264.0" layoutY="589.0" onMouseClicked="#signUp" text="Cadastre-se agora" textFill="#ff6f61">
+                    <font>
+                        <Font name="Microsoft JhengHei Bold" size="15.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </children>
+</HBox>
