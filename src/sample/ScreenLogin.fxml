@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -43,16 +44,25 @@
                     <font>
                         <Font name="Microsoft JhengHei Bold" size="18.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
-                <Label layoutX="296.0" layoutY="441.0" text="Esqueceu a senha?" textFill="GREY">
+                <Label fx:id="btn_RememberPass" layoutX="296.0" layoutY="441.0" onMouseClicked="#rememberPass" text="Esqueceu a senha?" textFill="GREY">
                     <font>
                         <Font name="Microsoft JhengHei Bold" size="14.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Label>
                 <ImageView fx:id="btn_SignUpImg" fitHeight="19.0" fitWidth="13.0" layoutX="412.0" layoutY="590.0" onMouseClicked="#signUp" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../assets/icons/chevron-right-solid.png" />
                     </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </ImageView>
                 <Label layoutX="79.0" layoutY="589.0" text="Ainda não é um pawer?" textFill="GREY">
                     <font>
@@ -63,6 +73,9 @@
                     <font>
                         <Font name="Microsoft JhengHei Bold" size="15.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Label>
             </children>
         </Pane>
