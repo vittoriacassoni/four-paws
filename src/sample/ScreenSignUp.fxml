@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" spacing="32.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" spacing="32.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSignUp">
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
@@ -46,11 +46,6 @@
                   <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="35.0" layoutY="530.0" prefHeight="40.0" prefWidth="530.0" promptText="Senha" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
-               <font>
-                  <Font name="Microsoft JhengHei" size="14.0" />
-               </font>
-            </TextField>
             <Button layoutX="35.0" layoutY="613.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="530.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
@@ -58,6 +53,10 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></Button>
+            <PasswordField layoutX="34.0" layoutY="530.0" prefHeight="40.0" prefWidth="530.0" promptText="Senha" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font></PasswordField>
          </children></Pane>
       <Pane prefHeight="880.0" prefWidth="536.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
          <children>
@@ -66,7 +65,7 @@
                   <Image url="@../assets/images/Logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="91.0" layoutY="303.0" prefHeight="229.0" prefWidth="355.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fermentum sit amet odio sit amet venenatis. Ut eget facilisis nibh, id blandit dui. Aliquam ornare sem a ipsum sollicitudin pretium. Sed arcu magna, porta semper accumsan id, tincidunt quis metus. Sed laoreet convallis dui, ac congue nisi accumsan sed. Mauris dignissim orci at magna venenatis iaculis. Curabitur sagittis fringilla odio eu interdum. Duis semper ornare facilisis. Vestibulum euismod feugiat lectus ac convallis. Donec cursus neque id felis placerat efficitur. Etiam." textAlignment="CENTER" textFill="#afafaf" wrapText="true">
+            <Label layoutX="91.0" layoutY="303.0" prefHeight="229.0" prefWidth="355.0" text="Falta pouco para você entrar na comunidade e ser um Pawner! Aqui você irá encontrar diversas ONG's e instituições, poderá participar dos fóruns, encontrar dicas e compartilhar suas próprias experiências.Além do mais importante, encontrar o seu PET dos sonhos, baseado nas suas características e expectativas! Termine seu cadastro e venha fazer parte do nosso time. Lutamos juntos por um mundo com menos abandono e mais amor #Lambeijos" textAlignment="CENTER" textFill="#afafaf" wrapText="true">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
