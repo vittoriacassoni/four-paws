@@ -1,9 +1,11 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.util.Optional;
 
 public class ControllerLogin {
 
-    public void login() throws IOException {
+    public void login(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
         Stage primaryStage = new Stage();
         primaryStage.setTitle("Seja Bem-Vinde");
@@ -19,7 +21,7 @@ public class ControllerLogin {
         primaryStage.show();
     }
 
-    public void signUp() throws IOException {
+    public void signUp(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("ScreenSignUp.fxml"));
         Stage primaryStage = new Stage();
         primaryStage.setTitle("Cadastro - Novo Usuário");
