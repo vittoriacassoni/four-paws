@@ -1,0 +1,30 @@
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-color: #ff6f6166;
+    -fx-text-fill: #fff;
+}
+
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-background-color: #fff;
+    -fx-text-fill: #fff;
+}
+
+.spinner .increment-arrow:focused,
+.spinner .decrement-arrow:focused{
+    -fx-color: transparent;
+    -fx-text-fill: #fff;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-field  {
+    -fx-background-color: #f3f3f3;
+    -fx-text-fill: #6B6B6B;
+    -fx-focus-color: transparent;
+}
+
+.spinner{
+    -fx-focus-color: transparent;
+     -fx-text-fill: #6B6B6B;
+}
+
