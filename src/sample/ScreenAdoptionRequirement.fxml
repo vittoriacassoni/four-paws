@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAdoptionRequirement">
+  
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1360.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+         <children>
+            <ImageView fitHeight="67.0" fitWidth="52.0" layoutX="64.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Logo.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="80.0" layoutY="628.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="290.0" stylesheets="@../stylesheet/Button.css" text="Encontrar Pet" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="20.0" />
+               </font>
+            </Button>
+            <CheckBox layoutX="176.0" layoutY="464.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Alegre" textFill="#2f2e41">
+            <font>
+               <Font size="13.0" />
+            </font></CheckBox>
+            <CheckBox layoutX="80.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Quieto" textFill="#2f2e41">
+            <font>
+               <Font size="13.0" />
+            </font></CheckBox>
+            <CheckBox layoutX="272.0" layoutY="421.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Carinhoso" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="13.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="175.0" layoutY="422.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Bravo" textFill="#2f2e41">
+            <font>
+               <Font size="13.0" />
+            </font></CheckBox>
+            <CheckBox layoutX="79.0" layoutY="466.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Carente" textFill="#2f2e41">
+            <font>
+               <Font size="13.0" />
+            </font></CheckBox>
+            <Label layoutX="80.0" layoutY="510.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Qualidade do animal que busca?" textFill="#ff6f61">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label layoutX="80.0" layoutY="357.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Sobre o pet" textFill="#979393">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="33.0" />
+               </font>
+            </Label>
+            <Spinner layoutX="80.0" layoutY="305.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="240.0" />
+            <Spinner layoutX="80.0" layoutY="214.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="240.0" />
+            <Label layoutX="80.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Quanto de espaço você tem disponível para o animal ?" textFill="#ff6f61">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label layoutX="80.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Está disposta a gastar quanto de mensalidade?" textFill="#ff6f61">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label layoutX="81.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Sobre você" textFill="#979393">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="33.0" />
+               </font>
+            </Label>
+            <Spinner layoutX="80.0" layoutY="564.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="240.0" />
+            <ImageView fitHeight="541.0" fitWidth="660.0" layoutX="664.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/undraw_pet_adoption_2qkw.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+
+</ScrollPane>
