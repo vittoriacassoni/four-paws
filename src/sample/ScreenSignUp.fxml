@@ -6,102 +6,80 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
-      prefWidth="1200.0" spacing="32.0" styleClass="background" stylesheets="@../stylesheet/Background.css"
-      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="sample.ControllerSignUp">
-    <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-    </padding>
-    <children>
-        <Pane prefHeight="980.0" prefWidth="600.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
-            <children>
-                <Label layoutX="35.0" layoutY="222.0" text="Nome completo" textFill="#ff6f61">
-                    <font>
-                        <Font name="Microsoft JhengHei Bold" size="15.0"/>
-                    </font>
-                </Label>
-                <TextField fx:id="txt_FullName" layoutX="35.0" layoutY="257.0" prefHeight="40.0" prefWidth="530.0"
-                           promptText="Nome completo" styleClass="text-field"
-                           stylesheets="@../stylesheet/TextField.css">
-                    <font>
-                        <Font name="Microsoft JhengHei" size="14.0"/>
-                    </font>
-                </TextField>
-                <Label layoutX="35.0" layoutY="313.0" text="Email" textFill="#ff6f61">
-                    <font>
-                        <Font name="Microsoft JhengHei Bold" size="15.0"/>
-                    </font>
-                </Label>
-                <TextField fx:id="txt_Email" layoutX="35.0" layoutY="348.0" prefHeight="40.0" prefWidth="530.0"
-                           promptText="Email" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
-                    <font>
-                        <Font name="Microsoft JhengHei" size="14.0"/>
-                    </font>
-                </TextField>
-                <Label layoutX="35.0" layoutY="404.0" text="Data de nascimento" textFill="#ff6f61">
-                    <font>
-                        <Font name="Microsoft JhengHei Bold" size="15.0"/>
-                    </font>
-                </Label>
-                <TextField fx:id="txt_DateBirth" layoutX="35.0" layoutY="439.0" prefHeight="40.0" prefWidth="530.0"
-                           promptText="Data de Nascimento" styleClass="text-field"
-                           stylesheets="@../stylesheet/TextField.css">
-                    <font>
-                        <Font name="Microsoft JhengHei" size="14.0"/>
-                    </font>
-                </TextField>
-                <Label layoutX="35.0" layoutY="495.0" text="Senha" textFill="#ff6f61">
-                    <font>
-                        <Font name="Microsoft JhengHei Bold" size="15.0"/>
-                    </font>
-                </Label>
-                <Button fx:id="bnt_SignUp" layoutX="35.0" layoutY="613.0" mnemonicParsing="false" prefHeight="40.0"
-                        prefWidth="530.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
-                    <font>
-                        <Font name="Microsoft JhengHei Bold" size="18.0"/>
-                    </font>
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                </Button>
-                <PasswordField fx:id="txt_Password" layoutX="34.0" layoutY="530.0" prefHeight="40.0" prefWidth="530.0"
-                               promptText="Senha" stylesheets="@../stylesheet/TextField.css">
-                    <font>
-                        <Font name="Microsoft JhengHei Light" size="13.0"/>
-                    </font>
-                </PasswordField>
-            </children>
-        </Pane>
-        <Pane prefHeight="880.0" prefWidth="536.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
-            <children>
-                <ImageView fitHeight="189.0" fitWidth="151.0" layoutX="193.0" layoutY="74.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/images/Logo.png"/>
-                    </image>
-                </ImageView>
-                <Label layoutX="91.0" layoutY="303.0" prefHeight="229.0" prefWidth="355.0"
-                       text="Falta pouco para você entrar na comunidade e ser um Pawner! Aqui você irá encontrar diversas ONG's e instituições, poderá participar dos fóruns, encontrar dicas e compartilhar suas próprias experiências.Além do mais importante, encontrar o seu PET dos sonhos, baseado nas suas características e expectativas! Termine seu cadastro e venha fazer parte do nosso time. Lutamos juntos por um mundo com menos abandono e mais amor #Lambeijos"
-                       textAlignment="CENTER" textFill="#afafaf" wrapText="true">
-                    <font>
-                        <Font name="Microsoft JhengHei" size="14.0"/>
-                    </font>
-                </Label>
-                <Label layoutX="95.0" layoutY="581.0" prefHeight="29.0" prefWidth="324.0"
-                       text="Crie sua conta agora mesmo e vire um pawer" textAlignment="CENTER" textFill="#808080"
-                       wrapText="true">
-                    <font>
-                        <Font name="Microsoft JhengHei Bold" size="15.0"/>
-                    </font>
-                </Label>
-                <ImageView fitHeight="20.0" fitWidth="17.0" layoutX="425.0" layoutY="590.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/images/heart-solid.png"/>
-                    </image>
-                </ImageView>
-            </children>
-        </Pane>
-    </children>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" spacing="32.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSignUp">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <children>
+      <Pane prefHeight="980.0" prefWidth="600.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
+         <children>
+            <Label layoutX="36.0" layoutY="155.0" text="Nome completo" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
+               </font></Label>
+            <TextField fx:id="txt_FullName" layoutX="36.0" layoutY="190.0" prefHeight="40.0" prefWidth="530.0" promptText="Nome completo" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font></TextField>
+            <Label layoutX="36.0" layoutY="246.0" text="Email" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_Email" layoutX="36.0" layoutY="281.0" prefHeight="40.0" prefWidth="530.0" promptText="Email" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="36.0" layoutY="337.0" text="Data de nascimento" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_DateBirth" layoutX="36.0" layoutY="372.0" prefHeight="40.0" prefWidth="530.0" promptText="Data de Nascimento" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="36.0" layoutY="428.0" text="Senha" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="bnt_SignUp" layoutX="36.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#signIn" prefHeight="40.0" prefWidth="530.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
+            <PasswordField fx:id="txt_Password" layoutX="35.0" layoutY="463.0" prefHeight="40.0" prefWidth="530.0" promptText="Senha" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font></PasswordField>
+         </children></Pane>
+      <Pane prefHeight="880.0" prefWidth="536.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
+         <children>
+            <ImageView fitHeight="189.0" fitWidth="151.0" layoutX="193.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="91.0" layoutY="274.0" prefHeight="229.0" prefWidth="355.0" text="Falta pouco para você entrar na comunidade e ser um Pawner! Aqui você irá encontrar diversas ONG's e instituições, poderá participar dos fóruns, encontrar dicas e compartilhar suas próprias experiências.Além do mais importante, encontrar o seu PET dos sonhos, baseado nas suas características e expectativas! Termine seu cadastro e venha fazer parte do nosso time. Lutamos juntos por um mundo com menos abandono e mais amor #Lambeijos" textAlignment="CENTER" textFill="#afafaf" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="557.0" prefHeight="29.0" prefWidth="324.0" text="Crie sua conta agora mesmo e vire um pawer" textAlignment="CENTER" textFill="#808080" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="20.0" fitWidth="17.0" layoutX="425.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/heart-solid.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+   </children>
 </HBox>
