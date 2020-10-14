@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-border-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerMain">
    <children>
       <Pane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
@@ -19,7 +18,7 @@
                <font>
                   <Font name="Microsoft Sans Serif" size="25.0" />
                </font></Button>
-            <Button fx:id="btnAcessComunidade" layoutX="64.0" layoutY="402.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="400.0" style="-fx-border-color: #FF6F61; -fx-border-radius: 10px; -fx-border-width: 3; -fx-background-color: white;" text="Acessar comunidade" textFill="#2f2e41">
+            <Button fx:id="btnAcessComunidade" layoutX="64.0" layoutY="402.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#formForum" prefHeight="60.0" prefWidth="400.0" style="-fx-border-color: #FF6F61; -fx-border-radius: 10px; -fx-border-width: 3; -fx-background-color: white;" text="Acessar comunidade" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft Sans Serif" size="25.0" />
                </font></Button>
@@ -64,4 +63,3 @@
          </children></Pane>
    </children>
 </HBox>
-

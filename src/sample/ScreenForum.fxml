@@ -4,72 +4,101 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ScreenForum">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerForum">
    <children>
       <ImageView fitHeight="150.0" fitWidth="106.0" layoutX="37.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/Logo.png" />
          </image></ImageView>
       <TextField layoutX="211.0" layoutY="56.0" prefHeight="44.0" prefWidth="680.0" stylesheets="@../stylesheet/TextField.css" />
-      <Button layoutX="960.0" layoutY="60.0" mnemonicParsing="false" onAction="#loadDialog" prefHeight="34.0" prefWidth="181.0" stylesheets="@../stylesheet/Button.css" text="Criar um tópico" />
+      <Button fx:id="btnCriarTopico" layoutX="960.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#loadPane" prefHeight="34.0" prefWidth="181.0" stylesheets="@../stylesheet/Button.css" text="Criar um tópico" />
       <ImageView fitHeight="44.0" fitWidth="54.0" layoutX="834.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons/search-solid1.png" />
          </image></ImageView>
-      <Label layoutX="257.0" layoutY="241.0" prefHeight="27.0" prefWidth="397.0" text="Cachorro pode comer melão?">
+      <Label layoutX="270.0" layoutY="243.0" prefHeight="27.0" prefWidth="397.0" text="Cachorro pode comer melão?">
          <font>
             <Font name="Microsoft Sans Serif" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="257.0" layoutY="285.0" prefHeight="21.0" prefWidth="488.0" text="Meu cachorro comeu melão e está passando...">
+      <Label layoutX="295.0" layoutY="276.0" prefHeight="21.0" prefWidth="488.0" text="Meu cachorro comeu melão e está passando...">
          <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
          </font>
       </Label>
-      <Circle fill="#adc8e1" layoutX="211.0" layoutY="255.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="757.0" layoutY="347.0" text="Responder" textFill="#ff6f61">
+      <Label layoutX="757.0" layoutY="306.0" text="Responder" textFill="#ff6f61">
          <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="34.0" fitWidth="31.0" layoutX="856.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="28.0" fitWidth="21.0" layoutX="846.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons/chevron-right-solid.png" />
          </image>
       </ImageView>
-      <DialogPane layoutX="456.0" layoutY="213.0">
-         <content>
-            <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0">
-               <children>
-                  <Label layoutX="85.0" layoutY="175.0" prefHeight="28.0" prefWidth="69.0" text="Assunto" textFill="#ff6f61">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="85.0" layoutY="70.0" prefHeight="28.0" prefWidth="54.0" text="Título" textFill="#ff6f61">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="90.0" layoutY="109.0" prefHeight="42.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
-                  <TextArea layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
-                  <Button layoutX="706.0" layoutY="444.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="156.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="12.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="346.0" layoutY="14.0" prefHeight="42.0" prefWidth="188.0" text="Criar novo tópico" textAlignment="RIGHT" wrapText="true">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </content>
-      </DialogPane>
+      <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="224.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons/user-solid.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="270.0" layoutY="419.0" text="Qual a melhor areia pra gatos?">
+         <font>
+            <Font name="Microsoft Sans Serif" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="295.0" layoutY="450.0" text="Estou procurando uma areia melhor para o meu gato...">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="757.0" layoutY="474.0" text="Responder" textFill="#ff6f61">
+         <font>
+            <Font name="Microsoft Sans Serif" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="28.0" fitWidth="21.0" layoutX="846.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons/chevron-right-solid.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="46.0" layoutX="224.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons/user-solid.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="newTopicPane" layoutX="150.0" layoutY="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+         <children>
+            <Label layoutX="85.0" layoutY="175.0" prefHeight="28.0" prefWidth="69.0" text="Assunto" textFill="#ff6f61">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="85.0" layoutY="70.0" prefHeight="28.0" prefWidth="54.0" text="Título" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTitulo" layoutX="90.0" layoutY="109.0" prefHeight="42.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
+            <TextArea fx:id="txtAssunto" layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
+            <Button layoutX="706.0" layoutY="444.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="156.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="346.0" layoutY="14.0" prefHeight="42.0" prefWidth="188.0" text="Criar novo tópico" textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="32.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#closePane" prefHeight="34.0" prefWidth="88.0" stylesheets="@../stylesheet/Button.css" text="Voltar">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
    <opaqueInsets>
       <Insets />
