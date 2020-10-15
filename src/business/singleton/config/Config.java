@@ -1,29 +1,41 @@
 package business.singleton.config;
+
 import java.sql.*;
 
 public class Config {
 
     private static Config uniqueInstance;
-    Connection con;
+    private Connection con;
+    private String url = "jdbc:sql://127.0.0.1:3306/fourpaws";
+    private String username = "root";
+    private String password = " ";
 
-    private Config()  {
+    private Config() throws SQLException {
 
-            try {
-                Class.forName("com.sql.jdbc.Driver");
+        try {
 
-                con = DriverManager.getConnection("jdbc:sql://127.0.0.1:3306/fourpaws", "root", " ");
+            Class.forName("com.sql.jdbc.Driver");
 
-            } catch (ClassNotFoundException ex) {
-                System.out.println("Não foi possível encontrar a classe");
-            }catch (SQLException ex)
-            {
-                System.out.println("Ocorreu um erro de SQL.");
-            }
+            this.con = DriverManager.getConnection(url, username, password);
+
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Não foi possível encontrar a classe" + ex.getMessage());
         }
+    }
 
-    public static synchronized Config getInstance() {
-        if (uniqueInstance == null)
+    public Connection getConnetion() {
+
+        return con;
+    }
+
+    public static synchronized Config getInstance() throws SQLException {
+
+        if (uniqueInstance == null) {
             uniqueInstance = new Config();
+
+        } else if (uniqueInstance.getConnetion().isClosed()) {
+            uniqueInstance = new Config();
+        }
 
         return uniqueInstance;
     }
