@@ -1,6 +1,8 @@
 package business.log.threads;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ManageAudit {
     ConcurrentLinkedQueue<String> queueAudit;
@@ -18,8 +20,7 @@ public class ManageAudit {
         return instance;
     }
 
-    /*MARI: Chamar a Thread que salva aqui, Ex:
-    * ThreadManageAudit thread; */
+    ThreadManageAudit thread;
 
     public void addAudit(String addAudit) {
         queueAudit.add(addAudit);
@@ -30,23 +31,18 @@ public class ManageAudit {
         return audit;
     }
 
-    /* thread = NOME DA SUA VARÍAVEL, PODE MUDAR E DESCOMENTAR O MÉTODO
-    *  ThreadManageAudit = NOME DO SEU MÉTODO, PODE MUDAR E DESCOMENTAR O MÉTODO
-    public void activate() {
-        if (thread == null) {
+    public void activate(){
+        if (thread == null){
             thread = new ThreadManageAudit();
             thread.start();
         }
     }
-    */
 
-    /* thread = NOME DA SUA VARÍAVEL, PODE MUDAR E DESCOMENTAR O MÉTODO
-    * setStatus = NOME DA SUA VARÍAVEL, PODE MUDAR E DESCOMENTAR O MÉTODO
-    public void disable() {
-        if (thread != null) {
+    public void disable(){
+        if (thread != null){
             thread.setStatus(false);
-            try {
-                thread.join(2000);
+            try{
+                thread.join();
             } catch (InterruptedException ex) {
                 Logger.getLogger(ManageAudit.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -54,6 +50,4 @@ public class ManageAudit {
                 thread.interrupt();
         }
     }
-    */
-
 }
