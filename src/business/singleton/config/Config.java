@@ -5,7 +5,7 @@ import java.sql.*;
 public class Config {
 
     private static Config uniqueInstance;
-    private Connection con;
+    private static Connection con;
     private String url = "jdbc:sql://127.0.0.1:3306/fourpaws";
     private String username = "root";
     private String password = " ";
@@ -23,7 +23,7 @@ public class Config {
         }
     }
 
-    public Connection getConnetion() {
+    public static Connection getConnection() {
 
         return con;
     }
@@ -33,7 +33,7 @@ public class Config {
         if (uniqueInstance == null) {
             uniqueInstance = new Config();
 
-        } else if (uniqueInstance.getConnetion().isClosed()) {
+        } else if (uniqueInstance.getConnection().isClosed()) {
             uniqueInstance = new Config();
         }
 

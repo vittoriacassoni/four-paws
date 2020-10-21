@@ -65,11 +65,16 @@
                </font>
             </Label>
             <Spinner layoutX="79.0" layoutY="547.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
-            <ImageView fitHeight="541.0" fitWidth="660.0" layoutX="527.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="btnVoltar" fitHeight="541.0" fitWidth="660.0" layoutX="585.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/undraw_pet_adoption_2qkw.png" />
                </image>
             </ImageView>
+         <Button id="btnVoltar" layoutX="1071.0" layoutY="628.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backMain" prefHeight="40.0" prefWidth="119.0" stylesheets="@../stylesheet/Button.css" text="Voltar" textFill="WHITE">
+            <font>
+               <Font name="Romantic" size="20.0" />
+            </font>
+         </Button>
          </children>
       </Pane>
 
