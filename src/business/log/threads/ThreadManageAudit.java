@@ -20,6 +20,7 @@ public class ThreadManageAudit extends Thread {
             try {
                 String audit = ManageAudit.getInstance().removeAudit();
                 if (audit != null) {
+                    for (int i=0; i<audit.length(); i++)
                     sendToDatabase();
                 }
             } catch (SQLException ex) {
@@ -38,9 +39,9 @@ public class ThreadManageAudit extends Thread {
             String query = "INSERT INTO logAudit (date, login, action) VALUES (?, ?, ?)";
             PreparedStatement add = con.prepareStatement(query);
 
-            /*add.setString(1, Instant.now().toString());
-            add.setString(2, txtID.getText());
-            add.setString((3, ));*/
+            add.setString(1, Instant.now().toString());
+            add.setString(2, null);
+            add.setString(3, null);
 
             add.executeUpdate();
 
