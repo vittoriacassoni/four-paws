@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerRegisterAnimal">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="850.0" prefWidth="1200.0" stylesheets="@../stylesheet/Background.css">
+         <children>
+            <Pane prefHeight="900.0" prefWidth="700.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+              <children>
+                <ImageView fitHeight="67.0" fitWidth="52.0" layoutX="78.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../assets/images/Logo.png" />
+                  </image>
+                </ImageView>
+                <Label layoutX="82.0" layoutY="132.0" text="Nome" textFill="#ff6f61">
+                  <font>
+                    <Font name="Microsoft JhengHei Bold" size="15.0" />
+                  </font></Label>
+                <TextField layoutX="82.0" layoutY="167.0" prefHeight="40.0" prefWidth="500.0" promptText="Nome" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                  <font>
+                    <Font name="Microsoft JhengHei" size="14.0" />
+                  </font></TextField>
+                <Label layoutX="82.0" layoutY="224.0" text="Raça" textFill="#ff6f61">
+                  <font>
+                    <Font name="Microsoft JhengHei Bold" size="15.0" />
+                  </font>
+                </Label>
+                <ChoiceBox fx:id="dropBreeds" accessibleText="dropBreed" layoutX="82.0" layoutY="260.0" prefHeight="40.0" prefWidth="500.0" styleClass="context-menu" stylesheets="@../stylesheet/ChoiceBox.css" />
+                <Label layoutX="82.0" layoutY="315.0" text="Cor" textFill="#ff6f61">
+                  <font>
+                    <Font name="Microsoft JhengHei Bold" size="15.0" />
+                  </font>
+                </Label>
+                <ChoiceBox fx:id="dropColors" layoutX="82.0" layoutY="351.0" prefHeight="40.0" prefWidth="500.0" styleClass="context-menu" stylesheets="@../stylesheet/ChoiceBox.css" />
+                <Label layoutX="82.0" layoutY="407.0" text="Idade" textFill="#ff6f61">
+                  <font>
+                    <Font name="Microsoft JhengHei Bold" size="15.0" />
+                  </font>
+                </Label>
+                <Spinner layoutX="82.0" layoutY="443.0" prefHeight="40.0" prefWidth="500.0" stylesheets="@../stylesheet/Spinner.css">
+                  <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory max="200" min="0" />
+                  </valueFactory>
+                </Spinner>
+                <Label layoutX="82.0" layoutY="498.0" text="Tamanho (cm)" textFill="#ff6f61">
+                  <font>
+                    <Font name="Microsoft JhengHei Bold" size="15.0" />
+                  </font>
+                </Label>
+                <Spinner layoutX="82.0" layoutY="534.0" prefHeight="40.0" prefWidth="500.0" stylesheets="@../stylesheet/Spinner.css">
+                  <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory max="800" min="0" />
+                  </valueFactory>
+                </Spinner>
+                <Label layoutX="82.0" layoutY="590.0" text="Peso (kg)" textFill="#ff6f61">
+                  <font>
+                    <Font name="Microsoft JhengHei Bold" size="15.0" />
+                  </font>
+                </Label>
+                <Spinner layoutX="82.0" layoutY="626.0" prefHeight="40.0" prefWidth="500.0" stylesheets="@../stylesheet/Spinner.css">
+                  <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory max="300" min="0" />
+                  </valueFactory>
+                </Spinner>
+                <CheckBox layoutX="511.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Alegre" textFill="#2f2e41">
+                  <font>
+                    <Font name="Microsoft JhengHei" size="14.0" />
+                  </font></CheckBox>
+                <CheckBox layoutX="82.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Quieto" textFill="#2f2e41">
+                  <font>
+                    <Font name="Microsoft JhengHei" size="14.0" />
+                  </font></CheckBox>
+                <CheckBox layoutX="285.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carinhoso" textFill="#2f2e41">
+                  <font>
+                    <Font name="Microsoft JhengHei" size="14.0" />
+                  </font>
+                </CheckBox>
+                <CheckBox layoutX="186.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Bravo" textFill="#2f2e41">
+                  <font>
+                    <Font name="Microsoft JhengHei" size="14.0" />
+                  </font></CheckBox>
+                <CheckBox layoutX="408.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carente" textFill="#2f2e41">
+                  <font>
+                    <Font name="Microsoft JhengHei" size="14.0" />
+                  </font></CheckBox>
+                <Button layoutX="82.0" layoutY="771.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="500.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
+                  <font>
+                    <Font name="Microsoft JhengHei Bold" size="18.0" />
+                  </font>
+                </Button>
+                  <Label layoutX="82.0" layoutY="682.0" text="Características" textFill="#ff6f61">
+                     <font>
+                        <Font name="Microsoft JhengHei Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Circle fx:id="imgAnimal" fill="WHITE" layoutX="332.0" layoutY="79.0" radius="46.0" stroke="#ff6f61" strokeType="OUTSIDE" />
+                  <Button layoutX="350.0" layoutY="98.0" mnemonicParsing="false" style="-fx-background-radius: 50; -fx-background-color: #00EEFF;" text="   " />
+                  <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="356.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons/pen-solid.png" />
+                     </image>
+                  </ImageView>
+              </children>
+            </Pane>
+
+            <Pane layoutX="700.0" prefHeight="900.0" prefWidth="500.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+              <children>
+                <ImageView fitHeight="434.0" fitWidth="458.0" layoutX="-17.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../assets/images/undraw_Playful_cat_rchv.png" />
+                  </image>
+                </ImageView>
+                <Label layoutX="33.0" layoutY="195.0" text="Cadastro de Animais" textFill="#ff6f61">
+                  <font>
+                    <Font name="Microsoft JhengHei Bold" size="36.0" />
+                  </font>
+                </Label>
+              </children>
+            </Pane>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

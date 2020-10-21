@@ -31,7 +31,7 @@
   -fx-font-size: 14;
   -fx-font-family: 'Microsft JhengHei';
   -fx-effect: none;
-  -fx-background-radius: 8;
+  -fx-border-radius: 8;
 }
 
 // Selected item text color on the control itself

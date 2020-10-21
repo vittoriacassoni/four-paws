@@ -1,3 +1,11 @@
 .background{
     -fx-background-color: #fff;
 }
+
+.pane{
+    -fx-background-color: #fff;
+}
+
+.hbox{
+    -fx-background-color: #fff;
+}

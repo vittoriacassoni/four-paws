@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="67.0" fitWidth="52.0" layoutX="49.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/Logo.png" />
+         </image>
+      </ImageView>
+      <Pane id="CardAnimal" layoutX="49.0" layoutY="142.0" prefHeight="450.0" prefWidth="340.0" style="-fx-border-color: #FF6F61; -fx-border-width: 2; -fx-border-radius: 20;" stylesheets="@../stylesheet/CardAnimal.css">
+         <children>
+            <Label layoutX="147.0" layoutY="139.0" text="Bob" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="157.0" layoutY="173.0" text="SRD" textFill="#00e0f0">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="18.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/dollar-sign-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/venus-mars-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="15.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/palette-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="231.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/size-dog.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="236.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/calendar-alt-regular.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="235.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/weight-hanging-solid.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="267.0" text="Marrom Claro" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="267.0" text="5 KG" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="402.0" text="Escolher Bob" textFill="#ff6f61" underline="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="119.0" fitWidth="340.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Elipse.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#f7f8f8" layoutX="170.0" layoutY="87.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+         </children></Pane>
+      <Pane id="CardAnimal" layoutX="430.0" layoutY="142.0" prefHeight="450.0" prefWidth="340.0" style="-fx-border-color: #FF6F61; -fx-border-width: 2; -fx-border-radius: 20;" stylesheets="@../stylesheet/CardAnimal.css">
+         <children>
+            <Label layoutX="147.0" layoutY="139.0" text="Bob" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="157.0" layoutY="173.0" text="SRD" textFill="#00e0f0">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="18.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/dollar-sign-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/venus-mars-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="15.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/palette-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="231.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/Grupo%2035.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="236.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/calendar-alt-regular.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="235.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/weight-hanging-solid.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="267.0" text="Marrom Claro" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="267.0" text="5 KG" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="402.0" text="Escolher Bob" textFill="#ff6f61" underline="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="119.0" fitWidth="340.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Elipse.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#f7f8f8" layoutX="170.0" layoutY="87.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+         </children>
+      </Pane>
+      <Pane id="CardAnimal" layoutX="808.0" layoutY="142.0" prefHeight="450.0" prefWidth="340.0" style="-fx-border-color: #FF6F61; -fx-border-width: 2; -fx-border-radius: 20;" stylesheets="@../stylesheet/CardAnimal.css">
+         <children>
+            <Label layoutX="147.0" layoutY="139.0" text="Bob" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="157.0" layoutY="173.0" text="SRD" textFill="#00e0f0">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="18.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/dollar-sign-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/venus-mars-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="15.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/palette-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="231.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/Grupo%2035.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="236.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/calendar-alt-regular.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="235.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/weight-hanging-solid.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="267.0" text="Marrom Claro" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="267.0" text="5 KG" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="402.0" text="Escolher Bob" textFill="#ff6f61" underline="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="119.0" fitWidth="340.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Elipse.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#f7f8f8" layoutX="170.0" layoutY="87.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

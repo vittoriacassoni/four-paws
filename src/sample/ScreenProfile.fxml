@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerProfile">
+   <children>
+      <Pane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+         <children>
+            <ImageView fitHeight="67.0" fitWidth="52.0" layoutX="90.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/Logo.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#e1e1e1" layoutX="138.0" layoutY="187.0" radius="49.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Button layoutX="151.0" layoutY="211.0" mnemonicParsing="false" style="-fx-background-radius: 50; -fx-background-color: #00EEFF;" text="   " />
+            <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="157.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/pen-solid.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="89.0" layoutY="274.0" text="Nome completo" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="355.0" text="Email" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="89.0" layoutY="311.0" text="Laura Alves" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="392.0" text="laura.alves@hotmail.com" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="432.0" text="Data de nascimento" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="469.0" text="17/04/1998" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="700.0" prefWidth="718.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+         <children>
+            <Label layoutX="62.0" layoutY="64.0" text="Doações" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="62.0" layoutY="350.0" text="Adoções" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="454.0" layoutY="66.0" text="Ver mais" textFill="#2f2e41" underline="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="454.0" layoutY="352.0" text="Ver mais" textFill="#2f2e41" underline="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Label>
+            <ListView fx:id="listDonations" layoutX="62.0" layoutY="115.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
+            <ListView fx:id="listAdoptions" layoutX="62.0" layoutY="401.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
+         </children></Pane>
+   </children>
+</HBox>
