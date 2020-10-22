@@ -1,11 +1,13 @@
 package business.log.threads;
 
+import business.log.Audit;
+
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ManageAudit {
-    ConcurrentLinkedQueue<String> queueAudit;
+    ConcurrentLinkedQueue<Audit> queueAudit;
 
     private static ManageAudit instance;
 
@@ -22,12 +24,12 @@ public class ManageAudit {
 
     ThreadManageAudit thread;
 
-    public void addAudit(String addAudit) {
+    public void addAudit(Audit addAudit) {
         queueAudit.add(addAudit);
     }
 
-    String removeAudit() {
-        String audit = queueAudit.poll();
+    Audit removeAudit() {
+        Audit audit = queueAudit.poll();
         return audit;
     }
 
