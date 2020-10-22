@@ -5,5 +5,6 @@ module four.paws {
     requires javafx.base;
     requires java.sql;
     requires java.desktop;
+    requires com.microsoft.sqlserver.jdbc;
     opens sample;
 }

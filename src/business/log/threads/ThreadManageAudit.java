@@ -1,7 +1,9 @@
 package business.log.threads;
 
+import business.log.Audit;
 import business.singleton.config.Config;
 
+import javax.sound.midi.SysexMessage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,10 +20,9 @@ public class ThreadManageAudit extends Thread {
         setStatus(true);
         while (status) {
             try {
-                String audit = ManageAudit.getInstance().removeAudit();
+                Audit audit = ManageAudit.getInstance().removeAudit();
                 if (audit != null) {
-                    for (int i=0; i<audit.length(); i++)
-                    sendToDatabase();
+                    sendToDatabase(audit);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ThreadManageAudit.class.getName()).log(Level.SEVERE, null, ex);
@@ -33,16 +34,18 @@ public class ThreadManageAudit extends Thread {
         status = value;
     }
 
-    private void sendToDatabase() throws SQLException {
-        Connection con = Config.getConnection();
+    private void sendToDatabase(Audit audit) throws SQLException {
+        var con = Config.getInstance().getConnection();
+        System.out.println(con);
         try {
-            String query = "INSERT INTO logAudit (date, login, action) VALUES (?, ?, ?)";
+            String query = "INSERT INTO Audit (UserId, Action, CreatedAt) VALUES (?, ?, ?)";
             PreparedStatement add = con.prepareStatement(query);
 
-            add.setString(1, Instant.now().toString());
-            add.setString(2, null);
-            add.setString(3, null);
+            add.setString(1, audit.getUserId());
+            add.setString(2, audit.getAction());
+            add.setString(3, Instant.now().toString());
 
+            System.out.println(add);
             add.executeUpdate();
 
             add.close();
