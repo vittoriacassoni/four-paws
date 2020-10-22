@@ -38,5 +38,3 @@ public class ControllerLogin {
         Optional<String> result = dialog.showAndWait();
     }
 }
-
-

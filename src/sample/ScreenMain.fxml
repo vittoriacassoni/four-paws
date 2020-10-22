@@ -19,7 +19,7 @@
                <font>
                   <Font name="Microsoft Sans Serif" size="25.0" />
                </font></Button>
-            <Button fx:id="btnAcessComunidade" contentDisplay="RIGHT" depthTest="ENABLE" graphicTextGap="6.0" layoutX="64.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#acessForum" prefHeight="60.0" prefWidth="400.0" stylesheets="@../stylesheet/ButtonSecondary.css" text="     Acessar comunidade" textAlignment="CENTER" textFill="#2f2e41">
+            <Button fx:id="btnAcessfindPetComunidade" contentDisplay="RIGHT" depthTest="ENABLE" graphicTextGap="6.0" layoutX="64.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#acessForum" prefHeight="60.0" prefWidth="400.0" stylesheets="@../stylesheet/ButtonSecondary.css" text="     Acessar comunidade" textAlignment="CENTER" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei" size="24.0" />
                </font></Button>
