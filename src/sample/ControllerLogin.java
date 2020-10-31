@@ -1,24 +1,49 @@
 package sample;
 
+import business.Access;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Optional;
+import java.sql.SQLException;
 
 public class ControllerLogin {
+    @FXML
+    Pane paneRememberPass;
 
-    public void login(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Seja Bem-Vinde");
-        primaryStage.setScene(new Scene(root, 1200, 700));
-        primaryStage.show();
+    @FXML
+    Pane paneDarkBackground;
+
+    @FXML
+    TextField txtEmail;
+
+    @FXML
+    TextField txtPassword;
+
+
+    public void login(ActionEvent event) throws IOException, SQLException {
+        if (Access.validateLogin(txtEmail.getText(), txtPassword.getText())) {
+            Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Seja Bem-Vinde");
+            primaryStage.setScene(new Scene(root, 1200, 700));
+            primaryStage.show();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Dados inválidos!");
+            alert.setHeaderText(null);
+            alert.setContentText("Verifique seu dados de Login!");
+            alert.showAndWait();
+        }
     }
 
     public void signUp(MouseEvent event) throws IOException {
@@ -30,11 +55,12 @@ public class ControllerLogin {
     }
 
     public void rememberPass() {
-        TextInputDialog dialog = new TextInputDialog("Email");
-        dialog.setTitle("Recuperar a senha:");
-        dialog.setHeaderText("Digite o e-mail cadastrado:");
-        dialog.setGraphic(null);
-        dialog.getDialogPane().getButtonTypes().remove(1);
-        Optional<String> result = dialog.showAndWait();
+        paneRememberPass.setVisible(true);
+        paneDarkBackground.setVisible(true);
+    }
+
+    public void closePanel() {
+        paneRememberPass.setVisible(false);
+        paneDarkBackground.setVisible(false);
     }
 }

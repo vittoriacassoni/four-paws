@@ -1,6 +1,6 @@
 package business.log.threads;
 
-import business.log.Audit;
+import comuns.access.Audit;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;

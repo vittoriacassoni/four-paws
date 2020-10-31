@@ -7,10 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLogin">
     <children>
         <Pane prefHeight="700.0" prefWidth="700.0" stylesheets="@../stylesheet/Background.css">
             <children>
+            <Pane layoutY="170.0" prefHeight="385.0" prefWidth="700.0" stylesheets="@../stylesheet/Background.css" />
                 <ImageView fitHeight="620.0" fitWidth="650.0" layoutX="25.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: color #fff;">
                     <image>
                         <Image url="@../assets/images/undraw_friends_r511.png" />
@@ -19,9 +20,9 @@
             <StackPane prefHeight="700.0" prefWidth="1200.0" />
             </children>
         </Pane>
-        <Pane prefHeight="700.0" prefWidth="500.0" stylesheets="@../stylesheet/Background.css">
+        <Pane layoutX="704.0" prefHeight="700.0" prefWidth="496.0" stylesheets="@../stylesheet/Background.css">
             <children>
-                <PasswordField layoutX="79.0" layoutY="352.0" prefHeight="40.0" prefWidth="350.0" promptText="          Senha">
+                <PasswordField fx:id="txtPassword" layoutX="79.0" layoutY="352.0" prefHeight="40.0" prefWidth="350.0" promptText="          Senha">
                     <stylesheets>
                         <URL value="@../stylesheet/Background.css" />
                         <URL value="@../stylesheet/TextField.css" />
@@ -35,7 +36,7 @@
                         <Image url="@../assets/images/Logo.png" />
                     </image>
                 </ImageView>
-                <TextField layoutX="79.0" layoutY="280.0" prefHeight="40.0" prefWidth="350.0" promptText="          Email" stylesheets="@../stylesheet/TextField.css">
+                <TextField fx:id="txtEmail" layoutX="79.0" layoutY="280.0" prefHeight="40.0" prefWidth="350.0" promptText="          Email" stylesheets="@../stylesheet/TextField.css">
                     <font>
                         <Font name="Microsoft JhengHei" size="14.0" />
                     </font>
@@ -89,5 +90,21 @@
             </ImageView>
             </children>
         </Pane>
+      <Pane fx:id="paneDarkBackground" opacity="0.85" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
+      <Pane fx:id="paneRememberPass" layoutX="300.0" layoutY="175.0" prefHeight="350.0" prefWidth="600.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+         <children>
+            <TextField layoutX="150.0" layoutY="160.0" prefHeight="40.0" prefWidth="300.0" promptText="Email" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
+            <Label layoutX="177.0" layoutY="95.0" text="Digite o email cadastrado" textFill="#020625">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnRememberPass" layoutX="151.0" layoutY="236.0" mnemonicParsing="false" onAction="#closePanel" prefHeight="40.0" prefWidth="300.0" stylesheets="@../stylesheet/Button.css" text="Recuperar Senha" textFill="#180954">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
     </children>
-</HBox>
+</Pane>

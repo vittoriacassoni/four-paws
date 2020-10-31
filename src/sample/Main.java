@@ -1,7 +1,9 @@
 package sample;
 
-import business.log.Audit;
+import business.singleton.config.Config;
+import comuns.access.Audit;
 import business.log.threads.ManageAudit;
+import comuns.enums.RepositoryType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
+        Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
         Parent root = FXMLLoader.load(getClass().getResource("ScreenLogin.fxml"));
 
         primaryStage.setTitle("4Paws, Bem-vinde!");
@@ -24,7 +26,9 @@ public class Main extends Application {
         System.out.printf("%s - Início da brincadeira\n", Instant.now().toString());
         ManageAudit.getInstance().activate();
 
-        Audit audit = new Audit(null, "teste2");
+        Audit audit = new Audit();
+        audit.setUserId(null);
+        audit.setAction("teste2");
         System.out.println(audit.getAction());
         ManageAudit.getInstance().addAudit(audit);
         Thread.sleep(1000);
