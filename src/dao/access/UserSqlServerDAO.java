@@ -28,7 +28,7 @@ public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
             entity.setPasswordHash(rs.getString("PasswordHash"));
             entity.setImage(rs.getString("Image"));
             entity.setDateOfBirth(rs.getDate("DateOfBirth"));
-            entity.setUserRoleld(rs.getInt("UserRoleld"));
+            entity.setUserRoleld(rs.getInt("UserRoleId"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
             entity.setDeletedAt(rs.getDate("DeletedAt"));
@@ -69,7 +69,6 @@ public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
     }
 
     @Override
-    /*AJUSTAR O SELECT - TORNA-LO GENÉRICO!*/
     public E select(String email) throws SQLException {
         E entity = null;
         System.out.println(con);
@@ -78,7 +77,7 @@ public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
         add.setString(1, email);
 
         try (ResultSet rs = add.executeQuery()) {
-            if (rs.first()) {
+            if (rs.next()) {
                 entity = fillEntity(rs);
             }
         }

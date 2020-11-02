@@ -3,6 +3,7 @@ package dao.enums;
 import business.singleton.config.Config;
 import comuns.enums.RepositoryType;
 import dao.access.AuditSqlServerDAO;
+import dao.access.UserSqlServerDAO;
 import dao.bases.DAO;
 
 
@@ -28,7 +29,7 @@ public enum EntityDAO {
 
     static private DAO getUserDAO() {
         if(Config.getInstance().getRepositoryType() == RepositoryType.SQLSERVER)
-            return new AuditSqlServerDAO();
+            return new UserSqlServerDAO();
         return null;
     }
 }

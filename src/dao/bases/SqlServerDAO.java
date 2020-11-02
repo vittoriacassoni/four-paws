@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public abstract class SqlServerDAO <E extends Entity> extends DAO {
-    public static Connection con;
+    public Connection con;
     private String url = "jdbc:sqlserver://sql5092.site4now.net;" +
             "databaseName=DB_A6939A_4paws;";  ;
     private String username = "DB_A6939A_4paws_admin";
