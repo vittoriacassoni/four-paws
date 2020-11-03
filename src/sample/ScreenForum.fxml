@@ -12,7 +12,7 @@
          <image>
             <Image url="@../assets/images/Logo.png" />
          </image></ImageView>
-      <TextField layoutX="211.0" layoutY="56.0" prefHeight="44.0" prefWidth="680.0" stylesheets="@../stylesheet/TextField.css" />
+      <TextField layoutX="211.0" layoutY="56.0" prefHeight="44.0" prefWidth="680.0" promptText="Pesquisar" stylesheets="@../stylesheet/TextField.css" />
       <Button fx:id="btnCriarTopico" layoutX="960.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#loadPane" prefHeight="34.0" prefWidth="181.0" stylesheets="@../stylesheet/Button.css" text="Criar um tópico" />
       <ImageView fitHeight="44.0" fitWidth="54.0" layoutX="834.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,12 +28,12 @@
             <Font name="Microsoft Sans Serif" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="757.0" layoutY="306.0" text="Responder" textFill="#ff6f61">
+      <Label layoutX="757.0" layoutY="306.0" onMouseClicked="#loadAnswerPane" text="Responder" textFill="#ff6f61">
          <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="28.0" fitWidth="21.0" layoutX="846.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="28.0" fitWidth="21.0" layoutX="846.0" layoutY="303.0" onMouseClicked="#loadAnswerPane" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons/chevron-right-solid.png" />
          </image>
@@ -53,7 +53,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="757.0" layoutY="474.0" text="Responder" textFill="#ff6f61">
+      <Label layoutX="757.0" layoutY="474.0" onMouseClicked="#loadAnswerPane" text="Responder" textFill="#ff6f61">
          <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
          </font>
@@ -68,7 +68,7 @@
             <Image url="@../assets/icons/user-solid.png" />
          </image>
       </ImageView>
-      <Pane fx:id="newTopicPane" layoutX="150.0" layoutY="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+      <Pane fx:id="newTopicPane" layoutX="150.0" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
          <children>
             <Label layoutX="85.0" layoutY="175.0" prefHeight="28.0" prefWidth="69.0" text="Assunto" textFill="#ff6f61">
                <font>
@@ -82,7 +82,7 @@
             </Label>
             <TextField fx:id="txtTitulo" layoutX="90.0" layoutY="109.0" prefHeight="42.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
             <TextArea fx:id="txtAssunto" layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
-            <Button layoutX="706.0" layoutY="444.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="156.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar">
+            <Button fx:id="btnSalvarComentario" layoutX="706.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#saveNewTopic" prefHeight="42.0" prefWidth="156.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar">
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
@@ -92,11 +92,52 @@
                   <Font name="Microsoft Sans Serif" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="32.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#closePane" prefHeight="34.0" prefWidth="88.0" stylesheets="@../stylesheet/Button.css" text="Voltar">
+            <Button fx:id="btnVoltarTopic" layoutX="32.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#closePane" prefHeight="34.0" prefWidth="88.0" stylesheets="@../stylesheet/Button.css" text="Voltar">
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
             </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="answerTopicPane" layoutX="150.0" layoutY="100.0" opacity="0.0" prefHeight="500.0" prefWidth="900.0" stylesheets="@../stylesheet/Background.css" visible="false">
+         <children>
+            <Label layoutX="309.0" layoutY="14.0" prefHeight="27.0" prefWidth="321.0" text="Cachorro pode comer melão?">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="54.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/user-solid.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="109.0" layoutY="108.0" text="Meu cachorro comeu melão e está vomitando. É normal? Tem algum remédio que seja bom?">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="54.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/user-solid.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="109.0" layoutY="207.0" text="Não é normal, melhor leva-lo ao veterinario para uma consulta e o remedio adequado.">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="336.0" layoutY="310.0" prefHeight="86.0" prefWidth="405.0" promptText="Digite seu comentário.." stylesheets="@../stylesheet/TextField.css" />
+            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="763.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/user-solid.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="680.0" layoutY="407.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" stylesheets="@../stylesheet/Button.css" text="Enviar" />
+            <ImageView fitHeight="42.0" fitWidth="44.0" onMouseClicked="#closeAnswerPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/x-1727490_960_720.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

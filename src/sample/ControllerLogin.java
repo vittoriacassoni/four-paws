@@ -1,6 +1,10 @@
 package sample;
 
 import business.Access;
+import business.log.threads.ManageAudit;
+import business.singleton.config.Config;
+import comuns.access.Audit;
+import comuns.enums.RepositoryType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.Instant;
 
 public class ControllerLogin {
     @FXML
@@ -29,13 +34,24 @@ public class ControllerLogin {
     TextField txtPassword;
 
 
-    public void login(ActionEvent event) throws IOException, SQLException {
+    public void login(ActionEvent event) throws IOException, SQLException, InterruptedException {
+        Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
         if (Access.validateLogin(txtEmail.getText(), txtPassword.getText())) {
             Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Seja Bem-Vinde");
             primaryStage.setScene(new Scene(root, 1200, 700));
             primaryStage.show();
+
+            System.out.printf("%s - Início da brincadeira\n", Instant.now().toString());
+            ManageAudit.getInstance().activate();
+
+            Audit audit = new Audit();
+            audit.setUserId(audit.getUserId());
+            audit.setAction("Login");
+            System.out.println(audit.getAction());
+            ManageAudit.getInstance().addAudit(audit);
+            Thread.sleep(1000);
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
