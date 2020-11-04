@@ -46,7 +46,7 @@ public class ControllerForum {
                 alert.setContentText("Preencha os campos obrigatórios.");
                 alert.showAndWait();
             } else {
-                topic.insert(newTopic);
+                var inserted = topic.insert(newTopic);
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
                 newTopicPane.setVisible(false);
             }

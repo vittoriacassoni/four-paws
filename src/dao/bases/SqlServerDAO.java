@@ -45,8 +45,8 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
     }
 
     @Override
-    public void insert(Entity entity) throws SQLException {
-
+    public boolean insert(Entity entity) throws SQLException {
+        return true;
     }
 
     protected abstract E fillEntity(ResultSet rs);

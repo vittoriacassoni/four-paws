@@ -36,7 +36,7 @@ public class ForumCommentSqlServerDAO <E extends Entity> extends SqlServerDAO {
     }
 
     @Override
-    public void insert(Entity entity) throws SQLException {
+    public boolean insert(Entity entity) throws SQLException {
         ForumComment comment = (ForumComment) entity;
         System.out.println(con);
         try {
@@ -55,6 +55,7 @@ public class ForumCommentSqlServerDAO <E extends Entity> extends SqlServerDAO {
 
             add.close();
             con.close();
+            return  true;
         } finally {
             ManageAudit.getInstance().disable();
         }
