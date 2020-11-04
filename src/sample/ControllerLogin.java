@@ -5,6 +5,7 @@ import business.log.threads.ManageAudit;
 import business.singleton.config.Config;
 import comuns.access.Audit;
 import comuns.enums.RepositoryType;
+import dao.access.UserSqlServerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +34,7 @@ public class ControllerLogin {
     @FXML
     TextField txtPassword;
 
+    UserSqlServerDAO userDAO = new UserSqlServerDAO();
 
     public void login(ActionEvent event) throws IOException, SQLException, InterruptedException {
         Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
@@ -47,7 +49,8 @@ public class ControllerLogin {
             ManageAudit.getInstance().activate();
 
             Audit audit = new Audit();
-            audit.setUserId(audit.getUserId());
+            var userId = userDAO.select(txtEmail.getText()).getId();
+            audit.setUserId(String.valueOf(userId));
             audit.setAction("Login");
             System.out.println(audit.getAction());
             ManageAudit.getInstance().addAudit(audit);
