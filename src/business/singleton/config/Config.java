@@ -11,7 +11,6 @@ public class Config {
         if (uniqueInstance == null) {
             uniqueInstance = new Config();
             System.out.println("criando config");
-
         }
 
         System.out.println(uniqueInstance);

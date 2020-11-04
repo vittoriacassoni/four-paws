@@ -29,6 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ControllerForum {
+
     @FXML
     Pane newTopicPane;
     @FXML
@@ -123,8 +124,5 @@ public class ControllerForum {
     public void closeAnswerPane(MouseEvent mouseEvent) throws IOException {
         answerTopicPane.setVisible(false);
     }
-
-
-
 }
 
