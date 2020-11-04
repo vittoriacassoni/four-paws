@@ -17,6 +17,18 @@ public class User extends Entity {
     private Date updatedAt;
     private Date deletedAt;
 
+    public User(String name, String lastName, String email, String password, Date dateOfBirth){
+       setName(name);
+       setLastName(lastName);
+       setEmail(email);
+       setPasswordHash(password);
+       setDateOfBirth(dateOfBirth);
+    }
+
+    public User(){
+
+    }
+
 
     public String getName() {
         return name;
@@ -74,24 +86,8 @@ public class User extends Entity {
         this.userRoleld = userRoleld;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
     }
 
     public void setDeletedAt(Date deletedAt) {

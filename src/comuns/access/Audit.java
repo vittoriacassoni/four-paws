@@ -2,13 +2,15 @@ package comuns.access;
 
 import comuns.bases.Entity;
 
+import java.time.Instant;
+
 public class Audit extends Entity {
     private String userId;
     private String action;
     private String createdAt;
 
     public Audit() {
-
+        createdAt = Instant.now().toString();
     }
 
     public String getUserId() {

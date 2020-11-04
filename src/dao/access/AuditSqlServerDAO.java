@@ -32,7 +32,7 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
     }
 
     @Override
-    public void insert(Entity entity) throws SQLException {
+    public boolean insert(Entity entity) throws SQLException {
         Audit audit = (Audit) entity;
         System.out.println(con);
         try {
@@ -48,6 +48,7 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
 
             add.close();
             con.close();
+            return true;
         }
         finally {
             ManageAudit.getInstance().disable();

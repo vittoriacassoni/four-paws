@@ -7,7 +7,6 @@ public class Config {
     private static Config uniqueInstance;
 
     public static synchronized Config getInstance() {
-
         System.out.println("a instancia é " + uniqueInstance);
         if (uniqueInstance == null) {
             uniqueInstance = new Config();

@@ -1,13 +1,16 @@
 package dao.access;
 
+import business.Validates;
 import business.log.threads.ManageAudit;
 import comuns.access.User;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +25,7 @@ public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
     protected E fillEntity(ResultSet rs) {
         User entity = new User();
         try {
+            entity.setId(Integer.parseInt(rs.getString("Id")));
             entity.setName(rs.getString("Name"));
             entity.setLastName(rs.getString("LastName"));
             entity.setEmail(rs.getString("Email"));
@@ -29,7 +33,6 @@ public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
             entity.setImage(rs.getString("Image"));
             entity.setDateOfBirth(rs.getDate("DateOfBirth"));
             entity.setUserRoleld(rs.getInt("UserRoleId"));
-            entity.setCreatedAt(rs.getDate("CreatedAt"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
             entity.setDeletedAt(rs.getDate("DeletedAt"));
         } catch (SQLException ex) {
@@ -39,33 +42,41 @@ public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
     }
 
     @Override
-    public void insert(Entity entity) throws SQLException {
+    public boolean insert(Entity entity) throws SQLException {
         User user = (User) entity;
         System.out.println(con);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            String query = "INSERT INTO [User] (Name, LastName, Email, PasswordHash, [Image], DateOfBirth, UserRoleld, CreatedAt, UpdatedAt, DeletedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            if(Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
+               Validates.validateRequiredField(user.getEmail()) || Validates.validateRequiredField(user.getPasswordHash()) ||
+               Validates.validateRequiredField(user.getDateOfBirth().toString())){
+                throw new Exception("Preencha todos os campos!");
+            }
+
+            String query = "INSERT INTO [User] (Name, LastName, Email, PasswordHash, DateOfBirth, " +
+                    "UserRoleId, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
             PreparedStatement add = con.prepareStatement(query);
 
             add.setString(1, user.getName());
             add.setString(2, user.getLastName());
             add.setString(3, user.getEmail());
             add.setString(4, user.getPasswordHash());
-            add.setString(5, user.getImage());
-            add.setString(6, Instant.now().toString());
-            add.setInt(7, user.getUserRoleld());
-            add.setString(8, Instant.now().toString());
-            add.setString(9, Instant.now().toString());
-            add.setString(10, Instant.now().toString());
+            add.setString(5, dateFormat.format(user.getDateOfBirth()));
+            add.setInt(6, user.getUserRoleld());
+            add.setString(7, Instant.now().toString());
 
             System.out.println(add);
             add.executeUpdate();
 
             add.close();
-            con.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         } finally {
             ManageAudit.getInstance().disable();
         }
-
     }
 
     @Override

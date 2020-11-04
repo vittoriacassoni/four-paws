@@ -14,7 +14,7 @@ public abstract class DAO <E extends Entity> {
 
    public abstract E select(String email) throws SQLException;
    public abstract ArrayList<E> list() throws SQLException;
-   public abstract void insert(E entity) throws SQLException;
+   public abstract boolean insert(E entity) throws SQLException;
 
    protected E getInstanceOfE()
    {
