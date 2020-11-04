@@ -7,13 +7,26 @@ import java.util.Date;
 public class ForumTopic extends Entity {
 
     private String title;
+    private String discussion;
     private Integer userId;
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
 
+    public ForumTopic(String title, String discussion){
+        setTitle(title);
+        setDiscussion(discussion);
+    }
+
+    public ForumTopic() {
+
+    }
+
     public String getTitle() {return title;}
     public void setTitle(String title) {this.title = title;}
+
+    public String getDiscussion() {return discussion;}
+    public void setDiscussion(String discussion) {this.discussion = discussion;}
 
     public Integer getUserId() {return userId;}
     public void setUserId(Integer userId) {this.userId = userId;}

@@ -13,6 +13,14 @@ public class ForumComment extends Entity {
     private Date updatedAt;
     private Date deletedAt;
 
+    public ForumComment(String discussion){
+        setDiscussion(discussion);
+    }
+
+    public ForumComment() {
+
+    }
+
     public String getDiscussion() {return discussion;}
     public void setDiscussion(String discussion) {this.discussion = discussion;}
 

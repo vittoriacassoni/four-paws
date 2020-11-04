@@ -1,5 +1,6 @@
 package dao.access;
 
+import business.Validates;
 import business.log.threads.ManageAudit;
 import comuns.access.ForumTopic;
 import comuns.access.User;
@@ -24,6 +25,7 @@ public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
         ForumTopic entity = new ForumTopic();
         try {
             entity.setTitle(rs.getString("Title"));
+            entity.setDiscussion(rs.getString("Discussion"));
             entity.setUserId(rs.getInt("UserId"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
@@ -31,7 +33,7 @@ public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (E) entity;
+        return (E)entity;
     }
 
     @Override
@@ -39,14 +41,18 @@ public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
         ForumTopic topic = (ForumTopic) entity;
         System.out.println(con);
         try {
-            String query = "INSERT INTO [ForumTopic] (Title, UserId, CreatedAt, UpdatedAt, DeletedAt) VALUES (?, ?, ?, ?, ?)";
+            if(Validates.validateRequiredField(topic.getTitle()) || Validates.validateRequiredField(topic.getDiscussion())) {
+                throw new Exception("Preencha todos os campos!");
+            }
+            String query = "INSERT INTO [ForumTopic] (Title, Discussion, UserId, CreatedAt, UpdatedAt, DeletedAt) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement add = con.prepareStatement(query);
 
             add.setString(1, topic.getTitle());
-            add.setInt(2, topic.getUserId());
-            add.setString(3, Instant.now().toString());
+            add.setString(2, topic.getDiscussion());
+            add.setInt(3, topic.getUserId());
             add.setString(4, Instant.now().toString());
             add.setString(5, Instant.now().toString());
+            add.setString(6, Instant.now().toString());
 
             System.out.println(add);
             add.executeUpdate();
@@ -54,9 +60,27 @@ public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
             add.close();
             con.close();
             return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         } finally {
             ManageAudit.getInstance().disable();
         }
+    }
+
+    public E select(Integer id) throws SQLException {
+        E entity = null;
+        System.out.println(con);
+        String query = "SELECT * FROM [ForumTopic] WHERE UserId = ?";
+        PreparedStatement add = con.prepareStatement(query);
+        add.setInt(1, id);
+
+        try (ResultSet rs = add.executeQuery()) {
+            if (rs.next()) {
+                entity = (E) fillEntity(rs);
+            }
+        }
+        return entity;
     }
 
 }

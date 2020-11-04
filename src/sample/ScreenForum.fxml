@@ -28,7 +28,7 @@
             <Font name="Microsoft Sans Serif" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="757.0" layoutY="306.0" onMouseClicked="#loadAnswerPane" text="Responder" textFill="#ff6f61">
+      <Label fx:id="lblAnswer" layoutX="757.0" layoutY="306.0" onMouseClicked="#loadAnswerPane" text="Responder" textFill="#ff6f61">
          <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
          </font>
@@ -80,9 +80,9 @@
                   <Font name="Microsoft Sans Serif" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtTitulo" layoutX="90.0" layoutY="109.0" prefHeight="42.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
-            <TextArea fx:id="txtAssunto" layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
-            <Button fx:id="btnSalvarComentario" layoutX="706.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#saveNewTopic" prefHeight="42.0" prefWidth="156.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar">
+            <TextField fx:id="txtTitle" layoutX="90.0" layoutY="109.0" prefHeight="42.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
+            <TextArea fx:id="txtDiscussion" layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
+            <Button fx:id="btnSaveComment" layoutX="706.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#saveNewTopic" prefHeight="42.0" prefWidth="156.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar">
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
@@ -92,7 +92,7 @@
                   <Font name="Microsoft Sans Serif" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="btnVoltarTopic" layoutX="32.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#closePane" prefHeight="34.0" prefWidth="88.0" stylesheets="@../stylesheet/Button.css" text="Voltar">
+            <Button fx:id="btnBackTopic" layoutX="32.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#closePane" prefHeight="34.0" prefWidth="88.0" stylesheets="@../stylesheet/Button.css" text="Voltar">
                <font>
                   <Font name="Microsoft Sans Serif" size="12.0" />
                </font>
@@ -126,13 +126,13 @@
                   <Font name="Microsoft Sans Serif" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="336.0" layoutY="310.0" prefHeight="86.0" prefWidth="405.0" promptText="Digite seu comentário.." stylesheets="@../stylesheet/TextField.css" />
+            <TextField fx:id="txtComment" layoutX="336.0" layoutY="310.0" prefHeight="86.0" prefWidth="405.0" promptText="Digite seu comentário.." stylesheets="@../stylesheet/TextField.css" />
             <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="763.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/user-solid.png" />
                </image>
             </ImageView>
-            <Button layoutX="680.0" layoutY="407.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" stylesheets="@../stylesheet/Button.css" text="Enviar" />
+            <Button fx:id="btnSendComment" layoutX="680.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#sendNewComment" prefHeight="27.0" prefWidth="60.0" stylesheets="@../stylesheet/Button.css" text="Enviar" />
             <ImageView fitHeight="42.0" fitWidth="44.0" onMouseClicked="#closeAnswerPane" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/x-1727490_960_720.png" />
