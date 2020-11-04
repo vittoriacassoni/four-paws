@@ -2,11 +2,32 @@ package business.singleton.config;
 
 import comuns.enums.RepositoryType;
 
-public class Config {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
+public class Config {
     private static Config uniqueInstance;
 
-    public static synchronized Config getInstance() {
+    public static Connection con;
+    private String url = "jdbc:sqlserver://sql5092.site4now.net;" +
+            "databaseName=DB_A6939A_4paws;";
+    private String username = "DB_A6939A_4paws_admin";
+    private String password = "4paws@123";
+
+    private Config() throws SQLException {
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            this.con = DriverManager.getConnection(url, username, password);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static synchronized Config getInstance() throws SQLException {
         System.out.println("a instancia é " + uniqueInstance);
         if (uniqueInstance == null) {
             uniqueInstance = new Config();
@@ -27,4 +48,7 @@ public class Config {
         this.repositoryType = repositoryType;
     }
 
+    public Connection getConnection() {
+        return con;
+    }
 }

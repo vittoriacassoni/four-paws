@@ -7,12 +7,11 @@ import dao.access.AdoptionRequirementSqlServerDAO;
 import dao.access.UserSqlServerDAO;
 import dao.bases.DAO;
 
+import java.sql.SQLException;
+
 
 public enum EntityDAO {
-    AUDIT(getAuditDAO()),
-    USER(getUserDAO()),
-    ADOPTIONREQUIREMENT(getAdoptionRequirementDAO());
-
+    /*
     DAO entityDAO;
 
     EntityDAO(DAO dao) {
@@ -23,21 +22,21 @@ public enum EntityDAO {
         return entityDAO;
     }
 
-    static private DAO getAuditDAO() {
+    static private DAO getAuditDAO() throws SQLException {
         if (Config.getInstance().getRepositoryType() == RepositoryType.SQLSERVER)
             return new AuditSqlServerDAO<>();
         return null;
     }
 
-    static private DAO getUserDAO() {
+    static private DAO getUserDAO() throws SQLException {
         if(Config.getInstance().getRepositoryType() == RepositoryType.SQLSERVER)
             return new UserSqlServerDAO<>();
         return null;
     }
 
-    static private DAO getAdoptionRequirementDAO() {
+    static private DAO getAdoptionRequirementDAO() throws SQLException {
         if(Config.getInstance().getRepositoryType() == RepositoryType.SQLSERVER)
             return new AdoptionRequirementSqlServerDAO<>();
         return null;
-    }
+    }*/
 }

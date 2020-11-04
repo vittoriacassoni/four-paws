@@ -39,7 +39,7 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
     }
 
     @Override
-    public void insert(Entity entity) throws SQLException {
+    public boolean insert(Entity entity) throws SQLException {
         AdoptionRequirement adoptionRequirement = (AdoptionRequirement) entity;
         System.out.println(con);
         try {
@@ -62,9 +62,11 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
             add.executeUpdate();
 
             add.close();
-            con.close();
-        } finally {
-            ManageAudit.getInstance().disable();
+            con.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -80,7 +82,10 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
             if (rs.next()) {
                 entity = fillEntity(rs);
             }
+        }catch (Exception error){
+            con.rollback();
         }
+        con.commit();
         return entity;
     }
 }

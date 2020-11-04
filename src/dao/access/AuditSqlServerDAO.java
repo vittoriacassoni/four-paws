@@ -47,7 +47,7 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
             add.executeUpdate();
 
             add.close();
-            con.close();
+            con.commit();
             return true;
         }
         finally {

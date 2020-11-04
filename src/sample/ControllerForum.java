@@ -44,8 +44,7 @@ public class ControllerForum {
     ForumTopicSqlServerDAO topicDAO = new ForumTopicSqlServerDAO();
     ForumCommentSqlServerDAO commentDAO = new ForumCommentSqlServerDAO();
 
-    public void saveNewTopic(MouseEvent mouseEvent) throws IOException {
-        Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
+    public void saveNewTopic(MouseEvent mouseEvent) {
         try {
             var topic = new ForumTopic(txtTitle.getText(), txtDiscussion.getText());
             topic.setUserId(1);
@@ -79,8 +78,7 @@ public class ControllerForum {
             }
     }
 
-    public void sendNewComment(MouseEvent mouseEvent) throws IOException {
-        Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
+    public void sendNewComment(MouseEvent mouseEvent) {
         try {
             var comment = new ForumComment(txtComment.getText());
             comment.setForumTopicId(1);

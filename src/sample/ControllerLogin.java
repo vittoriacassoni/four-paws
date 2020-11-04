@@ -37,7 +37,6 @@ public class ControllerLogin {
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
 
     public void login(ActionEvent event) throws IOException, SQLException, InterruptedException {
-        Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
         if (Access.validateLogin(txtEmail.getText(), txtPassword.getText())) {
             Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
             Stage primaryStage = new Stage();

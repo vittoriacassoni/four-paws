@@ -50,8 +50,7 @@ public class ControllerSignUp implements Initializable {
 
     }
 
-    public void signUp(MouseEvent event) throws IOException, SQLException {
-        Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
+    public void signUp(MouseEvent event) {
         try {
             var name = Validates.validateFullName(txtFullName.getText());
             Date dateOfBirth = Validates.validateDate(txtDateBirth.getText());
@@ -85,6 +84,7 @@ public class ControllerSignUp implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText(error.getMessage());
             alert.showAndWait();
+            error.printStackTrace();
         }
 
     }

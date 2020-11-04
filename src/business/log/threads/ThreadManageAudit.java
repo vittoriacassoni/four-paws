@@ -1,6 +1,7 @@
 package business.log.threads;
 
 import comuns.access.Audit;
+import dao.access.AuditSqlServerDAO;
 import dao.bases.DAO;
 import dao.enums.EntityDAO;
 
@@ -19,7 +20,7 @@ public class ThreadManageAudit extends Thread {
             try {
                 Audit audit = ManageAudit.getInstance().removeAudit();
                 if (audit != null) {
-                    DAO dao = EntityDAO.AUDIT.getEntityDAO();
+                    DAO dao = new AuditSqlServerDAO();
                     dao.insert(audit);
                 }
             } catch (SQLException ex) {

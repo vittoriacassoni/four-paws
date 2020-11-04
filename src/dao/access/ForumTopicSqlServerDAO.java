@@ -58,13 +58,11 @@ public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
             add.executeUpdate();
 
             add.close();
-            con.close();
+            con.commit();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-        } finally {
-            ManageAudit.getInstance().disable();
         }
     }
 
@@ -79,7 +77,10 @@ public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
             if (rs.next()) {
                 entity = (E) fillEntity(rs);
             }
+        }catch (Exception error){
+            con.rollback();
         }
+        con.commit();
         return entity;
     }
 
