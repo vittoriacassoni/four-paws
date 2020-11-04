@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ControllerForum {
-    @FXML Pane newTopicPane;
+@FXML Pane newTopicPane;
 
     public void loadPane(MouseEvent mouseEvent) throws IOException {
         newTopicPane.setVisible(true);
@@ -21,8 +21,5 @@ public class ControllerForum {
     public void closePane(MouseEvent mouseEvent) throws IOException {
         newTopicPane.setVisible(false);
     }
-
-
-
 }
 

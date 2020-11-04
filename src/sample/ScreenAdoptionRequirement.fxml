@@ -49,8 +49,8 @@
                   <Font name="Microsoft JhengHei Bold" size="36.0" />
                </font>
             </Label>
-            <Spinner layoutX="80.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
-            <Spinner layoutX="79.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
+            <Spinner fx:id="gradeSpinner" layoutX="80.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
+            <Spinner  fx:id="gradeSpinner1" layoutX="79.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
             <Label layoutX="80.0" layoutY="254.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Quanto de espaço você tem disponível para o animal ?" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="15.0" />
@@ -64,18 +64,12 @@
                   <Font name="Microsoft JhengHei Bold" size="36.0" />
                </font>
             </Label>
-            <Spinner layoutX="79.0" layoutY="547.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
+            <Spinner fx:id="gradeSpinner2" layoutX="79.0" layoutY="547.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
             <ImageView id="btnVoltar" fitHeight="541.0" fitWidth="660.0" layoutX="585.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/undraw_pet_adoption_2qkw.png" />
                </image>
             </ImageView>
-         <Button id="btnVoltar" layoutX="1071.0" layoutY="628.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"  prefHeight="40.0" prefWidth="119.0" stylesheets="@../stylesheet/Button.css" text="Voltar" textFill="WHITE">
-            <font>
-               <Font name="Romantic" size="20.0" />
-            </font>
-         </Button>
          </children>
       </Pane>
-
 </HBox>
