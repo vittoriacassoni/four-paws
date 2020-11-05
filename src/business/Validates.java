@@ -10,7 +10,7 @@ public class Validates {
 
     // Método para validar se o campo obrigatório possui algum valor
     // caso ele não possua retornará true, caso contrário false
-    public static boolean validateRequiredField(String field){
+    public static boolean validateRequiredField(String field) {
         return field.isBlank();
     }
 
@@ -33,15 +33,15 @@ public class Validates {
     // Método para validar se a string é um nome completo
     // caso ela não seja retornará um erro, caso contrário devolverá o nome separado por meio de um vetor
     public static String[] validateFullName(String fullName) throws Exception {
-        if(!fullName.isBlank()){
+        if (!fullName.isBlank()) {
             var name = fullName.split(" ", 2);
 
-            if(name.length < 2){
+            if (name.length < 2) {
                 throw new Exception("Nome está incompleto!");
             }
 
             return name;
-        } else{
+        } else {
             throw new Exception("Preencha todos os campos!");
         }
     }
@@ -54,10 +54,27 @@ public class Validates {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
 
-        if(matcher.matches()){
+        if (matcher.matches()) {
             return true;
-        } else{
+        } else {
             throw new Exception("Email inválido!");
         }
+    }
+
+    // Método para validar se o valor é um double
+    // caso ele não seja retornará um erro, caso contrário devolverá true
+    public static boolean validateSpinnersAdaption(String email) throws Exception {
+
+        try
+        {
+            double spinnersAdaption = Double.parseDouble("");
+
+        }
+        catch(NumberFormatException ex){
+
+
+            System.out.println("Este número não pode ser convertido para double");
+        }
+        return  true;
     }
 }

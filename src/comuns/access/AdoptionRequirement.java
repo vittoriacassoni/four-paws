@@ -18,6 +18,14 @@ public class AdoptionRequirement extends Entity {
     private Date updatedAt;
     private Date deletedAt;
 
+    public AdoptionRequirement (Boolean isAngry, Boolean isHappy, Boolean isNeedy, Boolean isCaring, Boolean isQuiet,Double maxExpense,Double requiredSpace){
+        setIsAngry(isAngry);
+        setIsHappy(isHappy);
+        setIsNeedy(isNeedy);
+        setIsCaring(isCaring);
+        setMaxExpense(maxExpense);
+        setRequiredSpace(requiredSpace);
+    }
 
     public Double getMaxExpense() {
         return maxExpense;
