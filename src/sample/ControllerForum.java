@@ -40,6 +40,8 @@ public class ControllerForum {
     TextArea txtDiscussion;
     @FXML
     TextField txtComment;
+    @FXML
+    Pane darkPane;
 
     ForumTopicSqlServerDAO topicDAO = new ForumTopicSqlServerDAO();
     ForumCommentSqlServerDAO commentDAO = new ForumCommentSqlServerDAO();
@@ -65,6 +67,7 @@ public class ControllerForum {
 
                  JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
                  newTopicPane.setVisible(false);
+                 darkPane.setVisible(false);
              }
 
              } catch (SQLException ex) {
@@ -95,6 +98,7 @@ public class ControllerForum {
 
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
                 answerTopicPane.setVisible(false);
+                darkPane.setVisible(false);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,18 +113,22 @@ public class ControllerForum {
 
     public void loadPane(MouseEvent mouseEvent) throws IOException {
         newTopicPane.setVisible(true);
+        darkPane.setVisible(true);
     }
 
     public void closePane(MouseEvent mouseEvent) throws IOException {
         newTopicPane.setVisible(false);
+        darkPane.setVisible(false);
     }
 
-    public void loadAnswerPane(MouseEvent mouseEvent) throws  IOException {
+    public void loadAnswerPane(MouseEvent mouseEvent) throws IOException {
         answerTopicPane.setVisible(true);
+        darkPane.setVisible(true);
     }
 
     public void closeAnswerPane(MouseEvent mouseEvent) throws IOException {
         answerTopicPane.setVisible(false);
+        darkPane.setVisible(false);
     }
 }
 
