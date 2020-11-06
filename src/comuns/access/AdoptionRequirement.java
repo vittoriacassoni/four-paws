@@ -14,7 +14,6 @@ public class AdoptionRequirement extends Entity {
     private Boolean isNeedy;
     private Boolean isCaring;
     private Boolean isQuiet;
-    private Integer userId;
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
@@ -90,12 +89,6 @@ public class AdoptionRequirement extends Entity {
     public void setIsQuiet(Boolean isQuiet) {
         this.isQuiet = isQuiet;
     }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) { this.userId = userId; }
 
     public Date getCreatedAt() {
         return createdAt;

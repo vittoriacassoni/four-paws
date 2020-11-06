@@ -38,9 +38,8 @@ public class ControllerAdoptionRequirement implements Initializable {
 
     @FXML
     CheckBox ckAngry, ckHappy, ckNeedy, ckCaring, ckQuiet;
-
-
-    AdoptionRequirementSqlServerDAO AdoptionRequirementDAO = new AdoptionRequirementSqlServerDAO();
+    
+    AdoptionRequirementSqlServerDAO adoptionRequirementDAO = new AdoptionRequirementSqlServerDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -68,7 +67,7 @@ public class ControllerAdoptionRequirement implements Initializable {
                     (Double) spnMaxExpense.getValueFactory().getValue(), (Double) spnRequiredSpace.getValueFactory().getValue(),
                     (Double) spnAgePreference.getValueFactory().getValue());
 
-            if (AdoptionRequirementDAO.insert(adoptionRequirement)) {
+            if (adoptionRequirementDAO.insert(adoptionRequirement)) {
                 ManageAudit.getInstance().activate();
 
                 Audit audit = new Audit();
