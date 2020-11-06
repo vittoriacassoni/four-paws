@@ -8,6 +8,7 @@ public class AdoptionRequirement extends Entity {
 
     private Double maxExpense;
     private Double requiredSpace;
+    private Double agePreference;
     private Boolean isAngry;
     private Boolean isHappy;
     private Boolean isNeedy;
@@ -18,20 +19,31 @@ public class AdoptionRequirement extends Entity {
     private Date updatedAt;
     private Date deletedAt;
 
-    public AdoptionRequirement (Boolean isAngry, Boolean isHappy, Boolean isNeedy, Boolean isCaring, Boolean isQuiet,Double maxExpense,Double requiredSpace){
+    public AdoptionRequirement (Boolean isAngry, Boolean isHappy, Boolean isNeedy, Boolean isCaring, Boolean isQuiet,
+                                Double maxExpense, Double requiredSpace, Double agePreference){
         setIsAngry(isAngry);
         setIsHappy(isHappy);
         setIsNeedy(isNeedy);
         setIsCaring(isCaring);
+        setIsQuiet(isQuiet);
         setMaxExpense(maxExpense);
         setRequiredSpace(requiredSpace);
+        setAgePreference(agePreference);
     }
+
+    public AdoptionRequirement(){}
 
     public Double getMaxExpense() {
         return maxExpense;
     }
 
     public void setMaxExpense(Double maxExpense) { this.maxExpense = maxExpense; }
+
+    public Double getAgePreference() {
+        return agePreference;
+    }
+
+    public void setAgePreference(Double agePreference) { this.agePreference = agePreference; }
 
     public Double getRequiredSpace() {
         return requiredSpace;

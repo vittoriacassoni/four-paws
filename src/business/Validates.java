@@ -63,18 +63,13 @@ public class Validates {
 
     // Método para validar se o valor é um double
     // caso ele não seja retornará um erro, caso contrário devolverá true
-    public static boolean validateSpinnersAdaption(String email) throws Exception {
+    public static Double validateDoubleNumber(String number) throws Exception {
+        try {
+            Double result = Double.parseDouble(number);
 
-        try
-        {
-            double spinnersAdaption = Double.parseDouble("");
-
+            return  result;
+        } catch(NumberFormatException ex){
+           throw new Exception("Número inválido!");
         }
-        catch(NumberFormatException ex){
-
-
-            System.out.println("Este número não pode ser convertido para double");
-        }
-        return  true;
     }
 }

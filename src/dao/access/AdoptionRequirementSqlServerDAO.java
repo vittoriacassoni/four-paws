@@ -1,9 +1,11 @@
 package dao.access;
+
 import business.log.threads.ManageAudit;
 import comuns.access.AdoptionRequirement;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +25,7 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
         try {
             entity.setMaxExpense(rs.getDouble("MaxExpense"));
             entity.setRequiredSpace(rs.getDouble("RequiredSpace"));
+            entity.setRequiredSpace(rs.getDouble("AgePreference"));
             entity.setIsAngry(rs.getBoolean("IsAngry"));
             entity.setIsHappy(rs.getBoolean("IsHappy"));
             entity.setIsNeedy(rs.getBoolean("IsNeedy"));
@@ -35,28 +38,27 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (E)entity;
+        return (E) entity;
     }
 
     @Override
     public boolean insert(Entity entity) throws SQLException {
         AdoptionRequirement adoptionRequirement = (AdoptionRequirement) entity;
-        System.out.println(con);
-        try {
-            String query = "INSERT INTO [User] (Name, LastName, Email, PasswordHash, [Image], DateOfBirth, UserRoleld, CreatedAt, UpdatedAt, DeletedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+            String query = "INSERT INTO [AdoptionRequirement] (MaxExpense, RequiredSpace, AgePreference, IsAngry, IsHappy, " +
+                    "IsNeedy, IsCaring, IsQuiet, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement add = con.prepareStatement(query);
 
             add.setDouble(1, adoptionRequirement.getMaxExpense());
             add.setDouble(2, adoptionRequirement.getRequiredSpace());
-            add.setBoolean(3, adoptionRequirement.getIsAngry());
-            add.setBoolean(4, adoptionRequirement.getIsHappy());
-            add.setBoolean(5, adoptionRequirement.getIsNeedy());
-            add.setBoolean(6, adoptionRequirement.getIsCaring());
-            add.setBoolean(7, adoptionRequirement.getIsQuiet());
-            add.setInt(8, adoptionRequirement.getUserId());
+            add.setDouble(3, adoptionRequirement.getAgePreference());
+            add.setBoolean(4, adoptionRequirement.getIsAngry());
+            add.setBoolean(5, adoptionRequirement.getIsHappy());
+            add.setBoolean(6, adoptionRequirement.getIsNeedy());
+            add.setBoolean(7, adoptionRequirement.getIsCaring());
+            add.setBoolean(8, adoptionRequirement.getIsQuiet());
             add.setString(9, Instant.now().toString());
-            add.setString(10, Instant.now().toString());
-            add.setString(11, Instant.now().toString());
 
             System.out.println(add);
             add.executeUpdate();
@@ -73,19 +75,22 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
     @Override
     public E select(String userId) throws SQLException {
         E entity = null;
-        System.out.println(con);
-        String query = "SELECT * FROM [AdoptionRequirement] WHERE UserId = ?";
-        PreparedStatement add = con.prepareStatement(query);
-        add.setString(1, userId);
+        try (Connection con = getConnection()) {
+            System.out.println(con);
 
-        try (ResultSet rs = add.executeQuery()) {
-            if (rs.next()) {
-                entity = fillEntity(rs);
+            String query = "SELECT * FROM [AdoptionRequirement] WHERE UserId = ?";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setString(1, userId);
+
+            try (ResultSet rs = add.executeQuery()) {
+                if (rs.next()) {
+                    entity = fillEntity(rs);
+                }
+            } catch (Exception error) {
+                con.rollback();
             }
-        }catch (Exception error){
-            con.rollback();
+            con.commit();
         }
-        con.commit();
         return entity;
     }
 }

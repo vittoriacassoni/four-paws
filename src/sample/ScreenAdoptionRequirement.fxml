@@ -7,65 +7,65 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAdoptionRequirement">
 
-      <Pane id="paneFoundPet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#foundPet" prefHeight="700.0" prefWidth="1169.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+      <Pane id="paneFoundPet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1169.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
          <children>
-            <ImageView fitHeight="67.0" fitWidth="52.0" layoutX="79.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="67.0" fitWidth="52.0" layoutX="71.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/Logo.png" />
                </image>
             </ImageView>
-            <Button id="tbnEcontrarPet" layoutX="80.0" layoutY="628.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#foundPet" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Button.css" text="Encontrar Pet" textFill="WHITE">
+            <Button layoutX="72.0" layoutY="628.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#foundPet" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Button.css" text="Encontrar Pet" textFill="WHITE">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
             </Button>
-            <CheckBox id="checkHappy" layoutX="184.0" layoutY="466.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Alegre" textFill="#2f2e41">
+            <CheckBox fx:id="ckHappy" layoutX="176.0" layoutY="466.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Alegre" textFill="#2f2e41">
             <font>
                <Font name="Microsoft JhengHei" size="14.0" />
             </font></CheckBox>
-            <CheckBox id="checkQuiet" layoutX="80.0" layoutY="429.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Quieto" textFill="#2f2e41">
+            <CheckBox fx:id="ckQuiet" layoutX="72.0" layoutY="429.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Quieto" textFill="#2f2e41">
             <font>
                <Font name="Microsoft JhengHei" size="14.0" />
             </font></CheckBox>
-            <CheckBox id="checkCaring" layoutX="281.0" layoutY="429.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carinhoso" textFill="#2f2e41">
+            <CheckBox fx:id="ckCaring" layoutX="273.0" layoutY="429.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carinhoso" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
             </CheckBox>
-            <CheckBox id="checkAngry" layoutX="184.0" layoutY="429.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Bravo" textFill="#2f2e41">
+            <CheckBox fx:id="ckAngry" layoutX="176.0" layoutY="429.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Bravo" textFill="#2f2e41">
             <font>
                <Font name="Microsoft JhengHei" size="14.0" />
             </font></CheckBox>
-            <CheckBox id="checkNeedy" layoutX="80.0" layoutY="466.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carente" textFill="#2f2e41">
+            <CheckBox fx:id="ckNeedy" layoutX="72.0" layoutY="466.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carente" textFill="#2f2e41">
             <font>
                <Font name="Microsoft JhengHei" size="14.0" />
             </font></CheckBox>
-            <Label layoutX="81.0" layoutY="511.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Qual idade do animal que busca?" textFill="#ff6f61">
+            <Label layoutX="73.0" layoutY="511.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Qual idade do animal que busca?" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="80.0" layoutY="362.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Sobre o pet" textFill="#979393">
+            <Label layoutX="72.0" layoutY="362.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Sobre o pet" textFill="#979393">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="36.0" />
                </font>
             </Label>
-            <Spinner id="spinnerRequiredSpace" fx:id="gradeSpinner" layoutX="80.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
-            <Spinner id="spinnerMaxExpensive" fx:id="gradeSpinner1" layoutX="79.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
-            <Label layoutX="80.0" layoutY="254.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Quanto de espaço você tem disponível para o animal ?" textFill="#ff6f61">
+            <Spinner fx:id="spnRequiredSpace" layoutX="72.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
+            <Spinner fx:id="spnMaxExpense" layoutX="71.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
+            <Label layoutX="72.0" layoutY="254.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Quanto de espaço você tem disponível para o animal ?" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="81.0" layoutY="163.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Está disposta a gastar quanto mensalmente?" textFill="#ff6f61">
+            <Label layoutX="73.0" layoutY="163.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Está disposta a gastar quanto mensalmente?" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="80.0" layoutY="106.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Sobre você" textFill="#979393">
+            <Label layoutX="72.0" layoutY="106.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Sobre você" textFill="#979393">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="36.0" />
                </font>
             </Label>
-            <Spinner id="spinnerAge" fx:id="gradeSpinner2" layoutX="79.0" layoutY="547.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
-            <ImageView id="btnVoltar" fitHeight="541.0" fitWidth="660.0" layoutX="585.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+            <Spinner fx:id="spnAgePreference" layoutX="71.0" layoutY="547.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" stylesheets="@../stylesheet/Spinner.css" />
+            <ImageView id="btnVoltar" fitHeight="541.0" fitWidth="660.0" layoutX="557.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/undraw_pet_adoption_2qkw.png" />
                </image>
