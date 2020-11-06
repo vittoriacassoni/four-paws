@@ -31,7 +31,6 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
             entity.setIsNeedy(rs.getBoolean("IsNeedy"));
             entity.setIsCaring(rs.getBoolean("IsCaring"));
             entity.setIsQuiet(rs.getBoolean("IsQuiet"));
-            entity.setUserId(rs.getInt("UserId"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
             entity.setDeletedAt(rs.getDate("DeletedAt"));
