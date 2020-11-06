@@ -8,98 +8,81 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerForum">
    <children>
-      <Pane fx:id="darkPane" opacity="0.85" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
-      <ImageView fitHeight="150.0" fitWidth="106.0" layoutX="37.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="86.0" fitWidth="69.0" layoutX="65.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/Logo.png" />
          </image></ImageView>
-      <TextField layoutX="211.0" layoutY="56.0" prefHeight="44.0" prefWidth="680.0" promptText="Pesquisar" stylesheets="@../stylesheet/TextField.css" />
-      <Button fx:id="btnCriarTopico" layoutX="960.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#loadPane" prefHeight="34.0" prefWidth="181.0" stylesheets="@../stylesheet/Button.css" text="Criar um tópico" />
-      <ImageView fitHeight="34.0" fitWidth="25.0" layoutX="834.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+      <TextField layoutX="211.0" layoutY="56.0" prefHeight="40.0" prefWidth="680.0" promptText="Pesquisar" stylesheets="@../stylesheet/TextField.css">
+         <font>
+            <Font name="Microsoft JhengHei" size="14.0" />
+         </font></TextField>
+      <Button fx:id="btnCriarTopico" layoutX="955.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#loadPane" prefHeight="40.0" prefWidth="190.0" stylesheets="@../stylesheet/Button.css" text="Criar um tópico">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="18.0" />
+         </font></Button>
+      <ImageView fitHeight="21.0" fitWidth="25.0" layoutX="853.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons/search-solid1.png" />
          </image></ImageView>
-      <Label layoutX="270.0" layoutY="243.0" prefHeight="27.0" prefWidth="397.0" text="Cachorro pode comer melão?">
-         <font>
-            <Font name="Microsoft Sans Serif" size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="295.0" layoutY="276.0" prefHeight="21.0" prefWidth="488.0" text="Meu cachorro comeu melão e está passando...">
-         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblAnswer" layoutX="757.0" layoutY="306.0" onMouseClicked="#loadAnswerPane" text="Responder" textFill="#ff6f61">
-         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="28.0" fitWidth="21.0" layoutX="846.0" layoutY="303.0" onMouseClicked="#loadAnswerPane" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons/chevron-right-solid.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="224.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons/user-solid.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="270.0" layoutY="419.0" text="Qual a melhor areia pra gatos?">
-         <font>
-            <Font name="Microsoft Sans Serif" size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="295.0" layoutY="450.0" text="Estou procurando uma areia melhor para o meu gato...">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="757.0" layoutY="474.0" onMouseClicked="#loadAnswerPane" text="Responder" textFill="#ff6f61">
-         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="28.0" fitWidth="21.0" layoutX="846.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons/chevron-right-solid.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="46.0" layoutX="224.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons/user-solid.png" />
-         </image>
-      </ImageView>
-      <Pane fx:id="newTopicPane" layoutX="150.0" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+      <Pane layoutX="196.0" layoutY="186.0" prefHeight="180.0" prefWidth="770.0" style="-fx-border-color: #e3e3e3; -fx-border-width: 1; -fx-border-radius: 8;">
          <children>
-            <Label layoutX="85.0" layoutY="175.0" prefHeight="28.0" prefWidth="69.0" text="Assunto" textFill="#ff6f61">
+            <Label layoutX="108.0" layoutY="50.0" prefHeight="27.0" prefWidth="397.0" text="Cachorro pode comer melão?" textFill="#2f2e41">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="85.0" layoutY="70.0" prefHeight="28.0" prefWidth="54.0" text="Título" textFill="#ff6f61">
+            <Label layoutX="108.0" layoutY="104.0" prefHeight="21.0" prefWidth="488.0" text="Meu cachorro comeu melão e está passando..." textFill="GREY">
                <font>
-                  <Font name="Microsoft Sans Serif" size="18.0" />
+                  <Font name="Microsoft JhengHei" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtTitle" layoutX="90.0" layoutY="109.0" prefHeight="42.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
-            <TextArea fx:id="txtDiscussion" layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
-            <Button fx:id="btnSaveComment" layoutX="706.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#saveNewTopic" prefHeight="42.0" prefWidth="156.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar">
+            <Label fx:id="lblAnswer" layoutX="610.0" layoutY="135.0" onMouseClicked="#loadAnswerPane" prefHeight="26.0" prefWidth="98.0" text="Responder" textFill="#ff6f61">
                <font>
-                  <Font name="Microsoft Sans Serif" size="12.0" />
-               </font>
-            </Button>
-            <Label layoutX="346.0" layoutY="14.0" prefHeight="42.0" prefWidth="188.0" text="Criar novo tópico" textAlignment="RIGHT" wrapText="true">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="24.0" />
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnBackTopic" layoutX="32.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#closePane" prefHeight="34.0" prefWidth="88.0" stylesheets="@../stylesheet/Button.css" text="Voltar">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="12.0" />
-               </font>
-            </Button>
+            <ImageView fitHeight="21.0" fitWidth="17.0" layoutX="723.0" layoutY="137.0" onMouseClicked="#loadAnswerPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/chevron-right-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="34.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/user-solid.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
+      <Pane layoutX="196.0" layoutY="407.0" prefHeight="180.0" prefWidth="770.0" style="-fx-border-color: #e3e3e3; -fx-border-width: 1; -fx-border-radius: 8;">
+         <children>
+            <Label layoutX="108.0" layoutY="50.0" prefHeight="27.0" prefWidth="397.0" text="Cachorro pode comer melão?" textFill="#2f2e41">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="108.0" layoutY="104.0" prefHeight="21.0" prefWidth="488.0" text="Meu cachorro comeu melão e está passando..." textFill="GREY">
+               <font>
+                  <Font name="Microsoft JhengHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAnswer1" layoutX="610.0" layoutY="135.0" onMouseClicked="#loadAnswerPane" prefHeight="26.0" prefWidth="98.0" text="Responder" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="21.0" fitWidth="17.0" layoutX="723.0" layoutY="137.0" onMouseClicked="#loadAnswerPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/chevron-right-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="34.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/user-solid.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="darkPane" opacity="0.8" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
       <Pane fx:id="answerTopicPane" layoutX="150.0" layoutY="100.0" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
          <children>
             <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="54.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
@@ -139,6 +122,37 @@
                   <Font name="Microsoft Sans Serif" size="24.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="newTopicPane" layoutX="150.0" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+         <children>
+            <Label layoutX="85.0" layoutY="175.0" prefHeight="28.0" prefWidth="69.0" text="Assunto" textFill="#ff6f61">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="85.0" layoutY="70.0" prefHeight="28.0" prefWidth="54.0" text="Título" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTitle" layoutX="90.0" layoutY="109.0" prefHeight="42.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
+            <TextArea fx:id="txtDiscussion" layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
+            <Button fx:id="btnSaveComment" layoutX="706.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#saveNewTopic" prefHeight="42.0" prefWidth="156.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="346.0" layoutY="14.0" prefHeight="42.0" prefWidth="188.0" text="Criar novo tópico" textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnBackTopic" layoutX="32.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#closePane" prefHeight="34.0" prefWidth="88.0" stylesheets="@../stylesheet/Button.css" text="Voltar">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
