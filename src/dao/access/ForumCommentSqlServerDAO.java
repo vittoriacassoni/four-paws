@@ -6,6 +6,7 @@ import comuns.access.ForumTopic;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +14,7 @@ import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ForumCommentSqlServerDAO <E extends Entity> extends SqlServerDAO {
+public class ForumCommentSqlServerDAO<E extends Entity> extends SqlServerDAO {
     public ForumCommentSqlServerDAO() {
         super(ForumComment.class);
         setTable("ForumComment");
@@ -38,8 +39,8 @@ public class ForumCommentSqlServerDAO <E extends Entity> extends SqlServerDAO {
     @Override
     public boolean insert(Entity entity) throws SQLException {
         ForumComment comment = (ForumComment) entity;
-        System.out.println(con);
-        try {
+        try (Connection con = getConnection()) {
+            System.out.println(con);
             String query = "INSERT INTO [ForumComment] (Discussion, ForumTopicId, UserId, CreatedAt, UpdatedAt, DeletedAt) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement add = con.prepareStatement(query);
 
@@ -55,9 +56,10 @@ public class ForumCommentSqlServerDAO <E extends Entity> extends SqlServerDAO {
 
             add.close();
             con.commit();
-            return  true;
-        } finally {
-            ManageAudit.getInstance().disable();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

@@ -6,16 +6,13 @@ import comuns.access.User;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
+public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
     public UserSqlServerDAO() {
         super(User.class);
         setTable("User");
@@ -38,18 +35,18 @@ public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (E)entity;
+        return (E) entity;
     }
 
     @Override
     public boolean insert(Entity entity) throws SQLException {
         User user = (User) entity;
-        System.out.println(con);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            if(Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
-               Validates.validateRequiredField(user.getEmail()) || Validates.validateRequiredField(user.getPasswordHash()) ||
-               Validates.validateRequiredField(user.getDateOfBirth().toString())){
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+            if (Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
+                    Validates.validateRequiredField(user.getEmail()) || Validates.validateRequiredField(user.getPasswordHash()) ||
+                    Validates.validateRequiredField(user.getDateOfBirth().toString())) {
                 throw new Exception("Preencha todos os campos!");
             }
 
@@ -80,19 +77,25 @@ public class UserSqlServerDAO <E extends Entity> extends SqlServerDAO {
     @Override
     public E select(String email) throws SQLException {
         E entity = null;
-        System.out.println(con);
-        String query = "SELECT * FROM [User] WHERE Email = ?";
-        PreparedStatement add = con.prepareStatement(query);
-        add.setString(1, email);
+        try (Connection con = getConnection()) {
+            System.out.println(con);
 
-        try (ResultSet rs = add.executeQuery()) {
-            if (rs.next()) {
-                entity = fillEntity(rs);
+            String query = "SELECT * FROM [User] WHERE Email = ?";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setString(1, email);
+
+            try (ResultSet rs = add.executeQuery()) {
+                if (rs.next()) {
+                    entity = fillEntity(rs);
+                }
+            } catch (Exception error) {
+                con.rollback();
             }
-        }catch (Exception error){
-            con.rollback();
+            con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        con.commit();
+
         return entity;
     }
 }

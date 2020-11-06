@@ -9,20 +9,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public abstract class SqlServerDAO <E extends Entity> extends DAO {
-    public Connection con;
+   // public  Connection con;
+    private String url = "jdbc:sqlserver://sql5092.site4now.net;" +
+            "databaseName=DB_A6939A_4paws;";
+    private String username = "DB_A6939A_4paws_admin";
+    private String password = "4paws@123";
+
     private String table;
 
     protected SqlServerDAO(Class<E> Entity) {
         super(Entity);
-        try {
-            this.con = Config.getInstance().getConnection();
-
-        } catch (SQLException ex) {
-            System.out.println("Não foi possível encontrar a classe" + ex.getMessage());
-        }
     }
 
     public Connection getConnection() {
+        Connection con = null;
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(url, username, password);
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("Não foi possível encontrar a classe" + ex.getMessage());
+        }
         return con;
     }
 

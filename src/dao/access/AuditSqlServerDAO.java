@@ -5,6 +5,7 @@ import comuns.access.Audit;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,8 +35,8 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
     @Override
     public boolean insert(Entity entity) throws SQLException {
         Audit audit = (Audit) entity;
-        System.out.println(con);
-        try {
+        try (Connection con = getConnection()) {
+            System.out.println(con);
             String query = "INSERT INTO Audit (UserId, Action, CreatedAt) VALUES (?, ?, ?)";
             PreparedStatement add = con.prepareStatement(query);
 
@@ -49,8 +50,7 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
             add.close();
             con.commit();
             return true;
-        }
-        finally {
+        } finally {
             ManageAudit.getInstance().disable();
         }
 

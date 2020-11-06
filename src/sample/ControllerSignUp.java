@@ -60,21 +60,20 @@ public class ControllerSignUp implements Initializable {
             user.setUserRoleld(1);
 
             if(userDAO.insert(user)){
+                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                Stage stage = (Stage) txtDateBirth.getScene().getWindow();
+                stage.close();
+
                 ManageAudit.getInstance().activate();
 
-                var userBanco = userDAO.select(user.getEmail());
-                var userId = userBanco.getId();
+                var userEntity = userDAO.select(user.getEmail());
+                var userId = userEntity.getId();
 
                 Audit audit = new Audit();
                 audit.setUserId(String.valueOf(userId));
                 audit.setAction("Cadastro");
                 ManageAudit.getInstance().addAudit(audit);
                 Thread.sleep(1000);
-
-                //JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
-                Stage stage = (Stage) txtDateBirth.getScene().getWindow();
-                stage.close();
-
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);

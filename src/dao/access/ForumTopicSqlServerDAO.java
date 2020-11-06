@@ -7,6 +7,7 @@ import comuns.access.User;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
+public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
     public ForumTopicSqlServerDAO() {
         super(ForumTopic.class);
         setTable("ForumTopic");
@@ -33,15 +34,15 @@ public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (E)entity;
+        return (E) entity;
     }
 
     @Override
     public boolean insert(Entity entity) throws SQLException {
         ForumTopic topic = (ForumTopic) entity;
-        System.out.println(con);
-        try {
-            if(Validates.validateRequiredField(topic.getTitle()) || Validates.validateRequiredField(topic.getDiscussion())) {
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+            if (Validates.validateRequiredField(topic.getTitle()) || Validates.validateRequiredField(topic.getDiscussion())) {
                 throw new Exception("Preencha todos os campos!");
             }
             String query = "INSERT INTO [ForumTopic] (Title, Discussion, UserId, CreatedAt, UpdatedAt, DeletedAt) VALUES (?, ?, ?, ?, ?, ?)";
@@ -68,19 +69,24 @@ public class ForumTopicSqlServerDAO <E extends Entity> extends SqlServerDAO {
 
     public E select(Integer id) throws SQLException {
         E entity = null;
-        System.out.println(con);
-        String query = "SELECT * FROM [ForumTopic] WHERE UserId = ?";
-        PreparedStatement add = con.prepareStatement(query);
-        add.setInt(1, id);
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+            String query = "SELECT * FROM [ForumTopic] WHERE UserId = ?";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setInt(1, id);
 
-        try (ResultSet rs = add.executeQuery()) {
-            if (rs.next()) {
-                entity = (E) fillEntity(rs);
+            try (ResultSet rs = add.executeQuery()) {
+                if (rs.next()) {
+                    entity = (E) fillEntity(rs);
+                }
+            } catch (Exception error) {
+                con.rollback();
             }
-        }catch (Exception error){
-            con.rollback();
+            con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        con.commit();
+
         return entity;
     }
 

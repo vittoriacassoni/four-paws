@@ -44,14 +44,16 @@ public class ControllerLogin {
             primaryStage.setScene(new Scene(root, 1200, 700));
             primaryStage.show();
 
-            System.out.printf("%s - Início da brincadeira\n", Instant.now().toString());
+            Stage stage = (Stage) txtEmail.getScene().getWindow();
+            stage.close();
+
             ManageAudit.getInstance().activate();
 
             Audit audit = new Audit();
             var userId = userDAO.select(txtEmail.getText()).getId();
             audit.setUserId(String.valueOf(userId));
             audit.setAction("Login");
-            System.out.println(audit.getAction());
+
             ManageAudit.getInstance().addAudit(audit);
             Thread.sleep(1000);
         }
@@ -80,5 +82,12 @@ public class ControllerLogin {
     public void closePanel() {
         paneRememberPass.setVisible(false);
         paneDarkBackground.setVisible(false);
+    }
+
+    public void closePanelRememberPassword(MouseEvent event){
+        if(paneRememberPass.isVisible()){
+            paneRememberPass.setVisible(false);
+            paneDarkBackground.setVisible(false);
+        }
     }
 }

@@ -49,7 +49,7 @@ public class ControllerForum {
     public void saveNewTopic(MouseEvent mouseEvent) {
         try {
             var topic = new ForumTopic(txtTitle.getText(), txtDiscussion.getText());
-            topic.setUserId(1);
+            topic.setUserId(22);
 
             /*topicDAO.insert(topic);*/
 
