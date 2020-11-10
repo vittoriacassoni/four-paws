@@ -45,25 +45,17 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
         AdoptionRequirement adoptionRequirement = (AdoptionRequirement) entity;
         try (Connection con = getConnection()) {
             System.out.println(con);
-            String query = "INSERT INTO [AdoptionRequirement] (MaxExpense, RequiredSpace, AgePreference, IsAngry, IsHappy, " +
-                    "IsNeedy, IsCaring, IsQuiet, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement add = con.prepareStatement(query);
 
-            add.setDouble(1, adoptionRequirement.getMaxExpense());
-            add.setDouble(2, adoptionRequirement.getRequiredSpace());
-            add.setDouble(3, adoptionRequirement.getAgePreference());
-            add.setBoolean(4, adoptionRequirement.getIsAngry());
-            add.setBoolean(5, adoptionRequirement.getIsHappy());
-            add.setBoolean(6, adoptionRequirement.getIsNeedy());
-            add.setBoolean(7, adoptionRequirement.getIsCaring());
-            add.setBoolean(8, adoptionRequirement.getIsQuiet());
-            add.setString(9, Instant.now().toString());
+            String SQL = "INSERT INTO " + super.getTable() + " (MaxExpense, RequiredSpace, AgePreference, IsAngry, IsHappy, " +
+                    "IsNeedy, IsCaring, IsQuiet, CreatedAt) VALUES('" + adoptionRequirement.getMaxExpense() + "','" +
+                    adoptionRequirement.getRequiredSpace() + "','" + adoptionRequirement.getAgePreference() + "','" +
+                    adoptionRequirement.getIsAngry() + "','" + adoptionRequirement.getIsHappy() + "','" +
+                    adoptionRequirement.getIsNeedy() + "','" + adoptionRequirement.getIsCaring() + "','" +
+                    adoptionRequirement.getIsQuiet() + "','" + Instant.now().toString() + "')";
 
-            System.out.println(add);
-            add.executeUpdate();
-
-            add.close();
-            con.commit();
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.execute();
+            }
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -84,6 +76,7 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
             try (ResultSet rs = add.executeQuery()) {
                 if (rs.next()) {
                     entity = fillEntity(rs);
+                    rs.close();
                 }
             } catch (Exception error) {
                 con.rollback();

@@ -47,15 +47,13 @@ public class ControllerLogin {
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
 
-            ManageAudit.getInstance().activate();
-
             Audit audit = new Audit();
             var userId = userDAO.select(txtEmail.getText()).getId();
             audit.setUserId(String.valueOf(userId));
             audit.setAction("Login");
 
             ManageAudit.getInstance().addAudit(audit);
-            Thread.sleep(1000);
+            ManageAudit.getInstance().activate();
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

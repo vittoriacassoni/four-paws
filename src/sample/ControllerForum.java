@@ -51,23 +51,16 @@ public class ControllerForum {
             var topic = new ForumTopic(txtTitle.getText(), txtDiscussion.getText());
             topic.setUserId(22);
 
-            /*topicDAO.insert(topic);*/
-
              if(topicDAO.insert(topic)) {
-                 ManageAudit.getInstance().activate();
-
-                 var userBanco = topicDAO.select(topic.getUserId());
-                 var userId = userBanco.getId();
-
-                 Audit audit = new Audit();
-                 audit.setUserId(String.valueOf(userId));
-                 audit.setAction("Novo Tópico");
-                 ManageAudit.getInstance().addAudit(audit);
-                 Thread.sleep(1000);
-
                  JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
                  newTopicPane.setVisible(false);
                  darkPane.setVisible(false);
+
+                 Audit audit = new Audit();
+                 audit.setUserId("22");
+                 audit.setAction("Novo Tópico");
+                 ManageAudit.getInstance().addAudit(audit);
+                 ManageAudit.getInstance().activate();
              }
 
              } catch (SQLException ex) {
@@ -84,21 +77,19 @@ public class ControllerForum {
     public void sendNewComment(MouseEvent mouseEvent) {
         try {
             var comment = new ForumComment(txtComment.getText());
-            comment.setForumTopicId(1);
-            comment.setUserId(1);
+            comment.setForumTopicId(22);
+            comment.setUserId(22);
 
             if (commentDAO.insert(comment)) {
-                ManageAudit.getInstance().activate();
-
-                Audit audit = new Audit();
-                audit.setUserId(null);
-                audit.setAction("Novo Comentário");
-                ManageAudit.getInstance().addAudit(audit);
-                Thread.sleep(1000);
-
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
                 answerTopicPane.setVisible(false);
                 darkPane.setVisible(false);
+
+                Audit audit = new Audit();
+                //audit.setUserId(null);
+                audit.setAction("Novo Comentário");
+                ManageAudit.getInstance().addAudit(audit);
+                ManageAudit.getInstance().activate();
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);

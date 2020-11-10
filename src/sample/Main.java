@@ -23,6 +23,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1200, 700));
         primaryStage.show();
 
+        //ManageAudit.getInstance().activate();
     }
 
     public static void main(String[] args) {

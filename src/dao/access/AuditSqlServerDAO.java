@@ -36,23 +36,17 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
     public boolean insert(Entity entity) throws SQLException {
         Audit audit = (Audit) entity;
         try (Connection con = getConnection()) {
-            System.out.println(con);
-            String query = "INSERT INTO Audit (UserId, Action, CreatedAt) VALUES (?, ?, ?)";
-            PreparedStatement add = con.prepareStatement(query);
+            String SQL = "INSERT INTO " + super.getTable() + " (UserId, Action, CreatedAt)"
+                    + " VALUES('" + audit.getUserId() + "','" + audit.getAction() + "','" + Instant.now().toString() + "')";
 
-            add.setString(1, audit.getUserId());
-            add.setString(2, audit.getAction());
-            add.setString(3, Instant.now().toString());
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.execute();
+            }
 
-            System.out.println(add);
-            add.executeUpdate();
-
-            add.close();
-            con.commit();
             return true;
-        } finally {
-            ManageAudit.getInstance().disable();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
-
     }
 }

@@ -50,23 +50,16 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 throw new Exception("Preencha todos os campos!");
             }
 
-            String query = "INSERT INTO [User] (Name, LastName, Email, PasswordHash, DateOfBirth, " +
-                    "UserRoleId, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO [" + super.getTable() + "] (Name, LastName, Email, PasswordHash, DateOfBirth, " +
+                    "UserRoleId, CreatedAt) VALUES('" + user.getName() + "','" +
+                    user.getLastName() + "','" + user.getEmail() + "','" +
+                    user.getPasswordHash() + "','" + dateFormat.format(user.getDateOfBirth()) + "','" +
+                    user.getUserRoleld() + "','" + Instant.now().toString() + "')";
 
-            PreparedStatement add = con.prepareStatement(query);
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.execute();
+            }
 
-            add.setString(1, user.getName());
-            add.setString(2, user.getLastName());
-            add.setString(3, user.getEmail());
-            add.setString(4, user.getPasswordHash());
-            add.setString(5, dateFormat.format(user.getDateOfBirth()));
-            add.setInt(6, user.getUserRoleld());
-            add.setString(7, Instant.now().toString());
-
-            System.out.println(add);
-            add.executeUpdate();
-
-            add.close();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,6 +80,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
             try (ResultSet rs = add.executeQuery()) {
                 if (rs.next()) {
                     entity = fillEntity(rs);
+                    rs.close();
                 }
             } catch (Exception error) {
                 con.rollback();

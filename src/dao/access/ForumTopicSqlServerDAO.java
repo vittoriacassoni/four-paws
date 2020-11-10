@@ -7,10 +7,7 @@ import comuns.access.User;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,26 +37,21 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
     @Override
     public boolean insert(Entity entity) throws SQLException {
         ForumTopic topic = (ForumTopic) entity;
+        System.out.println(Instant.now());
         try (Connection con = getConnection()) {
             System.out.println(con);
             if (Validates.validateRequiredField(topic.getTitle()) || Validates.validateRequiredField(topic.getDiscussion())) {
                 throw new Exception("Preencha todos os campos!");
             }
-            String query = "INSERT INTO [ForumTopic] (Title, Discussion, UserId, CreatedAt, UpdatedAt, DeletedAt) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement add = con.prepareStatement(query);
+            String SQL = "INSERT INTO " + super.getTable() + " (Title, Discussion, UserId, CreatedAt)"
+                    + " VALUES('" + topic.getTitle() + "','" + topic.getDiscussion() + "','" + topic.getUserId() +
+                    "','" + Instant.now().toString() + "')";
 
-            add.setString(1, topic.getTitle());
-            add.setString(2, topic.getDiscussion());
-            add.setInt(3, topic.getUserId());
-            add.setString(4, Instant.now().toString());
-            add.setString(5, Instant.now().toString());
-            add.setString(6, Instant.now().toString());
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.execute();
+            }
 
-            System.out.println(add);
-            add.executeUpdate();
-
-            add.close();
-            con.commit();
+            System.out.println(Instant.now());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,6 +70,7 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
             try (ResultSet rs = add.executeQuery()) {
                 if (rs.next()) {
                     entity = (E) fillEntity(rs);
+                    rs.close();
                 }
             } catch (Exception error) {
                 con.rollback();

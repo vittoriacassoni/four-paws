@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public abstract class SqlServerDAO <E extends Entity> extends DAO {
    // public  Connection con;
     private String url = "jdbc:sqlserver://sql5092.site4now.net;" +
-            "databaseName=DB_A6939A_4paws;";
+            "databaseName=DB_A6939A_4paws;sendStringParametersAsUnicode=false;";
     private String username = "DB_A6939A_4paws_admin";
     private String password = "4paws@123";
 
@@ -26,6 +26,7 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(url, username, password);
+
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println("Não foi possível encontrar a classe" + ex.getMessage());
         }
@@ -34,6 +35,9 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
 
     protected void setTable(String value) { table = value; }
 
+    protected String getTable() {
+        return table;
+    }
     @Override
     public E select(String email) throws SQLException {
         return null;

@@ -64,8 +64,6 @@ public class ControllerSignUp implements Initializable {
                 Stage stage = (Stage) txtDateBirth.getScene().getWindow();
                 stage.close();
 
-                ManageAudit.getInstance().activate();
-
                 var userEntity = userDAO.select(user.getEmail());
                 var userId = userEntity.getId();
 
@@ -73,7 +71,7 @@ public class ControllerSignUp implements Initializable {
                 audit.setUserId(String.valueOf(userId));
                 audit.setAction("Cadastro");
                 ManageAudit.getInstance().addAudit(audit);
-                Thread.sleep(1000);
+                ManageAudit.getInstance().activate();
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);

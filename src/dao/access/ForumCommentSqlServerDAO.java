@@ -41,21 +41,15 @@ public class ForumCommentSqlServerDAO<E extends Entity> extends SqlServerDAO {
         ForumComment comment = (ForumComment) entity;
         try (Connection con = getConnection()) {
             System.out.println(con);
-            String query = "INSERT INTO [ForumComment] (Discussion, ForumTopicId, UserId, CreatedAt, UpdatedAt, DeletedAt) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement add = con.prepareStatement(query);
 
-            add.setString(1, comment.getDiscussion());
-            add.setInt(2, comment.getForumTopicId());
-            add.setInt(3, comment.getUserId());
-            add.setString(4, Instant.now().toString());
-            add.setString(5, Instant.now().toString());
-            add.setString(6, Instant.now().toString());
+            String SQL = "INSERT INTO " + super.getTable() + " (Discussion, ForumTopicId, UserId, CreatedAt)"
+                    + " VALUES('" + comment.getDiscussion() + "','" + comment.getForumTopicId() + "','" +
+                    comment.getUserId() + "','" + Instant.now().toString() + "')";
 
-            System.out.println(add);
-            add.executeUpdate();
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.execute();
+            }
 
-            add.close();
-            con.commit();
             return true;
         } catch (Exception e) {
             e.printStackTrace();

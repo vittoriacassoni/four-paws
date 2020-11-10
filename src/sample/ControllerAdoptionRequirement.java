@@ -65,18 +65,9 @@ public class ControllerAdoptionRequirement implements Initializable {
             var adoptionRequirement = new AdoptionRequirement(ckAngry.isSelected(), ckHappy.isSelected(),
                     ckNeedy.isSelected(), ckCaring.isSelected(), ckQuiet.isSelected(),
                     (Double) spnMaxExpense.getValueFactory().getValue(), (Double) spnRequiredSpace.getValueFactory().getValue(),
-                    (Double) spnAgePreference.getValueFactory().getValue());
+                    (Integer) spnAgePreference.getValueFactory().getValue().intValue());
 
             if (adoptionRequirementDAO.insert(adoptionRequirement)) {
-                ManageAudit.getInstance().activate();
-
-                Audit audit = new Audit();
-                //TODO - PEGAR ID DO USUARIO DA SESSÃO
-                audit.setUserId(null);
-                audit.setAction("Encontrar Pet");
-                ManageAudit.getInstance().addAudit(audit);
-                Thread.sleep(1000);
-
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
 
                 Parent root = FXMLLoader.load(getClass().getResource("ScreenChooseAnimal.fxml"));
@@ -84,6 +75,14 @@ public class ControllerAdoptionRequirement implements Initializable {
                 primaryStage.setTitle("Escolher Animal");
                 primaryStage.setScene(new Scene(root, 1200, 700));
                 primaryStage.show();
+
+                Audit audit = new Audit();
+                //TODO - PEGAR ID DO USUARIO DA SESSÃO
+                audit.setUserId("22");
+                audit.setAction("Encontrar Pet");
+                ManageAudit.getInstance().addAudit(audit);
+                ManageAudit.getInstance().activate();
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
