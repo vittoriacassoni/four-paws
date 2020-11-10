@@ -1,0 +1,12 @@
+.text-area{
+    -fx-background-color: #f3f3f3;
+    -fx-background-radius: 8;
+    -fx-text-fill: #6B6B6B;
+    -fx-display-caret: true;
+}
+
+.text-area .content {
+    -fx-background-color:#f3f3f3;
+    -fx-background-radius: 8;
+    -fx-padding: 6;
+}
