@@ -51,6 +51,8 @@ public class ForumCommentSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.setInt(3, comment.getUserId());
                 stmt.setString(4, Instant.now().toString());
                 stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
             }
 
             return true;

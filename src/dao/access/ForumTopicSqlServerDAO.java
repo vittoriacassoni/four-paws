@@ -52,6 +52,8 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.setInt(3, topic.getUserId());
                 stmt.setString(4, Instant.now().toString());
                 stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
             }
 
             System.out.println(Instant.now());

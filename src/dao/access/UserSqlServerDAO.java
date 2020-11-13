@@ -63,6 +63,8 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.setString(7, Instant.now().toString());
 
                 stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
             }
             System.out.println(Instant.now());
 

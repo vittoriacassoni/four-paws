@@ -60,6 +60,8 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
                 stmt.setBoolean(8, adoptionRequirement.getIsQuiet());
                 stmt.setString(9, Instant.now().toString());
                 stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
             }
             return true;
         } catch (Exception e) {
