@@ -44,10 +44,13 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 throw new Exception("Preencha todos os campos!");
             }
             String SQL = "INSERT INTO " + super.getTable() + " (Title, Discussion, UserId, CreatedAt)"
-                    + " VALUES('" + topic.getTitle() + "','" + topic.getDiscussion() + "','" + topic.getUserId() +
-                    "','" + Instant.now().toString() + "')";
+                    + " VALUES (?, ?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setString(1, topic.getTitle());
+                stmt.setString(2, topic.getDiscussion());
+                stmt.setInt(3, topic.getUserId());
+                stmt.setString(4, Instant.now().toString());
                 stmt.execute();
             }
 

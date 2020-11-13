@@ -37,9 +37,12 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
         Audit audit = (Audit) entity;
         try (Connection con = getConnection()) {
             String SQL = "INSERT INTO " + super.getTable() + " (UserId, Action, CreatedAt)"
-                    + " VALUES('" + audit.getUserId() + "','" + audit.getAction() + "','" + Instant.now().toString() + "')";
+                    + " VALUES(?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setString(1, audit.getUserId());
+                stmt.setString(2, audit.getAction());
+                stmt.setString(4, Instant.now().toString());
                 stmt.execute();
             }
 
