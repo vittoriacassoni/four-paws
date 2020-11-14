@@ -41,11 +41,16 @@ public class ForumCommentSqlServerDAO<E extends Entity> extends SqlServerDAO {
             System.out.println(con);
 
             String SQL = "INSERT INTO " + super.getTable() + " (Discussion, ForumTopicId, UserId, CreatedAt)"
-                    + " VALUES('" + comment.getDiscussion() + "','" + comment.getForumTopicId() + "','" +
-                    comment.getUserId() + "','" + Instant.now().toString() + "')";
+                    + " VALUES(?, ?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setString(1, comment.getDiscussion());
+                stmt.setInt(2, comment.getForumTopicId());
+                stmt.setInt(3, comment.getUserId());
+                stmt.setString(4, Instant.now().toString());
                 stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
             }
 
             return true;

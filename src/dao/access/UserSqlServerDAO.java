@@ -41,6 +41,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
     public boolean insert(Entity entity) throws SQLException {
         User user = (User) entity;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(Instant.now());
         try (Connection con = getConnection()) {
             System.out.println(con);
             if (Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
@@ -50,14 +51,22 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
             }
 
             String SQL = "INSERT INTO [" + super.getTable() + "] (Name, LastName, Email, PasswordHash, DateOfBirth, " +
-                    "UserRoleId, CreatedAt) VALUES('" + user.getName() + "','" +
-                    user.getLastName() + "','" + user.getEmail() + "','" +
-                    user.getPasswordHash() + "','" + dateFormat.format(user.getDateOfBirth()) + "','" +
-                    user.getUserRoleld() + "','" + Instant.now().toString() + "')";
+                    "UserRoleId, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setString(1, user.getName());
+                stmt.setString(2, user.getLastName());
+                stmt.setString(3, user.getEmail());
+                stmt.setString(4, user.getPasswordHash());
+                stmt.setString(5, dateFormat.format(user.getDateOfBirth()));
+                stmt.setInt(6, user.getUserRoleld());
+                stmt.setString(7, Instant.now().toString());
+
                 stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
             }
+            System.out.println(Instant.now());
 
             return true;
         } catch (Exception e) {

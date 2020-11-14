@@ -46,14 +46,21 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
             System.out.println(con);
 
             String SQL = "INSERT INTO " + super.getTable() + " (MaxExpense, RequiredSpace, AgePreference, IsAngry, IsHappy, " +
-                    "IsNeedy, IsCaring, IsQuiet, CreatedAt) VALUES('" + adoptionRequirement.getMaxExpense() + "','" +
-                    adoptionRequirement.getRequiredSpace() + "','" + adoptionRequirement.getAgePreference() + "','" +
-                    adoptionRequirement.getIsAngry() + "','" + adoptionRequirement.getIsHappy() + "','" +
-                    adoptionRequirement.getIsNeedy() + "','" + adoptionRequirement.getIsCaring() + "','" +
-                    adoptionRequirement.getIsQuiet() + "','" + Instant.now().toString() + "')";
+                    "IsNeedy, IsCaring, IsQuiet, CreatedAt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setDouble(1, adoptionRequirement.getMaxExpense());
+                stmt.setDouble(2, adoptionRequirement.getRequiredSpace());
+                stmt.setInt(3, adoptionRequirement.getAgePreference());
+                stmt.setBoolean(4, adoptionRequirement.getIsAngry());
+                stmt.setBoolean(5, adoptionRequirement.getIsHappy());
+                stmt.setBoolean(6, adoptionRequirement.getIsNeedy());
+                stmt.setBoolean(7, adoptionRequirement.getIsCaring());
+                stmt.setBoolean(8, adoptionRequirement.getIsQuiet());
+                stmt.setString(9, Instant.now().toString());
                 stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
             }
             return true;
         } catch (Exception e) {
