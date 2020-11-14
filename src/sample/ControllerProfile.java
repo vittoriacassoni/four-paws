@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -25,6 +26,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ControllerProfile implements Initializable {
+    @FXML
+    Pane paneEdit;
+
+    @FXML
+    Pane paneDarkBackground;
+
     @FXML
     ListView listDonations;
 
@@ -74,5 +81,15 @@ public class ControllerProfile implements Initializable {
         } catch (SQLException | NullPointerException e) {
 
         }
+    }
+
+    public void edit() {
+        paneEdit.setVisible(true);
+        paneDarkBackground.setVisible(true);
+    }
+
+    public void closePanel() {
+        paneEdit.setVisible(false);
+        paneDarkBackground.setVisible(false);
     }
 }
