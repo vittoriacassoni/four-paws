@@ -106,7 +106,18 @@
                <font>
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
+            <ImageView fx:id="btnClosePanel" fitHeight="29.0" fitWidth="33.0" layoutX="553.0" layoutY="14.0" onMouseClicked="#closePanel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/x-1727490_960_720.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </Pane>
     </children>

@@ -79,11 +79,17 @@
                <font>
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <Label fx:id="btnAdoption" layoutX="454.0" layoutY="352.0" text="Ver mais" textFill="#2f2e41" underline="true">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <ListView fx:id="listDonations" layoutX="62.0" layoutY="115.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
             <ListView fx:id="listAdoptions" layoutX="62.0" layoutY="401.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
@@ -129,6 +135,14 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+            <ImageView fx:id="btnClosePane" fitHeight="30.0" fitWidth="26.0" layoutX="815.0" layoutY="14.0" onMouseClicked="#closePanel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/x-1727490_960_720.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children></Pane>
    </children>
 </Pane>
