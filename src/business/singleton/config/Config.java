@@ -2,8 +2,6 @@ package business.singleton.config;
 
 import comuns.enums.RepositoryType;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Config {

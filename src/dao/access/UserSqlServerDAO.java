@@ -91,4 +91,30 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
 
         return entity;
     }
+
+    @Override
+    public E selectID(int id) throws SQLException {
+        E entity = null;
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+
+            String query = "SELECT * FROM [User] WHERE Id = ?";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setInt(1, id);
+
+            try (ResultSet rs = add.executeQuery()) {
+                if (rs.next()) {
+                    entity = fillEntity(rs);
+                    rs.close();
+                }
+            } catch (Exception error) {
+                con.rollback();
+            }
+            con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return entity;
+    }
 }

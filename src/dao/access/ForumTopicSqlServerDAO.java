@@ -1,9 +1,7 @@
 package dao.access;
 
 import business.Validates;
-import business.log.threads.ManageAudit;
 import comuns.access.ForumTopic;
-import comuns.access.User;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 

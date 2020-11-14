@@ -1,5 +1,10 @@
 package business;
 
+import comuns.access.User;
+import dao.access.UserSqlServerDAO;
+import dao.bases.DAO;
+
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -71,5 +76,12 @@ public class Validates {
         } catch(NumberFormatException ex){
            throw new Exception("Número inválido!");
         }
+    }
+
+    //Método para validar qual o id do usuário
+    public static User validateId(int id) throws SQLException {
+        DAO dao = new UserSqlServerDAO();
+        User validated = (User) dao.selectID(id);
+        return validated;
     }
 }

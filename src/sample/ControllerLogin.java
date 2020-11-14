@@ -2,9 +2,7 @@ package sample;
 
 import business.Access;
 import business.log.threads.ManageAudit;
-import business.singleton.config.Config;
 import comuns.access.Audit;
-import comuns.enums.RepositoryType;
 import dao.access.UserSqlServerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +17,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.Instant;
 
 public class ControllerLogin {
     @FXML

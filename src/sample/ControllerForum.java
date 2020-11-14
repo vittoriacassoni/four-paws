@@ -1,26 +1,17 @@
 package sample;
 
-import business.Validates;
 import business.log.threads.ManageAudit;
-import business.log.threads.ThreadManageAudit;
-import business.singleton.config.Config;
 import comuns.access.Audit;
 import comuns.access.ForumComment;
 import comuns.access.ForumTopic;
-import comuns.enums.RepositoryType;
 import dao.access.ForumCommentSqlServerDAO;
 import dao.access.ForumTopicSqlServerDAO;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;

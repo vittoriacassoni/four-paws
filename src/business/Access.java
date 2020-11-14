@@ -3,7 +3,6 @@ package business;
 import comuns.access.User;
 import dao.access.UserSqlServerDAO;
 import dao.bases.DAO;
-import dao.enums.EntityDAO;
 
 import java.sql.SQLException;
 

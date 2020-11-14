@@ -1,6 +1,5 @@
 package dao.access;
 
-import business.log.threads.ManageAudit;
 import comuns.access.Audit;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
@@ -49,4 +48,5 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
             return false;
         }
     }
+
 }

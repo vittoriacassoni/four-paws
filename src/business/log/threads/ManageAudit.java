@@ -4,8 +4,6 @@ import comuns.access.Audit;
 import dao.access.AuditSqlServerDAO;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ManageAudit {
     ConcurrentLinkedQueue<Audit> queueAudit;

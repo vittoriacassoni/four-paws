@@ -52,7 +52,7 @@
                   <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="btnEdit" layoutX="93.0" layoutY="571.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="98.0" stylesheets="@../stylesheet/Button.css" text="Editar">
+            <Button fx:id="btnEdit" layoutX="93.0" layoutY="565.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="98.0" stylesheets="@../stylesheet/Button.css" text="Editar">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="16.0" />
                </font>

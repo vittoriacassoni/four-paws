@@ -1,9 +1,7 @@
 package business.log.threads;
 
 import comuns.access.Audit;
-import dao.access.AuditSqlServerDAO;
 import dao.bases.DAO;
-import dao.enums.EntityDAO;
 
 import java.sql.SQLException;
 import java.util.logging.Level;

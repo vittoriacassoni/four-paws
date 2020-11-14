@@ -1,8 +1,6 @@
 package dao.access;
 
-import business.log.threads.ManageAudit;
 import comuns.access.ForumComment;
-import comuns.access.ForumTopic;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
