@@ -2,6 +2,7 @@ package sample;
 
 import business.Validates;
 import business.log.threads.ManageAudit;
+import business.services.UserService;
 import comuns.access.Audit;
 import comuns.access.User;
 import comuns.bases.Entity;
@@ -55,6 +56,7 @@ public class ControllerProfile implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int id = 22;
+        UserService userService = new UserService();
 
         listDonations.setPrefHeight(195);
         items.add("TESTE");
@@ -67,7 +69,7 @@ public class ControllerProfile implements Initializable {
         listAdoptions.setFixedCellSize(40);
 
         try {
-            User user = Validates.validateId(id);
+            User user = userService.validateId(id);
             txtName.setText(user.getName());
             txtEmail.setText(user.getEmail());
             if(user.getDateOfBirth() != null) {
@@ -91,5 +93,9 @@ public class ControllerProfile implements Initializable {
     public void closePanel() {
         paneEdit.setVisible(false);
         paneDarkBackground.setVisible(false);
+    }
+
+    public void confirmEdit() {
+
     }
 }

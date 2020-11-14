@@ -1,7 +1,7 @@
 package sample;
 
-import business.Access;
 import business.log.threads.ManageAudit;
+import business.services.UserService;
 import comuns.access.Audit;
 import dao.access.UserSqlServerDAO;
 import javafx.event.ActionEvent;
@@ -34,7 +34,9 @@ public class ControllerLogin {
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
 
     public void login(ActionEvent event) throws IOException, SQLException, InterruptedException {
-        if (Access.validateLogin(txtEmail.getText(), txtPassword.getText())) {
+        UserService userService = new UserService();
+
+        if (userService.validateLogin(txtEmail.getText(), txtPassword.getText())) {
             Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Seja Bem-Vinde");

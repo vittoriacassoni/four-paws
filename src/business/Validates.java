@@ -78,10 +78,4 @@ public class Validates {
         }
     }
 
-    //Método para validar qual o id do usuário
-    public static User validateId(int id) throws SQLException {
-        DAO dao = new UserSqlServerDAO();
-        User validated = (User) dao.selectID(id);
-        return validated;
-    }
 }
