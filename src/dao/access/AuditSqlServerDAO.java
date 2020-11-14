@@ -41,7 +41,7 @@ public class AuditSqlServerDAO<E extends Entity> extends SqlServerDAO {
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
                 stmt.setString(1, audit.getUserId());
                 stmt.setString(2, audit.getAction());
-                stmt.setString(4, Instant.now().toString());
+                stmt.setString(3, Instant.now().toString());
                 stmt.execute();
             } catch(Exception error){
                 error.printStackTrace();
