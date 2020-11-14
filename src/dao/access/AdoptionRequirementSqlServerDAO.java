@@ -1,6 +1,5 @@
 package dao.access;
 
-import business.log.threads.ManageAudit;
 import comuns.access.AdoptionRequirement;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;

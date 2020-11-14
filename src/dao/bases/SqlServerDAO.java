@@ -2,10 +2,7 @@ package dao.bases;
 import business.singleton.config.Config;
 import comuns.bases.Entity;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public abstract class SqlServerDAO <E extends Entity> extends DAO {
@@ -54,5 +51,31 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
     }
 
     protected abstract E fillEntity(ResultSet rs);
+
+
+    public E selectID(int id) throws SQLException{
+        E entity = null;
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+
+            String query = "SELECT * FROM [" + table + "] WHERE Id = ?";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setInt(1, id);
+
+            try (ResultSet rs = add.executeQuery()) {
+                if (rs.next()) {
+                    entity = fillEntity(rs);
+                    rs.close();
+                }
+            } catch (Exception error) {
+                con.rollback();
+            }
+            con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return entity;
+    }
 
 }

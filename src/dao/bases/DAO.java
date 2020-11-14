@@ -13,6 +13,7 @@ public abstract class DAO <E extends Entity> {
    public DAO(Class<E> entityClass) {this.entityClass = entityClass; }
 
    public abstract E select(String email) throws SQLException;
+    public abstract E selectID(int id) throws SQLException;
    public abstract ArrayList<E> list() throws SQLException;
    public abstract boolean insert(E entity) throws SQLException;
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -52,10 +53,13 @@
                   <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="btnEdit" layoutX="93.0" layoutY="571.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="98.0" stylesheets="@../stylesheet/Button.css" text="Editar">
+            <Button fx:id="btnEdit" layoutX="93.0" layoutY="565.0" mnemonicParsing="false" onAction="#edit" prefHeight="0.0" prefWidth="98.0" stylesheets="@../stylesheet/Button.css" text="Editar">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="16.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </Pane>
@@ -85,5 +89,46 @@
             <ListView fx:id="listAdoptions" layoutX="62.0" layoutY="401.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
          </children>
       </Pane>
+      <Pane fx:id="paneDarkBackground" onMouseClicked="#closePanel" opacity="0.85" prefHeight="700.0" prefWidth="1201.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
+      <Pane fx:id="paneEdit" layoutX="175.0" layoutY="120.0" prefHeight="460.0" prefWidth="855.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+         <children>
+            <TextField layoutX="84.0" layoutY="283.0" prefHeight="25.0" prefWidth="350.0" stylesheets="@../stylesheet/TextField.css" />
+            <TextField layoutX="84.0" layoutY="153.0" prefHeight="25.0" prefWidth="350.0" stylesheets="@../stylesheet/TextField.css" />
+            <Label layoutX="84.0" layoutY="116.0" text="Nome Completo" textFill="GREY">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="84.0" layoutY="242.0" text="Email" textFill="GREY">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="513.0" layoutY="116.0" text="Data de Nascimento" textFill="GREY">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="513.0" layoutY="242.0" text="Senha" textFill="GREY">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font></Label>
+            <TextField layoutX="513.0" layoutY="153.0" prefHeight="25.0" prefWidth="242.0" stylesheets="@../stylesheet/TextField.css" />
+            <TextField layoutX="513.0" layoutY="283.0" prefHeight="25.0" prefWidth="242.0" stylesheets="@../stylesheet/TextField.css" />
+            <Label layoutX="259.0" layoutY="42.0" text="Atualizar dados cadastrados" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="548.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/heart-solid.png" />
+               </image>
+            </ImageView>
+            <Button id="btnEdit" layoutX="374.0" layoutY="370.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" stylesheets="@../stylesheet/Button.css" text="Editar">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children></Pane>
    </children>
 </Pane>

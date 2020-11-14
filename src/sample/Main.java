@@ -1,8 +1,6 @@
 package sample;
 
 import business.singleton.config.Config;
-import comuns.access.Audit;
-import business.log.threads.ManageAudit;
 import comuns.enums.RepositoryType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.time.Instant;
 
 public class Main extends Application {
 
