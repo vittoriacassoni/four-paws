@@ -1,9 +1,8 @@
 package sample;
 
-import business.Access;
 import business.log.threads.ManageAudit;
 import business.singleton.LocalStorage;
-import business.singleton.config.Config;
+import business.services.UserService;
 import comuns.access.Audit;
 import comuns.access.User;
 import dao.access.UserSqlServerDAO;
@@ -37,7 +36,9 @@ public class ControllerLogin {
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
 
     public void login(ActionEvent event) throws IOException, SQLException, InterruptedException {
-        if (Access.validateLogin(txtEmail.getText(), txtPassword.getText())) {
+        UserService userService = new UserService();
+
+        if (userService.validateLogin(txtEmail.getText(), txtPassword.getText())) {
             Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Seja Bem-Vinde");
@@ -47,6 +48,7 @@ public class ControllerLogin {
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
 
+            //TODO Retirar a DAO, mudar para business!
             Audit audit = new Audit();
             var user = (User) userDAO.select(txtEmail.getText());
             audit.setUserId(String.valueOf(user.getId()));

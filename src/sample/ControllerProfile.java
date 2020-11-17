@@ -2,6 +2,7 @@ package sample;
 
 import business.Validates;
 import business.log.threads.ManageAudit;
+import business.services.UserService;
 import comuns.access.Audit;
 import comuns.access.User;
 import comuns.bases.Entity;
@@ -45,17 +46,30 @@ public class ControllerProfile implements Initializable {
     Label txtEmail;
 
     @FXML
-    Label txtDateBirth;
+    Label txtBirthday;
+
+    @FXML
+    Label txtPassword;
+
+    @FXML
+    TextField txtNameEdit;
+
+    @FXML
+    TextField txtEmailEdit;
+
+    @FXML
+    TextField txtPasswordEdit;
 
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
+    UserService userService = new UserService();
+    int id = 22;
+
 
     private ObservableList<String> items = FXCollections.observableArrayList();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int id = 22;
-
         listDonations.setPrefHeight(195);
         items.add("TESTE");
         items.add("TESTE 2");
@@ -67,16 +81,17 @@ public class ControllerProfile implements Initializable {
         listAdoptions.setFixedCellSize(40);
 
         try {
-            User user = Validates.validateId(id);
-            txtName.setText(user.getName());
-            txtEmail.setText(user.getEmail());
-            if(user.getDateOfBirth() != null) {
-                txtDateBirth.setText(user.getDateOfBirth().toString());
-            }
-            else {
-                txtDateBirth.setText("01/01/1900");
-            }
+            User user = userService.validateId(id);
 
+            txtName.setText(user.getName());
+            txtNameEdit.setText(user.getName());
+
+            txtEmail.setText(user.getEmail());
+            txtEmailEdit.setText(user.getEmail());
+
+            txtPasswordEdit.setText(user.getPasswordHash());
+
+            txtBirthday.setText(user.getDateOfBirth().toString());
 
         } catch (SQLException | NullPointerException e) {
 
@@ -91,5 +106,34 @@ public class ControllerProfile implements Initializable {
     public void closePanel() {
         paneEdit.setVisible(false);
         paneDarkBackground.setVisible(false);
+    }
+
+    public void confirmEdit() {
+        try {
+            User user = userService.validateId(id);
+
+            var name = UserService.validateFullName(txtNameEdit.getText());
+            UserService.validateEmail(txtEmailEdit.getText());
+
+            user.setName(name[0]);
+            user.setLastName(name[1]);
+            user.setEmail(txtEmailEdit.getText());
+            user.setPasswordHash(txtPasswordEdit.getText());
+
+
+            if(userDAO.update(user)){
+                closePanel();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception error){
+            //TODO PADRONIZAR MENSAGEM DE ERRO!
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro!");
+            alert.setHeaderText(null);
+            alert.setContentText(error.getMessage());
+            alert.showAndWait();
+            error.printStackTrace();
+        }
     }
 }
