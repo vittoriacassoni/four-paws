@@ -2,7 +2,10 @@ package sample;
 
 import business.Access;
 import business.log.threads.ManageAudit;
+import business.singleton.LocalStorage;
+import business.singleton.config.Config;
 import comuns.access.Audit;
+import comuns.access.User;
 import dao.access.UserSqlServerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,9 +48,13 @@ public class ControllerLogin {
             stage.close();
 
             Audit audit = new Audit();
-            var userId = userDAO.select(txtEmail.getText()).getId();
-            audit.setUserId(String.valueOf(userId));
+            var user = (User) userDAO.select(txtEmail.getText());
+            audit.setUserId(String.valueOf(user.getId()));
             audit.setAction("Login");
+
+            LocalStorage.getInstance().saveUserId(String.valueOf(user.getId()));
+            LocalStorage.getInstance().saveUserEmail(user.getEmail());
+            LocalStorage.getInstance().saveUserName(user.getName());
 
             ManageAudit.getInstance().addAudit(audit);
             ManageAudit.getInstance().activate();
