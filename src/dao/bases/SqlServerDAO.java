@@ -78,4 +78,7 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
         return entity;
     }
 
+    public boolean update(Entity entity) throws SQLException {
+         return true;
+    }
 }

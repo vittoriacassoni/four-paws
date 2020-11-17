@@ -46,6 +46,7 @@ public class ControllerLogin {
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
 
+            //TODO Retirar a DAO, mudar para business!
             Audit audit = new Audit();
             var userId = userDAO.select(txtEmail.getText()).getId();
             audit.setUserId(String.valueOf(userId));

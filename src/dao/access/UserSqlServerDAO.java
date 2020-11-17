@@ -76,6 +76,41 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
     }
 
     @Override
+    public boolean update(Entity entity) throws SQLException {
+        User user = (User) entity;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(Instant.now());
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+            if (Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
+                    Validates.validateRequiredField(user.getEmail()) || Validates.validateRequiredField(user.getPasswordHash())) {
+                throw new Exception("Preencha todos os campos!");
+            }
+
+            String SQL = "UPDATE [" + super.getTable() + "] set Name = ? , LastName = ?, Email = ?, PasswordHash = ?, " +
+                    "UpdatedAt = ? WHERE Id = ?";
+
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setString(1, user.getName());
+                stmt.setString(2, user.getLastName());
+                stmt.setString(3, user.getEmail());
+                stmt.setString(4, user.getPasswordHash());
+                stmt.setString(5, Instant.now().toString());
+                stmt.setInt(6, user.getId());
+                stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
+            }
+            System.out.println(Instant.now());
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
     public E select(String email) throws SQLException {
         E entity = null;
         try (Connection con = getConnection()) {
