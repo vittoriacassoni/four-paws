@@ -9,35 +9,30 @@ public class Animal extends Entity {
     private String name;
     private String breed;
     private String color;
-    private float size;
-    private float weight;
+    private Double size;
+    private Double weight;
     private String image;
     private Date dateOfBirth;
     private String history;
+    private Integer adoptionRequirementId;
+    private Integer age;
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
-    private int adoptionRequirementId;
 
-    public Animal(String name, String breed, String color, float size, float weight, String image, Date dateOfBirth,
-                  String history, Date createdAt, Date updatedAt, Date deletedAt, int adoptionRequirementId) {
+    public Animal(String name, String breed, String color, Double size, Double weight, Integer age) {
         setName(name);
         setBreed(breed);
         setColor(color);
         setSize(size);
         setWeight(weight);
-        setImage(image);
-        setDateOfBirth(dateOfBirth);
-        setHistory(history);
-        setCreatedAt(createdAt);
-        setUpdatedAt(updatedAt);
-        setDeletedAt(deletedAt);
-        setAdoptionRequirementId(adoptionRequirementId);
+        setAge(age);
     }
 
-    public Animal() {
+    public Animal (){
 
     }
+
 
     public String getName() {
         return name;
@@ -63,19 +58,19 @@ public class Animal extends Entity {
         this.color = color;
     }
 
-    public float getSize() {
+    public Double getSize() {
         return size;
     }
 
-    public void setSize(float size) {
+    public void setSize(Double size) {
         this.size = size;
     }
 
-    public float getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
@@ -102,6 +97,28 @@ public class Animal extends Entity {
     public void setHistory(String history) {
         this.history = history;
     }
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Integer getAdoptionRequirementId() {
+        return adoptionRequirementId;
+    }
+
+    public void setAdoptionRequirementId(Integer adoptionRequirementId) {
+        this.adoptionRequirementId = adoptionRequirementId;
+    }
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public void setDeletedAt(Date deletedAt) {
+        this.deletedAt = deletedAt;
+    }
 
     public Date getCreatedAt() {
         return createdAt;
@@ -111,27 +128,4 @@ public class Animal extends Entity {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Date deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public int getAdoptionRequirementId() {
-        return adoptionRequirementId;
-    }
-
-    public void setAdoptionRequirementId(int adoptionRequirementId) {
-        this.adoptionRequirementId = adoptionRequirementId;
-    }
 }

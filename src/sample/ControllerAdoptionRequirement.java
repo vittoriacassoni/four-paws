@@ -82,14 +82,14 @@ public class ControllerAdoptionRequirement implements Initializable {
                 ManageAudit.getInstance().activate();
 
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception error) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Erro!");
-            alert.setHeaderText(null);
-            alert.setContentText(error.getMessage());
-            alert.showAndWait();
-        }
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception error) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Erro!");
+                    alert.setHeaderText(null);
+                    alert.setContentText(error.getMessage());
+                    alert.showAndWait();
+                }
     }
 }

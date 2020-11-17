@@ -93,6 +93,11 @@
             </Label>
             <ListView fx:id="listDonations" layoutX="62.0" layoutY="115.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
             <ListView fx:id="listAdoptions" layoutX="62.0" layoutY="401.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
+            <ImageView fx:id="iconAdcDoacao" fitHeight="34.0" fitWidth="52.0" layoutX="163.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/plus-solid.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="paneDarkBackground" onMouseClicked="#closePanel" opacity="0.85" prefHeight="700.0" prefWidth="1201.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
