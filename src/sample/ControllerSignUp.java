@@ -2,6 +2,7 @@ package sample;
 
 import business.Validates;
 import business.log.threads.ManageAudit;
+import business.services.UserService;
 import comuns.access.Audit;
 import comuns.access.User;
 import dao.access.UserSqlServerDAO;
@@ -35,6 +36,8 @@ public class ControllerSignUp implements Initializable {
 
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
 
+    UserService userService = new UserService();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -42,9 +45,9 @@ public class ControllerSignUp implements Initializable {
 
     public void signUp(MouseEvent event) {
         try {
-            var name = Validates.validateFullName(txtFullName.getText());
-            Date dateOfBirth = Validates.validateDate(txtDateBirth.getText());
-            Validates.validateEmail(txtEmail.getText());
+            var name = UserService.validateFullName(txtFullName.getText());
+            Date dateOfBirth = UserService.validateDate(txtDateBirth.getText());
+            UserService.validateEmail(txtEmail.getText());
 
             var user = new User(name[0], name[1], txtEmail.getText(), txtPassword.getText(), dateOfBirth);
             user.setUserRoleld(1);
