@@ -1,11 +1,10 @@
 package sample;
 
-import business.Validates;
-import business.log.threads.ManageAudit;
+import business.services.AnimalService;
 import business.services.UserService;
-import comuns.access.Audit;
+import business.singleton.LocalStorage;
+import comuns.access.Animal;
 import comuns.access.User;
-import comuns.bases.Entity;
 import dao.access.UserSqlServerDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,12 +15,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
-import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,15 +58,41 @@ public class ControllerProfile implements Initializable {
     TextField txtPasswordEdit;
 
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
-    UserService userService = new UserService();
-    int id = 22;
 
+    UserService userService = new UserService();
+    AnimalService animalService = new AnimalService();
+
+    Integer id = LocalStorage.getInstance().getUserId();
+    String name = LocalStorage.getInstance().getUserName();
+    String email = LocalStorage.getInstance().getUserEmail();
+
+    public ControllerProfile() throws IOException, SQLException {
+
+    }
 
     private ObservableList<String> items = FXCollections.observableArrayList();
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        try {
+            User user = userService.validateId(id);
+            Animal animal = animalService.validateId(id.toString());
+
+            txtName.setText(name);
+            txtNameEdit.setText(name);
+
+            txtEmail.setText(email);
+            txtEmailEdit.setText(email);
+
+            txtPasswordEdit.setText(user.getPasswordHash());
+
+            txtBirthday.setText(user.getDateOfBirth().toString());
+
+        } catch (SQLException | NullPointerException e) {
+
+        }
+
         listDonations.setPrefHeight(195);
         items.add("TESTE");
         items.add("TESTE 2");
@@ -79,23 +102,6 @@ public class ControllerProfile implements Initializable {
         listAdoptions.setPrefHeight(195);
         listAdoptions.setItems(items);
         listAdoptions.setFixedCellSize(40);
-
-        try {
-            User user = userService.validateId(id);
-
-            txtName.setText(user.getName());
-            txtNameEdit.setText(user.getName());
-
-            txtEmail.setText(user.getEmail());
-            txtEmailEdit.setText(user.getEmail());
-
-            txtPasswordEdit.setText(user.getPasswordHash());
-
-            txtBirthday.setText(user.getDateOfBirth().toString());
-
-        } catch (SQLException | NullPointerException e) {
-
-        }
     }
 
     public void edit() {

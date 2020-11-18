@@ -116,7 +116,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
         try (Connection con = getConnection()) {
             System.out.println(con);
 
-            String query = "SELECT * FROM [User] WHERE Email = ?";
+            String query = "SELECT * FROM [" + super.getTable() + "] WHERE Email = ?";
             PreparedStatement add = con.prepareStatement(query);
             add.setString(1, email);
 
@@ -142,7 +142,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
         try (Connection con = getConnection()) {
             System.out.println(con);
 
-            String query = "SELECT * FROM [User] WHERE Id = ?";
+            String query = "SELECT * FROM [" + super.getTable() + "] WHERE Id = ?";
             PreparedStatement add = con.prepareStatement(query);
             add.setInt(1, id);
 

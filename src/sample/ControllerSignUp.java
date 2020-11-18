@@ -46,7 +46,7 @@ public class ControllerSignUp implements Initializable {
     public void signUp(MouseEvent event) {
         try {
             var name = UserService.validateFullName(txtFullName.getText());
-            Date dateOfBirth = UserService.validateDate(txtDateBirth.getText());
+            Date dateOfBirth = Validates.validateDate(txtDateBirth.getText());
             UserService.validateEmail(txtEmail.getText());
 
             var user = new User(name[0], name[1], txtEmail.getText(), txtPassword.getText(), dateOfBirth);

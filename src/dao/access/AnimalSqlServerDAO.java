@@ -46,7 +46,7 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
             System.out.println(con);
 
             String SQL = "INSERT INTO" + super.getTable() + "(Name, Breed, Color, Size, Weight, " +
-            "Image, DateOfBirth, CreadtedAt, UpdatedAt,DeletedAt) VALUES ('" +  animal.getName() + "','" +
+                    "Image, DateOfBirth, CreadtedAt, UpdatedAt,DeletedAt) VALUES ('" + animal.getName() + "','" +
                     animal.getBreed() + "','" + animal.getColor() + "', '" + animal.getSize() + "' '" +
                     animal.getWeight() + "', '" + animal.getImage() + "' , '" + animal.getDateOfBirth();
 
@@ -66,7 +66,7 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
         try (Connection con = getConnection()) {
             System.out.println(con);
 
-            String query = "SELECT * FROM [RegisterAnimal] WHERE UserId = ?";
+            String query = "SELECT * FROM [" + super.getTable() + "] WHERE UserId = ?";
             PreparedStatement add = con.prepareStatement(query);
             add.setString(1, userId);
 
