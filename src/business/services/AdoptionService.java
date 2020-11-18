@@ -1,17 +1,18 @@
 package business.services;
 
-import comuns.access.Animal;
-import dao.access.AnimalSqlServerDAO;
+import comuns.access.Adoption;
+import dao.access.AdoptionSqlServerDAO;
 import dao.bases.DAO;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class AdoptionService {
     //TODO - CHAMADA DOS METODOS DA DAO E VALIDAÇÕES
-    DAO dao = new AdoptionSq();
+    DAO dao = new AdoptionSqlServerDAO();
 
-    public Animal validateId(String userId) throws SQLException {
-        Animal validated = (Animal) dao.select(userId);
-        return validated;
+    public List<Adoption> validateId(Integer userId) throws SQLException {
+        return dao.selectList(userId);
     }
+
 }

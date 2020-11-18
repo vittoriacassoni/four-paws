@@ -1,9 +1,13 @@
 package sample;
 
+import business.services.AdoptionService;
 import business.services.AnimalService;
+import business.services.DonationService;
 import business.services.UserService;
 import business.singleton.LocalStorage;
+import comuns.access.Adoption;
 import comuns.access.Animal;
+import comuns.access.Donation;
 import comuns.access.User;
 import dao.access.UserSqlServerDAO;
 import javafx.collections.FXCollections;
@@ -19,6 +23,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +66,8 @@ public class ControllerProfile implements Initializable {
 
     UserService userService = new UserService();
     AnimalService animalService = new AnimalService();
+    DonationService donationService = new DonationService();
+    AdoptionService adoptionService = new AdoptionService();
 
     Integer id = LocalStorage.getInstance().getUserId();
     String name = LocalStorage.getInstance().getUserName();
@@ -70,38 +77,39 @@ public class ControllerProfile implements Initializable {
 
     }
 
-    private ObservableList<String> items = FXCollections.observableArrayList();
+    private ObservableList<Donation> donations = FXCollections.observableArrayList();
+    private ObservableList<Animal> animals = FXCollections.observableArrayList();
+    private ObservableList<Adoption> adoptions = FXCollections.observableArrayList();
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
 
         try {
             User user = userService.validateId(id);
-            Animal animal = animalService.validateId(id.toString());
+            List<Animal> animal = animalService.validateId(id);
+            List<Donation> donation = donationService.validateId(id);
+            List<Adoption> adoptions = adoptionService.validateId(id);
 
             txtName.setText(name);
             txtNameEdit.setText(name);
-
             txtEmail.setText(email);
             txtEmailEdit.setText(email);
-
             txtPasswordEdit.setText(user.getPasswordHash());
-
             txtBirthday.setText(user.getDateOfBirth().toString());
+
+            for (Donation List: donation) {
+                donations.add(List);
+            }
+
+            listDonations.setPrefHeight(195);
+            listDonations.setItems(donations);
+            listDonations.setFixedCellSize(40);
+
+
 
         } catch (SQLException | NullPointerException e) {
 
         }
-
-        listDonations.setPrefHeight(195);
-        items.add("TESTE");
-        items.add("TESTE 2");
-        listDonations.setItems(items);
-        listDonations.setFixedCellSize(40);
-
-        listAdoptions.setPrefHeight(195);
-        listAdoptions.setItems(items);
-        listAdoptions.setFixedCellSize(40);
     }
 
     public void edit() {

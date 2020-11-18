@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -63,22 +65,28 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
     @Override
     public E select(String userId) throws SQLException {
         E entity = null;
+        return entity;
+    }
+
+    @Override
+    public List<E> selectList(Integer userId) throws SQLException {
+        List<E> entities = new ArrayList<>();
+
         try (Connection con = getConnection()) {
             System.out.println(con);
 
-            String query = "SELECT * FROM [" + super.getTable() + "] WHERE UserId = ?";
+            String query = "SELECT * FROM [" + super.getTable() + "]";
             PreparedStatement add = con.prepareStatement(query);
-            add.setString(1, userId);
 
             try (ResultSet rs = add.executeQuery()) {
-                if (rs.next()) {
-                    entity = fillEntity(rs);
+                while(rs.next()) {
+                    entities.add(fillEntity(rs));
                 }
             } catch (Exception error) {
                 con.rollback();
             }
             con.commit();
         }
-        return entity;
+        return entities;
     }
 }
