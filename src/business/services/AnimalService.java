@@ -1,6 +1,7 @@
 package business.services;
 
 import comuns.access.Animal;
+import comuns.bases.Entity;
 import dao.access.AnimalSqlServerDAO;
 import dao.bases.DAO;
 
@@ -11,7 +12,7 @@ public class AnimalService {
     //TODO - CHAMADA DOS METODOS DA DAO E VALIDAÇÕES
     DAO dao = new AnimalSqlServerDAO();
 
-    public List<Animal> validateId(Integer userId) throws SQLException {
-        return dao.selectList(userId);
+    public Animal validateId(String id) throws SQLException {
+        return (Animal) dao.select(id);
     }
 }

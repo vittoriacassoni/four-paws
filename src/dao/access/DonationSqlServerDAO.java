@@ -1,8 +1,6 @@
 package dao.access;
 
-import business.Validates;
 import comuns.access.Donation;
-import comuns.access.User;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
@@ -10,8 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,7 +24,7 @@ public class DonationSqlServerDAO <E extends Entity> extends SqlServerDAO {
     protected E fillEntity(ResultSet rs) {
         Donation entity = new Donation();
         try {
-            entity.setValue(Integer.parseInt(rs.getString("Value")));
+            entity.setValue(rs.getFloat("Value"));
             entity.setDescription(rs.getString("Description"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));

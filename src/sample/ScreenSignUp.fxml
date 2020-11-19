@@ -65,7 +65,7 @@
                   <Image url="@../assets/images/Logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="91.0" layoutY="274.0" prefHeight="253.0" prefWidth="355.0" text="Falta pouco para você entrar na comunidade e ser um Pawner! Aqui você irá encontrar diversas ONG's e instituições, poderá participar dos fóruns, encontrar dicas e compartilhar suas próprias experiências.Além do mais importante, encontrar o seu PET dos sonhos, baseado nas suas características e expectativas! Termine seu cadastro e venha fazer parte do nosso time. Lutamos juntos por um mundo com menos abandono e mais amor #Lambeijos" textAlignment="CENTER" textFill="#afafaf" wrapText="true">
+            <Label layoutX="91.0" layoutY="274.0" prefHeight="253.0" prefWidth="355.0" text="Falta pouco para você entrar na comunidade e ser um Pawner! Aqui você irá encontrar diversas ONG's e instituições, poderá participar dos fóruns, encontrar dicas e compartilhar suas próprias experiências. Além do mais importante, encontrar o seu PET dos sonhos, baseado nas suas características e expectativas! Termine seu cadastro e venha fazer parte do nosso time. Lutamos juntos por um mundo com menos abandono e mais amor #Lambeijos" textAlignment="CENTER" textFill="#afafaf" wrapText="true">
                <font>
                   <Font name="Microsoft JhengHei" size="16.0" />
                </font>

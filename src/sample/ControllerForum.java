@@ -43,6 +43,9 @@ public class ControllerForum implements Initializable {
     @FXML
     Pane darkPane, topicsPane;
 
+
+
+
     ForumTopicSqlServerDAO topicDAO = new ForumTopicSqlServerDAO();
     ForumTopicService topicService = new ForumTopicService();
     ForumCommentSqlServerDAO commentDAO = new ForumCommentSqlServerDAO();
