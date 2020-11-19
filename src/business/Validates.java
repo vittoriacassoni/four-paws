@@ -1,15 +1,8 @@
 package business;
 
-import comuns.access.User;
-import dao.access.UserSqlServerDAO;
-import dao.bases.DAO;
-
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Validates {
 
@@ -31,4 +24,19 @@ public class Validates {
         }
     }
 
+    // Método para validar se a string de data é uma data válida
+    // caso ela não seja retornará um erro, caso contrário retornará a data convertida para Date
+    public static Date validateDate(String date) throws Exception {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date dateConverted = null;
+
+        dateFormat.setLenient(false);
+        try {
+            dateConverted = dateFormat.parse(date);
+        } catch (ParseException e) {
+            throw new Exception("Data inválida!");
+        }
+        return dateConverted;
+    }
 }

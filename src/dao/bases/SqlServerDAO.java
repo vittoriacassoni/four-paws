@@ -1,9 +1,9 @@
 package dao.bases;
-import business.singleton.config.Config;
 import comuns.bases.Entity;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class SqlServerDAO <E extends Entity> extends DAO {
    // public  Connection con;
@@ -35,6 +35,7 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
     protected String getTable() {
         return table;
     }
+
     @Override
     public E select(String email) throws SQLException {
         return null;
@@ -51,7 +52,6 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
     }
 
     protected abstract E fillEntity(ResultSet rs);
-
 
     public E selectID(int id) throws SQLException{
         E entity = null;
@@ -80,5 +80,27 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
 
     public boolean update(Entity entity) throws SQLException {
          return true;
+    }
+
+    public List<E> selectList(Integer userId) throws SQLException {
+        List<E> entities = new ArrayList<>();
+
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+
+            String query = "SELECT * FROM [" + table + "] WHERE UserId = ?";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setInt(1, userId);
+
+            try (ResultSet rs = add.executeQuery()) {
+                while(rs.next()) {
+                    entities.add(fillEntity(rs));
+                }
+            } catch (Exception error) {
+                con.rollback();
+            }
+            con.commit();
+        }
+        return entities;
     }
 }

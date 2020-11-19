@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root layoutX="196.0" layoutY="186.0" prefHeight="180.0" prefWidth="812.0" style="-fx-border-color: #e3e3e3; -fx-border-width: 1; -fx-border-radius: 8;" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+      <Pane layoutX="-197.0" layoutY="-185.0" prefHeight="366.0" prefWidth="967.0">
+         <children>
+              <Label fx:id="lblTitle" prefHeight="27.0" prefWidth="397.0" text="Cachorro pode comer melão?" textFill="#2f2e41">
+                  <font>
+                      <Font name="Microsoft JhengHei Bold" size="20.0" />
+                  </font>
+              </Label>
+              <Label fx:id="lblDiscussion" prefHeight="21.0" prefWidth="488.0" text="AAAAAAAAAAA" textFill="GREY">
+                  <font>
+                      <Font name="Microsoft JhengHei" size="16.0" />
+                  </font>
+              </Label>
+              <Label fx:id="lblAnswer" prefHeight="26.0" prefWidth="98.0" text="Responder" textFill="#ff6f61">
+                  <font>
+                      <Font name="Microsoft JhengHei Bold" size="18.0" />
+                  </font>
+              </Label>
+              <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../../assets/icons/chevron-right-solid.png" />
+                  </image>
+              </ImageView>
+              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="49.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../../assets/icons/user-solid.png" />
+                  </image>
+              </ImageView>
+         </children></Pane>
+    </children>
+</fx:root>

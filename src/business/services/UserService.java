@@ -33,22 +33,6 @@ public class UserService {
         return validated;
     }
 
-    // Método para validar se a string de data é uma data válida
-    // caso ela não seja retornará um erro, caso contrário retornará a data convertida para Date
-    public static Date validateDate(String date) throws Exception {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-        Date dateConverted = null;
-
-        dateFormat.setLenient(false);
-        try {
-            dateConverted = dateFormat.parse(date);
-        } catch (ParseException e) {
-            throw new Exception("Data inválida!");
-        }
-        return dateConverted;
-    }
-
     // Método para validar se a string é um nome completo
     // caso ela não seja retornará um erro, caso contrário devolverá o nome separado por meio de um vetor
     public static String[] validateFullName(String fullName) throws Exception {

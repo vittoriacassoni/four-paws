@@ -1,6 +1,6 @@
 package dao.access;
 
-import comuns.access.Animal;
+import comuns.access.Adoption;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
@@ -13,24 +13,19 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
+public class AdoptionSqlServerDAO <E extends Entity> extends SqlServerDAO {
 
-    public AnimalSqlServerDAO() {
-        super(Animal.class);
-        setTable("Animal");
+    public AdoptionSqlServerDAO() {
+        super(Adoption.class);
+        setTable("Adoption");
     }
 
     @Override
     protected E fillEntity(ResultSet rs) {
-        Animal entity = new Animal();
+        Adoption entity = new Adoption();
         try {
-            entity.setName(rs.getString("Name"));
-            entity.setBreed(rs.getString("Breed"));
-            entity.setColor(rs.getString("Color"));
-            entity.setSize(rs.getDouble("Size"));
-            entity.setWeight(rs.getDouble("Weight"));
-            entity.setImage(rs.getString("Image"));
-            entity.setDateOfBirth(rs.getDate("DateOfBirth"));
+            entity.setAnimalId(Integer.parseInt(rs.getString("AnimalId")));
+            entity.setUserId(Integer.parseInt(rs.getString("UserId")));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
             entity.setDeletedAt(rs.getDate("DeletedAt"));
@@ -43,23 +38,7 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
 
     @Override
     public boolean insert(Entity entity) throws SQLException {
-        Animal animal = (Animal) entity;
-        try (Connection con = getConnection()) {
-            System.out.println(con);
-
-            String SQL = "INSERT INTO" + super.getTable() + "(Name, Breed, Color, Size, Weight, " +
-                    "Image, DateOfBirth, CreadtedAt, UpdatedAt,DeletedAt) VALUES ('" + animal.getName() + "','" +
-                    animal.getBreed() + "','" + animal.getColor() + "', '" + animal.getSize() + "' '" +
-                    animal.getWeight() + "', '" + animal.getImage() + "' , '" + animal.getDateOfBirth();
-
-            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
-                stmt.execute();
-            }
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        return true;
     }
 
     @Override
@@ -75,8 +54,9 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
         try (Connection con = getConnection()) {
             System.out.println(con);
 
-            String query = "SELECT * FROM [" + super.getTable() + "]";
+            String query = "SELECT * FROM [" + super.getTable() + "] WHERE UserId = ?";
             PreparedStatement add = con.prepareStatement(query);
+            add.setInt(1, userId);
 
             try (ResultSet rs = add.executeQuery()) {
                 while(rs.next()) {
