@@ -1,11 +1,14 @@
 package sample;
 
-import business.Validates;
-import business.log.threads.ManageAudit;
+import business.services.AdoptionService;
+import business.services.AnimalService;
+import business.services.DonationService;
 import business.services.UserService;
-import comuns.access.Audit;
+import business.singleton.LocalStorage;
+import comuns.access.Adoption;
+import comuns.access.Animal;
+import comuns.access.Donation;
 import comuns.access.User;
-import comuns.bases.Entity;
 import dao.access.UserSqlServerDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,12 +19,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
-import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,37 +63,49 @@ public class ControllerProfile implements Initializable {
     TextField txtPasswordEdit;
 
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
+
     UserService userService = new UserService();
-    int id = 22;
+    AnimalService animalService = new AnimalService();
+    DonationService donationService = new DonationService();
+    AdoptionService adoptionService = new AdoptionService();
 
+    Integer id = LocalStorage.getInstance().getUserId();
+    String name = LocalStorage.getInstance().getUserName();
+    String email = LocalStorage.getInstance().getUserEmail();
 
-    private ObservableList<String> items = FXCollections.observableArrayList();
+    public ControllerProfile() throws IOException, SQLException {
 
+    }
+
+    private ObservableList<Donation> donations = FXCollections.observableArrayList();
+    private ObservableList<Animal> animals = FXCollections.observableArrayList();
+    private ObservableList<Adoption> adoptions = FXCollections.observableArrayList();
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        listDonations.setPrefHeight(195);
-        items.add("TESTE");
-        items.add("TESTE 2");
-        listDonations.setItems(items);
-        listDonations.setFixedCellSize(40);
-
-        listAdoptions.setPrefHeight(195);
-        listAdoptions.setItems(items);
-        listAdoptions.setFixedCellSize(40);
+    public void initialize(URL url, ResourceBundle resourceBundle){
 
         try {
             User user = userService.validateId(id);
+            List<Animal> animal = animalService.validateId(id);
+            List<Donation> donation = donationService.validateId(id);
+            List<Adoption> adoptions = adoptionService.validateId(id);
 
-            txtName.setText(user.getName());
-            txtNameEdit.setText(user.getName());
-
-            txtEmail.setText(user.getEmail());
-            txtEmailEdit.setText(user.getEmail());
-
+            txtName.setText(name);
+            txtNameEdit.setText(name);
+            txtEmail.setText(email);
+            txtEmailEdit.setText(email);
             txtPasswordEdit.setText(user.getPasswordHash());
-
             txtBirthday.setText(user.getDateOfBirth().toString());
+
+            for (Donation List: donation) {
+                donations.add(List);
+            }
+
+            listDonations.setPrefHeight(195);
+            listDonations.setItems(donations);
+            listDonations.setFixedCellSize(40);
+
+
 
         } catch (SQLException | NullPointerException e) {
 

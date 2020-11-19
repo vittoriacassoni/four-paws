@@ -75,4 +75,10 @@ public class Donation extends Entity {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return getId() + "|" + getValue() + "|" + getDescription() + "|" + getCreatedAt() + "|" + getUpdatedAt() + "|" +
+                getDeletedAt() + "|" + getUserId();
+    }
 }
