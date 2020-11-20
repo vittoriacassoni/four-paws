@@ -24,6 +24,7 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
     protected E fillEntity(ResultSet rs) {
         Animal entity = new Animal();
         try {
+            entity.setId(Integer.parseInt(rs.getString("Id")));
             entity.setName(rs.getString("Name"));
             entity.setBreed(rs.getString("Breed"));
             entity.setColor(rs.getString("Color"));
@@ -31,6 +32,7 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
             entity.setWeight(rs.getDouble("Weight"));
             entity.setImage(rs.getString("Image"));
             entity.setDateOfBirth(rs.getDate("DateOfBirth"));
+            entity.setHistory(rs.getString("History"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
             entity.setDeletedAt(rs.getDate("DeletedAt"));
@@ -63,29 +65,49 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
     }
 
     @Override
-    public E select(String userId) throws SQLException {
+    public E select(String id) throws SQLException {
         E entity = null;
-        return entity;
-    }
-
-    @Override
-    public List<E> selectList(Integer userId) throws SQLException {
-        List<E> entities = new ArrayList<>();
-
         try (Connection con = getConnection()) {
             System.out.println(con);
 
-            String query = "SELECT * FROM [" + super.getTable() + "]";
+            String query = "SELECT * FROM [" + super.getTable() + "] WHERE Id = ?";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setInt(1, Integer.parseInt(id));
+
+            try (ResultSet rs = add.executeQuery()) {
+                if (rs.next()) {
+                    entity = fillEntity(rs);
+                    rs.close();
+                }
+            } catch (Exception error) {
+                con.rollback();
+            }
+            con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return entity;
+    }
+
+    public List<E> selectAll() throws SQLException {
+        List<E> entities = new ArrayList<>();
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+
+            String query = "SELECT * FROM [" +  super.getTable() + "]";
             PreparedStatement add = con.prepareStatement(query);
 
             try (ResultSet rs = add.executeQuery()) {
-                while(rs.next()) {
+                while (rs.next()) {
                     entities.add(fillEntity(rs));
                 }
             } catch (Exception error) {
                 con.rollback();
             }
             con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return entities;
     }

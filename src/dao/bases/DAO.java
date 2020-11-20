@@ -19,6 +19,7 @@ public abstract class DAO <E extends Entity> {
    public abstract boolean insert(E entity) throws SQLException;
    public abstract boolean update(E entity) throws SQLException;
    public abstract List<E> selectList(Integer userId) throws SQLException;
+   public abstract List<E> selectAll() throws SQLException;
 
     protected E getInstanceOfE()
    {

@@ -7,4 +7,5 @@ module four.paws {
     requires java.desktop;
     requires com.microsoft.sqlserver.jdbc;
     opens sample;
+    opens comuns.access to javafx.base;
 }

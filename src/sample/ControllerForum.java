@@ -43,13 +43,16 @@ public class ControllerForum implements Initializable {
     @FXML
     Pane darkPane, topicsPane;
 
+
+
+
     ForumTopicSqlServerDAO topicDAO = new ForumTopicSqlServerDAO();
     ForumTopicService topicService = new ForumTopicService();
     ForumCommentSqlServerDAO commentDAO = new ForumCommentSqlServerDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
+        /*try {
             var list = topicService.listTopics();
             list.forEach((topic) -> {
                 //ComponentForumTopicController forumTopic = new ComponentForumTopicController();
@@ -59,7 +62,7 @@ public class ControllerForum implements Initializable {
             });
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
