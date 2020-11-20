@@ -52,7 +52,7 @@ public class ControllerForum implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
+        /*try {
             var list = topicService.listTopics();
             list.forEach((topic) -> {
                 ComponentForumTopicController forumTopic = new ComponentForumTopicController();
@@ -62,7 +62,7 @@ public class ControllerForum implements Initializable {
             });
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

@@ -24,6 +24,7 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
     protected E fillEntity(ResultSet rs) {
         Animal entity = new Animal();
         try {
+            entity.setId(Integer.parseInt(rs.getString("Id")));
             entity.setName(rs.getString("Name"));
             entity.setBreed(rs.getString("Breed"));
             entity.setColor(rs.getString("Color"));
@@ -87,5 +88,27 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
         }
 
         return entity;
+    }
+
+    public List<E> selectAll() throws SQLException {
+        List<E> entities = new ArrayList<>();
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+
+            String query = "SELECT * FROM [" +  super.getTable() + "]";
+            PreparedStatement add = con.prepareStatement(query);
+
+            try (ResultSet rs = add.executeQuery()) {
+                while (rs.next()) {
+                    entities.add(fillEntity(rs));
+                }
+            } catch (Exception error) {
+                con.rollback();
+            }
+            con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return entities;
     }
 }

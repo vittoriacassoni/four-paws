@@ -81,13 +81,13 @@
                   <Image url="@../assets/icons/plus-solid.png" />
                </image>
             </ImageView>
-            <TableView fx:id="tableDonation" layoutX="44.0" layoutY="118.0" prefHeight="220.0" prefWidth="601.0">
+            <TableView fx:id="tableDonation" layoutX="44.0" layoutY="118.0" prefHeight="220.0" prefWidth="601.0" stylesheets="@../stylesheet/TableView.css">
               <columns>
                 <TableColumn prefWidth="135.0" text="C1" />
                 <TableColumn prefWidth="139.0" text="C2" />
               </columns>
             </TableView>
-            <TableView fx:id="tableAdoption" layoutX="43.0" layoutY="421.0" prefHeight="220.0" prefWidth="601.0">
+            <TableView fx:id="tableAdoption" layoutX="43.0" layoutY="421.0" prefHeight="220.0" prefWidth="601.0" stylesheets="@../stylesheet/TableView.css">
               <columns>
                 <TableColumn prefWidth="146.0" text="C1" />
                 <TableColumn prefWidth="121.0" text="C2" />

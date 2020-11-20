@@ -85,7 +85,7 @@ public class ControllerProfile implements Initializable {
         Adoption adoption;
 
         AnimalAdopted(Animal animal, Adoption adoption) {
-            this.animal =  animal;
+            this.animal = animal;
             this.adoption = adoption;
         }
 
@@ -124,10 +124,13 @@ public class ControllerProfile implements Initializable {
 
         TableColumn value = new TableColumn("Valor Doado");
         value.setCellValueFactory(new PropertyValueFactory<>("value"));
+        value.setPrefWidth(120);
         TableColumn description = new TableColumn("Descrição");
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        description.setPrefWidth(280);
         TableColumn createdAt = new TableColumn("Data de Submissão");
         createdAt.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        createdAt.setPrefWidth(200);
 
         tableDonation.setEditable(true);
         tableDonation.getColumns().setAll(value, description, createdAt);
@@ -142,26 +145,33 @@ public class ControllerProfile implements Initializable {
     public void listAdoptions() throws SQLException {
 
         List<Adoption> adoptions = adoptionService.validateId(id);
+        List<Animal> animals = animalService.validateAll();
 
         List<AnimalAdopted> animalAdopteds = new ArrayList<AnimalAdopted>();
 
-        for (Adoption adoption: adoptions) {
-            Animal animal = animalService.validateId(Integer.toString(adoption.getAnimalId()));
-            AnimalAdopted animalAdopted = new AnimalAdopted(animal, adoption);
-            animalAdopteds.add(animalAdopted);
+        for (Adoption adoption : adoptions) {
+            for (Animal animal : animals) {
+                if (animal.getId() == adoption.getAnimalId()) {
+                    AnimalAdopted animalAdopted = new AnimalAdopted(animal, adoption);
+                    animalAdopteds.add(animalAdopted);
+                }
+            }
         }
 
         TableColumn name = new TableColumn("Nome do Pet");
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        name.setPrefWidth(120);
         TableColumn history = new TableColumn("História");
         history.setCellValueFactory(new PropertyValueFactory<>("history"));
+        history.setPrefWidth(280);
         TableColumn createdAt = new TableColumn("Data de Adoção");
         createdAt.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        createdAt.setPrefWidth(200);
 
         tableAdoption.setEditable(true);
         tableAdoption.getColumns().setAll(name, history, createdAt);
         tableAdoption.setPrefHeight(195);
-        tableAdoption.setItems( FXCollections.observableList(animalAdopteds));
+        tableAdoption.setItems(FXCollections.observableList(animalAdopteds));
         tableAdoption.setFixedCellSize(40);
 
     }

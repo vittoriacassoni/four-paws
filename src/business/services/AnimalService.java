@@ -15,4 +15,8 @@ public class AnimalService {
     public Animal validateId(String id) throws SQLException {
         return (Animal) dao.select(id);
     }
+
+    public List<Animal> validateAll() throws SQLException {
+        return dao.selectAll();
+    }
 }
