@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
-        Parent root = FXMLLoader.load(getClass().getResource("ScreenRegisterAnimal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ScreenProfile.fxml"));
 
         primaryStage.setTitle("4Paws, Bem-vinde!");
         primaryStage.setScene(new Scene(root, 1200, 700));

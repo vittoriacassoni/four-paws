@@ -3,9 +3,10 @@ package sample;
 import business.Validates;
 import business.log.threads.ManageAudit;
 import business.services.UserService;
-import comuns.access.Audit;
-import comuns.access.User;
+import comuns.access.*;
 import comuns.bases.Entity;
+import dao.access.AdoptionRequirementSqlServerDAO;
+import dao.access.DonationSqlServerDAO;
 import dao.access.UserSqlServerDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,10 +16,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import business.Validates;
+
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
@@ -28,37 +33,18 @@ import java.util.logging.Logger;
 
 public class ControllerProfile implements Initializable {
     @FXML
-    Pane paneEdit;
+    Pane paneEdit, paneDarkBackground, newDonationPane, darkPane;
 
     @FXML
-    Pane paneDarkBackground;
+    ListView listDonations, listAdoptions;
 
     @FXML
-    ListView listDonations;
+    Label txtName, txtEmail, txtBirthday, txtPassword;
 
     @FXML
-    ListView listAdoptions;
+    TextField txtNameEdit, txtEmailEdit, txtPasswordEdit, txtDescription, txtValue;
 
-    @FXML
-    Label txtName;
-
-    @FXML
-    Label txtEmail;
-
-    @FXML
-    Label txtBirthday;
-
-    @FXML
-    Label txtPassword;
-
-    @FXML
-    TextField txtNameEdit;
-
-    @FXML
-    TextField txtEmailEdit;
-
-    @FXML
-    TextField txtPasswordEdit;
+    DonationSqlServerDAO donationDAO = new DonationSqlServerDAO();
 
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
     UserService userService = new UserService();
@@ -134,6 +120,44 @@ public class ControllerProfile implements Initializable {
             alert.setContentText(error.getMessage());
             alert.showAndWait();
             error.printStackTrace();
+        }
+    }
+
+    public void loadDonationPane(MouseEvent mouseEvent) throws IOException {
+        newDonationPane.setVisible(true);
+        darkPane.setVisible(true);
+    }
+
+    public void closeDonationPane(MouseEvent mouseEvent) throws IOException {
+        newDonationPane.setVisible(false);
+        darkPane.setVisible(false);
+    }
+
+    public void sendNewDonation(MouseEvent mouseEvent) {
+        try {
+            var value = Validates.validateRequiredField(txtValue.getText());
+            var description = Validates.validateRequiredField(txtDescription.getText());
+
+            String descriptions = (String) txtDescription.getText();
+            Double values = (Double) Double.valueOf(txtValue.getText());
+
+
+            var donation = new Donation( values.toString(), descriptions);
+
+            if (donationDAO.insert(donation)) {
+                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                newDonationPane.setVisible(false);
+                darkPane.setVisible(false);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception error) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro!");
+            alert.setHeaderText(null);
+            alert.setContentText(error.getMessage());
+            alert.showAndWait();
         }
     }
 }

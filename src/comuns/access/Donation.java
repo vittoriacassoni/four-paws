@@ -6,33 +6,34 @@ import java.util.Date;
 
 public class Donation extends Entity {
 
-    private float value;
+    private Double value;
     private String description;
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
-    private int userId;
+    private Integer userId;
 
 
-    public Donation(float value, String description, Date createdAt, Date updatedAt, Date deletedAt, int userId) {
+    public Donation(Double value, String description) {
         setValue(value);
         setDescription(description);
-        setCreatedAt(createdAt);
-        setUpdatedAt(updatedAt);
-        setDeletedAt(deletedAt);
-        setUserId(userId);
+
     }
 
     public Donation() {
 
     }
 
+    public Donation(String descriptions, String description) {
+        super();
+    }
 
-    public float getValue() {
+
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

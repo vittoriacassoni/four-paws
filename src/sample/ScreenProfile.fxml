@@ -64,7 +64,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="483.0" prefHeight="700.0" prefWidth="718.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+      <Pane layoutX="482.0" layoutY="-17.0" prefHeight="700.0" prefWidth="718.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
          <children>
             <Label layoutX="62.0" layoutY="64.0" text="Doações" textFill="#ff6f61">
                <font>
@@ -94,7 +94,8 @@
             </Label>
             <ListView fx:id="listDonations" layoutX="62.0" layoutY="115.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
             <ListView fx:id="listAdoptions" layoutX="62.0" layoutY="401.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
-            <ImageView fx:id="iconAdcDoacao" fitHeight="34.0" fitWidth="52.0" layoutX="163.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="btnAddDonation" layoutX="160.0" layoutY="64.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" style="-fx-background-color: #ff6f61; -fx-background-radius: 10;" />
+            <ImageView fx:id="iconAddDonation" fitHeight="21.0" fitWidth="18.0" layoutX="167.0" layoutY="69.0" onMouseClicked="#loadDonationPane" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/plus-solid.png" />
                </image>
@@ -144,6 +145,37 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-         </children></Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="darkPane" opacity="0.8" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
+      <Pane fx:id="newDonationPane" layoutX="150.0" layoutY="100.0" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+         <children>
+            <Label layoutX="399.0" layoutY="69.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Nova doação">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="259.0" text="Descrição" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="103.0" layoutY="140.0" text="Valor (R$)" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtValue" layoutX="102.0" layoutY="179.0" prefHeight="41.0" prefWidth="735.0" promptText="Valor (R$)" style="-fx-background-radius: 5px;" />
+            <TextField fx:id="txtDescription" alignment="TOP_LEFT" layoutX="98.0" layoutY="295.0" prefHeight="123.0" prefWidth="742.0" promptText="Descrição" style="-fx-background-radius: 5px;" />
+            <Button fx:id="btnNewDonation" layoutX="714.0" layoutY="445.0" mnemonicParsing="false" onMouseClicked="#sendNewDonation" prefHeight="34.0" prefWidth="126.0" stylesheets="@../stylesheet/Button.css" text="Doar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="imgCloseDonation" fitHeight="21.0" fitWidth="13.0" layoutX="865.0" layoutY="20.0" onMouseClicked="#closeDonationPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/x-1727490_960_720.png" />
+               </image></ImageView>
+         </children>
+      </Pane>
    </children>
 </Pane>
