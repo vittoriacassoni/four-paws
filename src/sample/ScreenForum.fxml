@@ -24,6 +24,7 @@
          <image>
             <Image url="@../assets/icons/search-solid1.png" />
          </image></ImageView>
+<<<<<<< HEAD
       <Pane layoutX="196.0" layoutY="186.0" prefHeight="180.0" prefWidth="770.0" style="-fx-border-color: #e3e3e3; -fx-border-width: 1; -fx-border-radius: 8;" >
          <children>
             <Label layoutX="108.0" layoutY="50.0" prefHeight="27.0" prefWidth="397.0" text="Cachorro pode comer melão?" textFill="#2f2e41">
@@ -84,6 +85,11 @@
       </Pane>
       <Pane fx:id="darkPane" opacity="0.8" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="true" />
       <Pane fx:id="answerTopicPane" layoutX="150.0" layoutY="100.0" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css"  >
+=======
+      <Pane fx:id="topicsPane" layoutY="118.0" prefHeight="782.0" prefWidth="1200.0" styleClass="background" stylesheets="@../stylesheet/Background.css" />
+      <Pane fx:id="darkPane" opacity="0.8" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
+      <Pane fx:id="answerTopicPane" layoutX="150.0" layoutY="100.0" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+>>>>>>> 4a6c25bd13e72ae80e4e29d21c72c879757c99a1
          <children>
             <ImageView fitHeight="42.0" fitWidth="34.0" layoutX="54.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -6,11 +6,11 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-border-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerMain">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-border-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerMain">
    <children>
       <Pane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
          <children>
-            <Label layoutX="60.0" layoutY="166.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Bem-vinda Laura Alves" textFill="#b8b8b8">
+            <Label fx:id="lblWelcome" layoutX="60.0" layoutY="166.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Bem-vinda Laura Alves" textFill="#b8b8b8">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="38.0" />
                </font>
@@ -19,11 +19,11 @@
                <font>
                   <Font name="Microsoft JhengHei" size="24.0" />
                </font></Button>
-            <Button fx:id="btnAcessfindPetComunidade" contentDisplay="RIGHT" depthTest="ENABLE" graphicTextGap="6.0" layoutX="64.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#acessForum" prefHeight="60.0" prefWidth="400.0" stylesheets="@../stylesheet/ButtonSecondary.css" text="     Acessar comunidade" textAlignment="CENTER" textFill="#2f2e41">
+            <Button fx:id="btnAcessfindPetComunidade" contentDisplay="RIGHT" depthTest="ENABLE" graphicTextGap="6.0" layoutX="64.0" layoutY="424.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#accessForum" prefHeight="60.0" prefWidth="400.0" stylesheets="@../stylesheet/ButtonSecondary.css" text="     Acessar comunidade" textAlignment="CENTER" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei" size="24.0" />
                </font></Button>
-            <Label layoutX="64.0" layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="O que deseja fazer ?" textFill="#2f2e41">
+            <Label layoutX="60.0" layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="O que deseja fazer ?" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft Sans Serif" size="40.0" />
                </font>
@@ -54,7 +54,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+      <Pane layoutX="601.0" layoutY="2.0" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
          <children>
             <ImageView fitHeight="589.0" fitWidth="635.0" layoutX="-36.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -62,7 +62,7 @@
                </image>
             </ImageView>
             <Circle fill="#ebebeb" layoutX="400.0" layoutY="41.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Label layoutX="449.0" layoutY="26.0" text="Laura" textFill="#ff6f61">
+            <Label fx:id="lblName" layoutX="449.0" layoutY="26.0" text="Laura" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
@@ -79,13 +79,116 @@
                         <Font name="Microsoft JhengHei Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnReportAnimalAbandonment" layoutX="3.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#reportAnimalAbandonment" prefHeight="40.0" prefWidth="208.0" style="-fx-border-radius: 0;" stylesheets="@../stylesheet/ButtonMenu.css" text="Reportar animal abandonado" textFill="#2f2e41">
+                  <Button fx:id="btnReportAnimalAbandonment" layoutX="3.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#showReportAbandonmentModal" prefHeight="40.0" prefWidth="208.0" style="-fx-border-radius: 0;" stylesheets="@../stylesheet/ButtonMenu.css" text="Reportar animal abandonado" textFill="#2f2e41">
                      <font>
                         <Font name="Microsoft JhengHei Bold" size="13.0" />
                      </font>
                   </Button>
                </children>
             </Pane>
-         </children></Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="darkPane" onMouseClicked="#closeReportAbandonmentModal" opacity="0.8" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
+      <Pane fx:id="paneReportAbandonment" layoutX="138.0" layoutY="41.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="929.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+         <children>
+            <Label layoutX="47.0" layoutY="277.0" prefHeight="28.0" prefWidth="208.0" text="Animal está abrigado?" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="168.0" prefHeight="28.0" prefWidth="274.0" text="Endereço onde animal foi visto" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtAddress" layoutX="47.0" layoutY="208.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço onde animal foi visto" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font></TextField>
+            <Button fx:id="btnReportAbandonment" layoutX="585.0" layoutY="529.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" stylesheets="@../stylesheet/Button.css" text="Informar abandono">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="48.0" layoutY="29.0" prefHeight="42.0" prefWidth="485.0" text="Reportar animal abandonado" textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="21.0" fitWidth="13.0" layoutX="880.0" layoutY="23.0" onMouseClicked="#closeReportAbandonmentModal" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/times-solid.png" />
+               </image>
+            </ImageView>
+            <RadioButton fx:id="rdCovered" layoutX="47.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#showHideHostInfo" prefHeight="28.0" prefWidth="68.0" selected="true" stylesheets="@../stylesheet/RadioButton.css" text="Sim">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="tgpTemporaryHome" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdNotCovered" layoutX="159.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#showHideHostInfo" prefHeight="28.0" prefWidth="68.0" stylesheets="@../stylesheet/RadioButton.css" text="Não" toggleGroup="$tgpTemporaryHome">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </RadioButton>
+            <Pane fx:id="paneHost" layoutX="47.0" layoutY="378.0" prefHeight="200.0" prefWidth="418.0">
+               <children>
+                  <Label prefHeight="28.0" prefWidth="274.0" text="Nome do anfitrião" textFill="#ff6f61">
+                     <font>
+                        <Font name="Microsoft JhengHei Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtHostName" layoutY="40.0" prefHeight="42.0" prefWidth="418.0" promptText="Nome do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                     <font>
+                        <Font name="Microsoft JhengHei" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutY="110.0" prefHeight="28.0" prefWidth="274.0" text="Contato do anfitrião" textFill="#ff6f61">
+                     <font>
+                        <Font name="Microsoft JhengHei Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtAddressHost" layoutY="150.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                     <font>
+                        <Font name="Microsoft JhengHei" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Label layoutX="48.0" layoutY="100.0" prefHeight="42.0" prefWidth="485.0" text="ONG SOS Cidadania Animal" textAlignment="RIGHT" textFill="#6b6b6b" wrapText="true">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="600.0" layoutY="107.0" prefHeight="28.0" prefWidth="253.0" text="Carregar imagem do animal" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="16.0" arcWidth="5.0" fill="#f2f2f2" height="200.0" layoutX="585.0" layoutY="191.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 16; -fx-arc-height: 16;" width="282.0" />
+            <Pane fx:id="paneUploadFile" layoutX="851.0" layoutY="379.0" prefHeight="27.0" prefWidth="32.0">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-radius: 50; -fx-background-color: #00EEFF;" text="   " />
+                  <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons/pen-solid.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label layoutX="280.0" layoutY="277.0" prefHeight="28.0" prefWidth="186.0" text="Visto por último em:" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtLastSeen" layoutX="280.0" layoutY="319.0" prefHeight="42.0" prefWidth="186.0" promptText="dd/MM/yyyy" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+               <font>
+                  <Font name="Microsoft JhengHei" size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
    </children>
-</HBox>
+</Pane>

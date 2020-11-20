@@ -7,6 +7,7 @@ import dao.bases.SqlServerDAO;
 
 import java.sql.*;
 import java.time.Instant;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,7 +51,7 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.setInt(3, topic.getUserId());
                 stmt.setString(4, Instant.now().toString());
                 stmt.execute();
-            } catch(Exception error){
+            } catch (Exception error) {
                 error.printStackTrace();
             }
 
@@ -85,6 +86,30 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
 
         return entity;
     }
+
+    public ArrayList<E> listTopics() {
+        ArrayList<E> list = new ArrayList<>();
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+            String query = "SELECT * FROM [ForumTopic] WHERE DeletedAt is null ORDER BY CreatedAt desc";
+            PreparedStatement add = con.prepareStatement(query);
+
+            try (ResultSet rs = add.executeQuery()) {
+                while (rs.next()) {
+                    Entity entity = (E) fillEntity(rs);
+                    list.add((E) entity);
+                }
+            } catch (Exception error) {
+                con.rollback();
+            }
+            con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
 
 }
 

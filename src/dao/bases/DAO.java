@@ -5,6 +5,7 @@ import comuns.bases.Entity;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class DAO <E extends Entity> {
@@ -17,8 +18,10 @@ public abstract class DAO <E extends Entity> {
    public abstract ArrayList<E> list() throws SQLException;
    public abstract boolean insert(E entity) throws SQLException;
    public abstract boolean update(E entity) throws SQLException;
+   public abstract List<E> selectList(Integer userId) throws SQLException;
+   public abstract List<E> selectAll() throws SQLException;
 
-   protected E getInstanceOfE()
+    protected E getInstanceOfE()
    {
        try
        {
