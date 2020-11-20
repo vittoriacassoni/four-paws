@@ -1,5 +1,6 @@
 package sample;
 
+import business.Image;
 import business.Validates;
 import business.log.threads.ManageAudit;
 import business.services.UserService;
@@ -14,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
+import javax.swing.text.html.ImageView;
+import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
@@ -32,7 +36,10 @@ public class ControllerSignUp implements Initializable {
     TextField txtDateBirth;
 
     @FXML
-    TextField txtPassword;
+    TextField txtPassword, txtPath;
+
+    @FXML
+    ImageView imgUser;
 
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
 
@@ -78,4 +85,18 @@ public class ControllerSignUp implements Initializable {
         }
 
     }
+
+    /*public void saveImage(MouseEvent event) {
+        Image image = new Image();
+        JFileChooser file = new JFileChooser();
+        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int i= file.showSaveDialog(null);
+        if (i==1){
+            image.
+        } else {
+            File arquivo = file.getSelectedFile();
+            JtextFieldLocal.setText(arquivo.getPath());
+        }
+
+    }*/
 }

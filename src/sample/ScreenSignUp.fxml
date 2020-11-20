@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" spacing="32.0" styleClass="background" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSignUp">
@@ -57,6 +58,14 @@
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font></PasswordField>
+            <ImageView fitHeight="146.0" fitWidth="125.0" layoutX="377.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="377.0" layoutY="15.0" stroke="#ff6f61" strokeType="OUTSIDE" width="125.0" />
+            <Button layoutX="489.0" layoutY="142.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="26.0" style="-fx-background-radius: 50; -fx-background-color: #00EEFF;" />
+            <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="494.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/pen-solid.png" />
+               </image>
+            </ImageView>
          </children></Pane>
       <Pane prefHeight="880.0" prefWidth="536.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
          <children>

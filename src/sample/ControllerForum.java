@@ -52,10 +52,10 @@ public class ControllerForum implements Initializable {
         try {
             var list = topicService.listTopics();
             list.forEach((topic) -> {
-                ComponentForumTopicController forumTopic = new ComponentForumTopicController();
-                forumTopic.setTitle(topic.getTitle());
-                forumTopic.setDiscussion(topic.getDiscussion());
-                topicsPane.getChildren().add(forumTopic);
+                //ComponentForumTopicController forumTopic = new ComponentForumTopicController();
+                //forumTopic.setTitle(topic.getTitle());
+                //forumTopic.setDiscussion(topic.getDiscussion());
+                //topicsPane.getChildren().add(forumTopic);
             });
         } catch (Exception e) {
             e.printStackTrace();
