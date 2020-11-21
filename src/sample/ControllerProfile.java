@@ -126,7 +126,7 @@ public class ControllerProfile implements Initializable {
         description.setPrefWidth(280);
         TableColumn createdAt = new TableColumn("Data de Submissão");
         createdAt.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
-        createdAt.setPrefWidth(200);
+        createdAt.setPrefWidth(150);
 
         tableDonation.setEditable(true);
         tableDonation.getColumns().setAll(value, description, createdAt);
@@ -162,7 +162,7 @@ public class ControllerProfile implements Initializable {
         history.setPrefWidth(280);
         TableColumn createdAt = new TableColumn("Data de Adoção");
         createdAt.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
-        createdAt.setPrefWidth(200);
+        createdAt.setPrefWidth(150);
 
         tableAdoption.setEditable(true);
         tableAdoption.getColumns().setAll(name, history, createdAt);
