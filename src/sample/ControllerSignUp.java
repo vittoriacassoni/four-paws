@@ -12,18 +12,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.html.ImageView;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 public class ControllerSignUp implements Initializable {
     @FXML
@@ -86,17 +92,17 @@ public class ControllerSignUp implements Initializable {
 
     }
 
-    /*public void saveImage(MouseEvent event) {
-        Image image = new Image();
-        JFileChooser file = new JFileChooser();
-        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int i= file.showSaveDialog(null);
-        if (i==1){
-            image.
-        } else {
-            File arquivo = file.getSelectedFile();
-            JtextFieldLocal.setText(arquivo.getPath());
-        }
+    public void saveImage(MouseEvent event) throws IOException {
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.jpg")
+        );
+        Stage stage = (Stage) txtDateBirth.getScene().getWindow();
+        File file = chooser.showOpenDialog(stage);
+        System.out.println(file.getName());
+        BufferedImage image = ImageIO.read(file);
+        String a = Image.encodeToString(image, file.getName().split(Pattern.quote("."))[1]);
+        System.out.println(a);
 
-    }*/
+    }
 }

@@ -60,8 +60,8 @@
                </font></PasswordField>
             <ImageView fitHeight="146.0" fitWidth="125.0" layoutX="377.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="377.0" layoutY="15.0" stroke="#ff6f61" strokeType="OUTSIDE" width="125.0" />
-            <Button layoutX="489.0" layoutY="142.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="26.0" style="-fx-background-radius: 50; -fx-background-color: #00EEFF;" />
-            <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="494.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+            <Button layoutX="489.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#saveImage" prefHeight="19.0" prefWidth="26.0" style="-fx-background-radius: 50; -fx-background-color: #00EEFF;" />
+            <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="494.0" layoutY="147.0" onMouseClicked="#saveImage" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/pen-solid.png" />
                </image>

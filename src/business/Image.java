@@ -7,6 +7,7 @@ import java.util.Base64;
 
 public class Image {
 
+
     public static String encodeToString(BufferedImage image, String type) {
         String imageString = null;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -14,7 +15,8 @@ public class Image {
         try {
             ImageIO.write(image, type, bos);
             byte[] imageBytes = bos.toByteArray();
-            imageString = String.valueOf(Base64.getEncoder().encode(imageBytes));
+            imageString = Base64.getEncoder().encodeToString(imageBytes);
+            System.out.println(imageString);
             bos.close();
         } catch (IOException e) {
             e.printStackTrace();

@@ -4,41 +4,29 @@ import business.services.AdoptionService;
 import business.services.AnimalService;
 import business.services.DonationService;
 import business.services.UserService;
-<<<<<<< HEAD
-import comuns.access.*;
-import comuns.bases.Entity;
-import dao.access.AdoptionRequirementSqlServerDAO;
 import dao.access.DonationSqlServerDAO;
-=======
 import business.singleton.LocalStorage;
 import comuns.access.Adoption;
 import comuns.access.Animal;
 import comuns.access.Donation;
 import comuns.access.User;
->>>>>>> 4a6c25bd13e72ae80e4e29d21c72c879757c99a1
 import dao.access.UserSqlServerDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-<<<<<<< HEAD
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-=======
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
->>>>>>> 4a6c25bd13e72ae80e4e29d21c72c879757c99a1
 import javafx.scene.layout.Pane;
 
-<<<<<<< HEAD
 import business.Validates;
 
 import javax.swing.*;
-=======
->>>>>>> 4a6c25bd13e72ae80e4e29d21c72c879757c99a1
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -51,17 +39,7 @@ import java.util.logging.Logger;
 
 public class ControllerProfile implements Initializable {
     @FXML
-<<<<<<< HEAD
     Pane paneEdit, paneDarkBackground, newDonationPane, darkPane;
-=======
-    Pane paneEdit;
-
-    @FXML
-    Pane paneDarkBackground;
-
-    @FXML
-    Label txtName;
->>>>>>> 4a6c25bd13e72ae80e4e29d21c72c879757c99a1
 
     @FXML
     ListView listDonations, listAdoptions;

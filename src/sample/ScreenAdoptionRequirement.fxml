@@ -6,7 +6,6 @@
 <?import javafx.scene.text.*?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAdoptionRequirement">
-
       <Pane id="paneFoundPet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1169.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
          <children>
             <ImageView fitHeight="67.0" fitWidth="52.0" layoutX="71.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
