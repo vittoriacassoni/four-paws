@@ -89,7 +89,7 @@
          </children>
       </Pane>
       <Pane fx:id="darkPane" onMouseClicked="#closeReportAbandonmentModal" opacity="0.8" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
-      <Pane fx:id="paneReportAbandonment" layoutX="138.0" layoutY="41.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="929.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+      <Pane fx:id="paneReportAbandonment" layoutX="138.0" layoutY="41.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="929.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
          <children>
             <Label layoutX="47.0" layoutY="277.0" prefHeight="28.0" prefWidth="208.0" text="Animal está abrigado?" textFill="#ff6f61">
                <font>
@@ -101,7 +101,7 @@
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="47.0" layoutY="208.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço onde animal foi visto" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField fx:id="txtAddress" layoutX="47.0" layoutY="208.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço onde animal foi visto" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font></TextField>
@@ -140,7 +140,7 @@
                         <Font name="Microsoft JhengHei Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField layoutY="40.0" prefHeight="42.0" prefWidth="418.0" promptText="Nome do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                  <TextField fx:id="txtNameHost" layoutY="40.0" prefHeight="42.0" prefWidth="418.0" promptText="Nome do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                      <font>
                         <Font name="Microsoft JhengHei" size="14.0" />
                      </font>
@@ -150,7 +150,7 @@
                         <Font name="Microsoft JhengHei Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField layoutY="150.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                  <TextField fx:id="txtAddressHost" layoutY="150.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                      <font>
                         <Font name="Microsoft JhengHei" size="14.0" />
                      </font>
@@ -183,7 +183,7 @@
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="280.0" layoutY="319.0" prefHeight="42.0" prefWidth="186.0" promptText="dd/MM/yyyy" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField fx:id="txtLastSeen" layoutX="280.0" layoutY="319.0" prefHeight="42.0" prefWidth="186.0" promptText="dd/MM/yyyy" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>

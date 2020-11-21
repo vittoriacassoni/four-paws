@@ -14,11 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
