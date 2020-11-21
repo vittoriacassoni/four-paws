@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  ![image](https://drive.google.com/uc?export=view&id=1g-jJcfsSOhi-5qnLEAA4GQtDqqZCr5nD)
+  <a href="#"><img src="https://drive.google.com/uc?export=view&id=1g-jJcfsSOhi-5qnLEAA4GQtDqqZCr5nD" style="width: 650px; max-width: 100%; height: auto" title="4Paws" />
   <br>
   4Paws
   <br>
