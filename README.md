@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://www.notion.so/4Paws-Wiki-Grupo-02-9089c6b33cdc44babe87d403999c58ce"><img src="https://imgur.com/a/xls2HiY" alt="4paws" width="200"></a>
+  ![image](https://drive.google.com/uc?export=view&id=1g-jJcfsSOhi-5qnLEAA4GQtDqqZCr5nD)
   <br>
   4Paws
   <br>
