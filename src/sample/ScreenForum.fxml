@@ -12,52 +12,38 @@
          <image>
             <Image url="@../assets/images/Logo.png" />
          </image></ImageView>
-      <TextField layoutX="211.0" layoutY="56.0" prefHeight="40.0" prefWidth="680.0" promptText="Pesquisar" stylesheets="@../stylesheet/TextField.css">
+      <TextField fx:id="txtTitleFilter" layoutX="211.0" layoutY="56.0" prefHeight="40.0" prefWidth="680.0" promptText="Pesquisar" stylesheets="@../stylesheet/TextField.css">
          <font>
             <Font name="Microsoft JhengHei" size="14.0" />
          </font></TextField>
-      <Button fx:id="btnCriarTopico" layoutX="955.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#loadPane" prefHeight="40.0" prefWidth="190.0" stylesheets="@../stylesheet/Button.css" text="Criar um tópico">
+      <Button fx:id="btnCriarTopico" layoutX="955.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#showTopicPane" prefHeight="40.0" prefWidth="190.0" stylesheets="@../stylesheet/Button.css" text="Criar um tópico">
          <font>
             <Font name="Microsoft JhengHei Bold" size="18.0" />
          </font></Button>
-      <ImageView fitHeight="21.0" fitWidth="25.0" layoutX="853.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="21.0" fitWidth="25.0" layoutX="853.0" layoutY="66.0" onMouseClicked="#listTopicsByTitle" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons/search-solid1.png" />
          </image></ImageView>
-      <Pane fx:id="topicsPane" layoutY="118.0" prefHeight="782.0" prefWidth="1200.0" styleClass="background" stylesheets="@../stylesheet/Background.css" />
+      <ListView fx:id="topicsPane" layoutX="134.0" layoutY="146.0" prefHeight="540.0" prefWidth="1058.0" stylesheets="@../stylesheet/ListViewForum.css" />
       <Pane fx:id="darkPane" opacity="0.8" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
-      <Pane fx:id="answerTopicPane" layoutX="150.0" layoutY="100.0" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+      <Label fx:id="lblNoTopic" contentDisplay="CENTER" layoutX="462.0" layoutY="234.0" prefHeight="34.0" prefWidth="276.0" style="-fx-text-alignment: center;" text="Nenhum tópico encontrado " textAlignment="CENTER" textFill="GREY">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="20.0" />
+         </font>
+      </Label>
+      <Pane fx:id="answerTopicPane" layoutX="150.0" layoutY="90.0" prefHeight="577.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
          <children>
-            <ImageView fitHeight="42.0" fitWidth="34.0" layoutX="54.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icons/user-solid.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="109.0" layoutY="100.0" prefHeight="64.0" prefWidth="747.0" text="Meu cachorro comeu melão e está vomitando. É normal? Tem algum remédio que seja bom?" wrapText="true">
+            <ListView fx:id="commentsPane" layoutX="70.0" layoutY="63.0" prefHeight="317.0" prefWidth="756.0" stylesheets="@../stylesheet/ListViewForum.css" />
+            <TextField fx:id="txtComment" layoutX="337.0" layoutY="412.0" prefHeight="64.0" prefWidth="463.0" promptText="Digite seu comentário.." stylesheets="@../stylesheet/TextField.css">
                <font>
-                  <Font name="Microsoft JhengHei" size="18.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="54.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icons/user-solid.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="116.0" layoutY="201.0" prefHeight="34.0" prefWidth="734.0" text="Não é normal, melhor leva-lo ao veterinario para uma consulta e o remedio adequado." wrapText="true">
-               <font>
-                  <Font name="Microsoft JhengHei" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtComment" layoutX="336.0" layoutY="322.0" prefHeight="64.0" prefWidth="463.0" promptText="Digite seu comentário.." stylesheets="@../stylesheet/TextField.css">
-               <font>
-                  <Font name="Microsoft JhengHei" size="14.0" />
+                  <Font name="Microsoft JhengHei" size="16.0" />
                </font></TextField>
-            <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="816.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="817.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/user-solid.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnSendComment" layoutX="686.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#sendNewComment" prefHeight="38.0" prefWidth="113.0" stylesheets="@../stylesheet/Button.css" text="Enviar">
+            <Button fx:id="btnSendComment" layoutX="620.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#sendNewComment" prefHeight="38.0" prefWidth="180.0" stylesheets="@../stylesheet/Button.css" text="Enviar">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font></Button>
@@ -66,9 +52,14 @@
                   <Image url="@../assets/icons/times-solid.png" />
                </image>
             </ImageView>
-            <Label layoutX="287.0" layoutY="14.0" prefHeight="34.0" prefWidth="323.0" text="Cachorro pode comer melão?">
+            <Label fx:id="lblTitleTopic" contentDisplay="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="34.0" prefWidth="858.0" style="-fx-text-alignment: center;" text="Cachorro pode comer melão?" textAlignment="CENTER">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNoComment" contentDisplay="CENTER" layoutX="205.0" layoutY="144.0" prefHeight="34.0" prefWidth="491.0" style="-fx-text-alignment: center;" text="Nenhum comentário encontrado para esse tópico" textAlignment="CENTER" textFill="GREY" visible="false">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
             </Label>
          </children>
@@ -85,11 +76,11 @@
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtTitle" layoutX="90.0" layoutY="112.0" prefHeight="42.0" prefWidth="721.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField fx:id="txtTitle" layoutX="90.0" layoutY="112.0" prefHeight="42.0" prefWidth="721.0" promptText="Título" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font></TextField>
-            <TextArea fx:id="txtDiscussion" layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" styleClass="text-area" stylesheets="@../stylesheet/TextArea.css">
+            <TextArea fx:id="txtDiscussion" layoutX="90.0" layoutY="225.0" prefHeight="182.0" prefWidth="721.0" promptText="Assunto" styleClass="text-area" stylesheets="@../stylesheet/TextArea.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font></TextArea>
@@ -103,12 +94,7 @@
                   <Font name="Microsoft JhengHei" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="btnBackTopic" layoutX="32.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#closePane" prefHeight="34.0" prefWidth="120.0" stylesheets="@../stylesheet/Button.css" text="Voltar" textFill="WHITE" visible="false">
-               <font>
-                  <Font name="Microsoft JhengHei Bold" size="18.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="21.0" fitWidth="13.0" layoutX="863.0" layoutY="22.0" onMouseClicked="#closePane" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="21.0" fitWidth="13.0" layoutX="863.0" layoutY="22.0" onMouseClicked="#closeTopicPane" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/times-solid.png" />
                </image>

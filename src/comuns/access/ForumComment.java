@@ -7,8 +7,9 @@ import java.util.Date;
 public class ForumComment extends Entity {
 
     private String discussion;
-    private int forumTopicId;
-    private int userId;
+    private Integer forumTopicId;
+    private Integer userId;
+    private String userName;
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
@@ -25,10 +26,13 @@ public class ForumComment extends Entity {
     public void setDiscussion(String discussion) {this.discussion = discussion;}
 
     public int getForumTopicId() {return forumTopicId;}
-    public void setForumTopicId(int forumTopicId) {this.forumTopicId = forumTopicId;}
+    public void setForumTopicId(Integer forumTopicId) {this.forumTopicId = forumTopicId;}
 
-    public int getUserId() {return userId;}
-    public void setUserId(int userId) {this.userId = userId;}
+    public Integer getUserId() {return userId;}
+    public void setUserId(Integer userId) {this.userId = userId;}
+
+    public String getUserName() {return userName;}
+    public void setUserName(String userName) {this.userName = userName;}
 
     public Date getCreatedAt() {return createdAt;}
     public void setCreatedAt(Date createdAt) {this.createdAt = createdAt;}

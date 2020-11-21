@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,12 +24,14 @@ public class ForumCommentSqlServerDAO<E extends Entity> extends SqlServerDAO {
     protected Entity fillEntity(ResultSet rs) {
         ForumComment entity = new ForumComment();
         try {
+            entity.setId(rs.getInt("Id"));
             entity.setDiscussion(rs.getString("Discussion"));
             entity.setForumTopicId(rs.getInt("ForumTopicId"));
             entity.setUserId(rs.getInt("UserId"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
-            entity.setUpdatedAt(rs.getDate("UpdatedAt"));
-            entity.setDeletedAt(rs.getDate("DeletedAt"));
+            if(rs.findColumn("Name") > 0 && rs.findColumn("LastName") > 0){
+                entity.setUserName(rs.getString("Name") + " " + rs.getString("LastName"));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -58,5 +62,29 @@ public class ForumCommentSqlServerDAO<E extends Entity> extends SqlServerDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public ArrayList<E> listComments(Integer topicId) throws SQLException {
+        ArrayList<E> list = new ArrayList<E>();
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+            String query = "SELECT  F.*, U.Name, U.LastName FROM [ForumComment] F INNER JOIN [User] U on U.Id = F.UserId " +
+                    "WHERE F.ForumTopicId = ? and F.DeletedAt is null";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setInt(1, topicId);
+
+            try (ResultSet rs = add.executeQuery()) {
+                while (rs.next()) {
+                    Entity entity = (E) fillEntity(rs);
+                    list.add((E) entity);
+                }
+            } catch (Exception error) {
+                error.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 }

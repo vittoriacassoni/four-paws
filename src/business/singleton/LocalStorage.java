@@ -17,6 +17,7 @@ public class LocalStorage {
 
     private String userEmail;
     private String userName;
+    private String userLastName;
     private Integer userId;
 
 
@@ -34,9 +35,7 @@ public class LocalStorage {
                 setUserId(Integer.valueOf(data[0]));
                 setUserEmail(data[1]);
                 setUserName(data[2]);
-                System.out.println(data[0]);
-                System.out.println(data[1]);
-                System.out.println(data[2]);
+                setUserLastName(data[3]);
             }
             reader.close();
         }
@@ -68,7 +67,7 @@ public class LocalStorage {
         if(userEmail == null){
             try (FileWriter fw = new FileWriter(file, true)){
                 try (BufferedWriter bw = new BufferedWriter(fw)) {
-                    bw.write(email+ "|");
+                    bw.write(email + "|");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -83,7 +82,7 @@ public class LocalStorage {
         if(userName == null){
             try (FileWriter fw = new FileWriter(file, true)){
                 try (BufferedWriter bw = new BufferedWriter(fw)) {
-                    bw.write(name);
+                    bw.write(name + "|");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -94,12 +93,31 @@ public class LocalStorage {
         }
     }
 
+    public void saveUserLastName(String lastName) {
+        if(userLastName == null){
+            try (FileWriter fw = new FileWriter(file, true)){
+                try (BufferedWriter bw = new BufferedWriter(fw)) {
+                    bw.write(lastName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            setUserLastName(lastName);
+        }
+    }
+
     public String getUserEmail() {
         return userEmail;
     }
 
     public String getUserName() {
         return userName;
+    }
+
+    public String getUserLastName() {
+        return userLastName;
     }
 
     public Integer getUserId() {
@@ -116,5 +134,9 @@ public class LocalStorage {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
     }
 }

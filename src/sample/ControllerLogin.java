@@ -39,6 +39,13 @@ public class ControllerLogin {
         UserService userService = new UserService();
 
         if (userService.validateLogin(txtEmail.getText(), txtPassword.getText())) {
+            var user = (User) userDAO.select(txtEmail.getText());
+
+            LocalStorage.getInstance().saveUserId(String.valueOf(user.getId()));
+            LocalStorage.getInstance().saveUserEmail(user.getEmail());
+            LocalStorage.getInstance().saveUserName(user.getName());
+            LocalStorage.getInstance().saveUserLastName(user.getLastName());
+
             Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Seja Bem-Vinde");
@@ -50,14 +57,8 @@ public class ControllerLogin {
 
             //TODO Retirar a DAO, mudar para business!
             Audit audit = new Audit();
-            var user = (User) userDAO.select(txtEmail.getText());
             audit.setUserId(String.valueOf(user.getId()));
             audit.setAction("Login");
-
-            LocalStorage.getInstance().saveUserId(String.valueOf(user.getId()));
-            LocalStorage.getInstance().saveUserEmail(user.getEmail());
-            LocalStorage.getInstance().saveUserName(user.getName());
-
             ManageAudit.getInstance().addAudit(audit);
             ManageAudit.getInstance().activate();
         }

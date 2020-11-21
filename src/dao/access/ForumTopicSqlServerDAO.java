@@ -21,12 +21,14 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
     protected Entity fillEntity(ResultSet rs) {
         ForumTopic entity = new ForumTopic();
         try {
+            entity.setId(rs.getInt("Id"));
             entity.setTitle(rs.getString("Title"));
             entity.setDiscussion(rs.getString("Discussion"));
             entity.setUserId(rs.getInt("UserId"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
-            entity.setUpdatedAt(rs.getDate("UpdatedAt"));
-            entity.setDeletedAt(rs.getDate("DeletedAt"));
+            if(rs.findColumn("Name") > 0 && rs.findColumn("LastName") > 0){
+                entity.setUserName(rs.getString("Name") + " " + rs.getString("LastName"));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -36,12 +38,7 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
     @Override
     public boolean insert(Entity entity) throws SQLException {
         ForumTopic topic = (ForumTopic) entity;
-        System.out.println(Instant.now());
         try (Connection con = getConnection()) {
-            System.out.println(con);
-            if (Validates.validateRequiredField(topic.getTitle()) || Validates.validateRequiredField(topic.getDiscussion())) {
-                throw new Exception("Preencha todos os campos!");
-            }
             String SQL = "INSERT INTO " + super.getTable() + " (Title, Discussion, UserId, CreatedAt)"
                     + " VALUES (?, ?, ?, ?)";
 
@@ -54,8 +51,6 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
             } catch (Exception error) {
                 error.printStackTrace();
             }
-
-            System.out.println(Instant.now());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,12 +82,21 @@ public class ForumTopicSqlServerDAO<E extends Entity> extends SqlServerDAO {
         return entity;
     }
 
-    public ArrayList<E> listTopics() {
+    public ArrayList<E> listTopics(String titleFilter) {
         ArrayList<E> list = new ArrayList<>();
         try (Connection con = getConnection()) {
             System.out.println(con);
-            String query = "SELECT * FROM [ForumTopic] WHERE DeletedAt is null ORDER BY CreatedAt desc";
-            PreparedStatement add = con.prepareStatement(query);
+            PreparedStatement add = null;
+            String query = "SELECT F.*, U.Name, U.LastName FROM [ForumTopic] F INNER JOIN [User] U on U.Id = F.UserId " +
+                    "WHERE F.DeletedAt is null";
+            if(titleFilter.isBlank()){
+                query += " ORDER BY F.CreatedAt desc";
+                add = con.prepareStatement(query);
+            } else{
+                query += " and F.Title like ? ORDER BY F.CreatedAt desc";
+                add = con.prepareStatement(query);
+                add.setString(1, "%" + titleFilter + "%");
+            }
 
             try (ResultSet rs = add.executeQuery()) {
                 while (rs.next()) {

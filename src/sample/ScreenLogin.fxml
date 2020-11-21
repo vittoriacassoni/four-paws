@@ -22,7 +22,7 @@
         </Pane>
         <Pane layoutX="704.0" prefHeight="700.0" prefWidth="496.0" stylesheets="@../stylesheet/Background.css">
             <children>
-                <PasswordField fx:id="txtPassword" layoutX="79.0" layoutY="352.0" prefHeight="40.0" prefWidth="350.0" promptText="          Senha">
+                <PasswordField fx:id="txtPassword" layoutX="115.0" layoutY="352.0" prefHeight="40.0" prefWidth="314.0" promptText="Senha">
                     <stylesheets>
                         <URL value="@../stylesheet/Background.css" />
                         <URL value="@../stylesheet/TextField.css" />
@@ -36,7 +36,7 @@
                         <Image url="@../assets/images/Logo.png" />
                     </image>
                 </ImageView>
-                <TextField fx:id="txtEmail" layoutX="79.0" layoutY="280.0" prefHeight="40.0" prefWidth="350.0" promptText="          Email" stylesheets="@../stylesheet/TextField.css">
+                <TextField fx:id="txtEmail" layoutX="115.0" layoutY="280.0" prefHeight="40.0" prefWidth="314.0" promptText="Email" stylesheets="@../stylesheet/TextField.css">
                     <font>
                         <Font name="Microsoft JhengHei" size="14.0" />
                     </font>
@@ -78,14 +78,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Label>
-            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="88.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icons/user-solid.png" />
-               </image>
-            </ImageView>
+            <Pane layoutX="79.0" layoutY="352.0" prefHeight="40.0" prefWidth="46.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
             <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="88.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/lock-solid.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="79.0" layoutY="280.0" prefHeight="40.0" prefWidth="46.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css" />
+            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="88.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/user-solid.png" />
                </image>
             </ImageView>
             </children>

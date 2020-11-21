@@ -1,0 +1,47 @@
+.list-cell {
+    -fx-background-color:  #fff;
+}
+
+.list-cell{
+  -fx-text-fill: #2f2e41;
+  -fx-font: 14px "Microsoft Jheng Hei";
+}
+
+.list-view, .split-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.list-view .scroll-bar:horizontal .thumb,
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color:#ff6f6155;
+	-fx-background-radius: 0em;
+}
+
+.list-view .scroll-bar:horizontal ,
+.list-view .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.list-view .scroll-bar:horizontal .thumb,
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color:#ff6f6155;
+	-fx-background-radius: 0em;
+
+}
+
+.list-view .scroll-bar:horizontal:hover .track ,
+.list-view .scroll-bar:horizontal:pressed .track ,
+.list-view .scroll-bar:vertical:hover .track,
+.list-view .scroll-bar:vertical:pressed .track{
+     -fx-background-color: derive(#828282,20%);
+	 -fx-opacity: 0.1;
+	 -fx-background-radius: 0em;
+
+}
+
+/* The main scrollbar **thumb** CSS class on event of "hover" and "pressed" */
+.list-view .scroll-bar .thumb:hover,
+.list-view .scroll-bar .thumb:pressed{
+    -fx-background-color: #ff6f6155;
+}
