@@ -101,7 +101,7 @@
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtAddress" layoutX="47.0" layoutY="208.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço onde animal foi visto" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField layoutX="47.0" layoutY="208.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço onde animal foi visto" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font></TextField>
@@ -140,7 +140,7 @@
                         <Font name="Microsoft JhengHei Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtHostName" layoutY="40.0" prefHeight="42.0" prefWidth="418.0" promptText="Nome do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                  <TextField layoutY="40.0" prefHeight="42.0" prefWidth="418.0" promptText="Nome do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                      <font>
                         <Font name="Microsoft JhengHei" size="14.0" />
                      </font>
@@ -150,7 +150,7 @@
                         <Font name="Microsoft JhengHei Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtAddressHost" layoutY="150.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                  <TextField layoutY="150.0" prefHeight="42.0" prefWidth="418.0" promptText="Endereço do anfitrião" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                      <font>
                         <Font name="Microsoft JhengHei" size="14.0" />
                      </font>
@@ -183,7 +183,7 @@
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="txtLastSeen" layoutX="280.0" layoutY="319.0" prefHeight="42.0" prefWidth="186.0" promptText="dd/MM/yyyy" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField layoutX="280.0" layoutY="319.0" prefHeight="42.0" prefWidth="186.0" promptText="dd/MM/yyyy" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>

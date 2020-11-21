@@ -103,4 +103,26 @@ public abstract class SqlServerDAO <E extends Entity> extends DAO {
         }
         return entities;
     }
+
+    public List<E> selectAll() throws SQLException{
+        List<E> entities = null;
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+
+            String query = "SELECT * FROM [" + table + "]";
+            PreparedStatement add = con.prepareStatement(query);
+
+            try (ResultSet rs = add.executeQuery()) {
+                while (rs.next()) {
+                    entities.add(fillEntity(rs));
+                }
+            } catch (Exception error) {
+                con.rollback();
+            }
+            con.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return entities;
+    }
 }

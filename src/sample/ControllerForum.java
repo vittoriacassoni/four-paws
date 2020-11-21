@@ -74,10 +74,14 @@ public class ControllerForum implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             listTopics("");
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
+        catch (Exception error){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro!");
+            alert.setHeaderText(null);
+            alert.setContentText(error.getMessage());
+            alert.showAndWait();
+        }
     }
 
     //Método para listar os tópicos por ordem de data e podendo filtrar por título

@@ -31,7 +31,7 @@
             <Font name="Microsoft JhengHei Bold" size="20.0" />
          </font>
       </Label>
-      <Pane fx:id="answerTopicPane" layoutX="150.0" layoutY="90.0" prefHeight="577.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+      <Pane fx:id="answerTopicPane" layoutX="150.0" layoutY="100.0" prefHeight="548.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
          <children>
             <ListView fx:id="commentsPane" layoutX="70.0" layoutY="63.0" prefHeight="317.0" prefWidth="756.0" stylesheets="@../stylesheet/ListViewForum.css" />
             <TextField fx:id="txtComment" layoutX="337.0" layoutY="412.0" prefHeight="64.0" prefWidth="463.0" promptText="Digite seu comentário.." stylesheets="@../stylesheet/TextField.css">

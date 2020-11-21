@@ -50,7 +50,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 throw new Exception("Preencha todos os campos!");
             }
 
-            String SQL = "INSERT INTO [" + super.getTable() + "] (Name, LastName, Email, PasswordHash, DateOfBirth, " +
+            String SQL = "INSERT INTO [" + super.getTable() + "] (Name, LastName, Email, PasswordHash, Image, DateOfBirth, " +
                     "UserRoleId, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {

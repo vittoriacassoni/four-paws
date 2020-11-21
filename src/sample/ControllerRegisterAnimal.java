@@ -44,7 +44,7 @@ public class ControllerRegisterAnimal implements Initializable {
         );
         imgAnimal.setFill(pattern);
 
-        dropBreeds.getItems().addAll("Poodle", "Maltês", "Golden", "Pug");
+        dropBreeds.getItems().addAll("Poodle",  "Maltês", "Golden", "Pug");
         dropBreeds.getSelectionModel().select(0);
 
         dropColors.getItems().addAll("Preto", "Branco", "Creme", "Caramelo");

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerProfile">
+<Pane prefHeight="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerProfile">
    <children>
       <Pane prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
          <children>
@@ -28,7 +28,7 @@
                   <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="90.0" layoutY="378.0" text="Email" textFill="#ff6f61">
+            <Label layoutX="90.0" layoutY="391.0" text="Email" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
@@ -38,23 +38,23 @@
                   <Font name="Microsoft JhengHei Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="txtEmail" layoutX="90.0" layoutY="415.0" text="user@email.com" textFill="#2f2e41">
+            <Label fx:id="txtEmail" layoutX="90.0" layoutY="425.0" text="user@email.com" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="17.0" />
                </font>
             </Label>
-            <Label layoutX="90.0" layoutY="472.0" text="Data de nascimento" textFill="#ff6f61">
+            <Label layoutX="90.0" layoutY="494.0" text="Data de nascimento" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="txtBirthday" layoutX="90.0" layoutY="509.0" text="1900/01/01" textFill="#2f2e41">
+            <Label fx:id="txtBirthday" layoutX="90.0" layoutY="536.0" text="1900/01/01" textFill="#2f2e41">
 
                <font>
                   <Font name="Microsoft JhengHei Bold" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="btnEdit" layoutX="93.0" layoutY="565.0" mnemonicParsing="false" onAction="#edit" prefHeight="0.0" prefWidth="98.0" stylesheets="@../stylesheet/Button.css" text="Editar">
+            <Button fx:id="btnEdit" layoutX="91.0" layoutY="602.0" mnemonicParsing="false" onAction="#edit" prefHeight="34.0" prefWidth="83.0" stylesheets="@../stylesheet/Button.css" text="Editar">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="16.0" />
                </font>
@@ -64,14 +64,14 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="483.0" prefHeight="700.0" prefWidth="718.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
+      <Pane layoutX="482.0" layoutY="-3.0" prefHeight="700.0" prefWidth="718.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
          <children>
-            <Label layoutX="62.0" layoutY="64.0" text="Doações" textFill="#ff6f61">
+            <Label layoutX="44.0" layoutY="65.0" text="Doações" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="62.0" layoutY="350.0" text="Adoções" textFill="#ff6f61">
+            <Label layoutX="43.0" layoutY="371.0" text="Adoções" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
@@ -94,11 +94,24 @@
             </Label>
             <ListView fx:id="listDonations" layoutX="62.0" layoutY="115.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
             <ListView fx:id="listAdoptions" layoutX="62.0" layoutY="401.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
-            <ImageView fx:id="iconAdcDoacao" fitHeight="34.0" fitWidth="52.0" layoutX="163.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="btnAddDonation" layoutX="160.0" layoutY="64.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" style="-fx-background-color: #ff6f61; -fx-background-radius: 10;" />
+            <ImageView fx:id="iconAddDonation" fitHeight="21.0" fitWidth="18.0" layoutX="167.0" layoutY="69.0" onMouseClicked="#loadDonationPane" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/plus-solid.png" />
                </image>
             </ImageView>
+            <TableView fx:id="tableDonation" layoutX="44.0" layoutY="118.0" prefHeight="220.0" prefWidth="601.0" stylesheets="@../stylesheet/TableView.css">
+              <columns>
+                <TableColumn prefWidth="135.0" text="C1" />
+                <TableColumn prefWidth="139.0" text="C2" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tableAdoption" layoutX="43.0" layoutY="421.0" prefHeight="220.0" prefWidth="601.0" stylesheets="@../stylesheet/TableView.css">
+              <columns>
+                <TableColumn prefWidth="146.0" text="C1" />
+                <TableColumn prefWidth="121.0" text="C2" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
       <Pane fx:id="paneDarkBackground" onMouseClicked="#closePanel" opacity="0.85" prefHeight="700.0" prefWidth="1201.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
@@ -144,6 +157,37 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-         </children></Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="darkPane" opacity="0.8" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
+      <Pane fx:id="newDonationPane" layoutX="150.0" layoutY="100.0" prefHeight="500.0" prefWidth="900.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
+         <children>
+            <Label layoutX="399.0" layoutY="69.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Nova doação">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="259.0" text="Descrição" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="103.0" layoutY="140.0" text="Valor (R$)" textFill="#ff6f61">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtValue" layoutX="102.0" layoutY="179.0" prefHeight="41.0" prefWidth="735.0" promptText="Valor (R$)" style="-fx-background-radius: 5px;" />
+            <TextField fx:id="txtDescription" alignment="TOP_LEFT" layoutX="98.0" layoutY="295.0" prefHeight="123.0" prefWidth="742.0" promptText="Descrição" style="-fx-background-radius: 5px;" />
+            <Button fx:id="btnNewDonation" layoutX="714.0" layoutY="445.0" mnemonicParsing="false" onMouseClicked="#sendNewDonation" prefHeight="34.0" prefWidth="126.0" stylesheets="@../stylesheet/Button.css" text="Doar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="imgCloseDonation" fitHeight="21.0" fitWidth="13.0" layoutX="865.0" layoutY="20.0" onMouseClicked="#closeDonationPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons/x-1727490_960_720.png" />
+               </image></ImageView>
+         </children>
+      </Pane>
    </children>
 </Pane>

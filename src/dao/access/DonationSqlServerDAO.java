@@ -1,8 +1,7 @@
 package dao.access;
 
-import business.Validates;
+
 import comuns.access.Donation;
-import comuns.access.User;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
@@ -10,8 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,12 +28,11 @@ public class DonationSqlServerDAO <E extends Entity> extends SqlServerDAO {
     protected E fillEntity(ResultSet rs) {
         Donation entity = new Donation();
         try {
-            entity.setValue(Integer.parseInt(rs.getString("Value")));
+            entity.setValue(rs.getDouble("Value"));
             entity.setDescription(rs.getString("Description"));
+            entity.setUserId(rs.getInt("UserId"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
-            entity.setUpdatedAt(rs.getDate("UpdatedAt"));
-            entity.setDeletedAt(rs.getDate("DeletedAt"));
-            entity.setUserId(Integer.parseInt(rs.getString("UserId")));
+
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -42,12 +41,27 @@ public class DonationSqlServerDAO <E extends Entity> extends SqlServerDAO {
 
     @Override
     public boolean insert(Entity entity) throws SQLException {
-        return false;
-    }
+        Donation donation = (Donation) entity;
+        try (Connection con = getConnection()) {
+            System.out.println(con);
 
-    @Override
-    public boolean update(Entity entity) throws SQLException {
-        return false;
+            String SQL = "INSERT INTO " + super.getTable() + " (Value, Description, UserId, CreatedAt)" +
+                    "VALUES(?, ?, ?, ?)";
+
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setDouble(1, donation.getValue());
+                stmt.setString(2, donation.getDescription());
+                stmt.setInt(3, donation.getUserId());
+                stmt.setString(4, Instant.now().toString());
+                stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -68,11 +82,7 @@ public class DonationSqlServerDAO <E extends Entity> extends SqlServerDAO {
             } catch (Exception error) {
                 con.rollback();
             }
-            con.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
         return entity;
     }
 
@@ -93,9 +103,9 @@ public class DonationSqlServerDAO <E extends Entity> extends SqlServerDAO {
             } catch (Exception error) {
                 con.rollback();
             }
-            con.commit();
         }
         return entities;
     }
 
 }
+

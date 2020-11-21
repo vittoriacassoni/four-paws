@@ -1,20 +1,29 @@
 package sample;
 
+import business.Validates;
+import business.log.threads.ManageAudit;
+import business.services.ReportAbandonmentService;
 import business.singleton.LocalStorage;
+import comuns.access.Audit;
+import comuns.access.ReportAbandonment;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControllerMain implements Initializable {
@@ -29,6 +38,11 @@ public class ControllerMain implements Initializable {
 
     @FXML
     Label lblName, lblWelcome;
+
+    @FXML
+    TextField txtAddress, txtLastSeen, txtHostName, txtAddressHost;
+
+    ReportAbandonmentService reportAbandonment = new ReportAbandonmentService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,6 +80,38 @@ public class ControllerMain implements Initializable {
         primaryStage.setTitle("Suas informações.");
         primaryStage.setScene(new Scene(root, 1200, 700));
         primaryStage.show();
+    }
+
+    public void saveReport(MouseEvent event) {
+        try {
+            Date lastSeen = Validates.validateDate(txtLastSeen.getText());
+            Integer userId = LocalStorage.getInstance().getUserId();
+            Boolean temporaryHome;
+            if (rdCovered.isSelected()){
+                temporaryHome = true;
+            } else {
+                temporaryHome = false;
+            }
+
+            var report = new ReportAbandonment(txtAddress.getText(), lastSeen, userId, temporaryHome, txtHostName.getText(), txtAddressHost.getText());
+
+            if(reportAbandonment.insert(report)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Reportado com sucesso!");
+                alert.setHeaderText(null);
+                alert.showAndWait();
+                paneReportAbandonment.setVisible(false);
+
+                Audit audit = new Audit();
+                //audit.setUserId(null);
+                audit.setAction("Novo Report");
+                ManageAudit.getInstance().addAudit(audit);
+                ManageAudit.getInstance().activate();
+            }
+        } catch(Exception error) {
+
+        }
+
     }
 
     public void showReportAbandonmentModal() throws IOException {
