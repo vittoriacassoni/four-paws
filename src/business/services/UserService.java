@@ -1,6 +1,7 @@
 package business.services;
 
 import comuns.access.User;
+import comuns.bases.Entity;
 import dao.access.UserSqlServerDAO;
 import dao.bases.DAO;
 
@@ -27,11 +28,19 @@ public class UserService {
         }
     }
 
+    // Método para validar o usuário do e-mail informado
+    public Entity validatePassword(String email) throws SQLException {
+        User validated = (User) dao.select(email);
+        return validated;
+    }
+
     //Método para validar qual o id do usuário
     public User validateId(int id) throws SQLException {
         User validated = (User) dao.selectID(id);
         return validated;
     }
+
+
 
     // Método para validar se a string é um nome completo
     // caso ela não seja retornará um erro, caso contrário devolverá o nome separado por meio de um vetor
