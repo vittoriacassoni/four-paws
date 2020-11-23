@@ -19,6 +19,7 @@ public class LocalStorage {
     private String userName;
     private String userLastName;
     private Integer userId;
+    private Integer userRoleId;
 
 
     private LocalStorage() throws IOException {
@@ -36,6 +37,7 @@ public class LocalStorage {
                 setUserEmail(data[1]);
                 setUserName(data[2]);
                 setUserLastName(data[3]);
+                setUserRole(Integer.valueOf(data[4]));
             }
             reader.close();
         }
@@ -97,7 +99,7 @@ public class LocalStorage {
         if(userLastName == null){
             try (FileWriter fw = new FileWriter(file, true)){
                 try (BufferedWriter bw = new BufferedWriter(fw)) {
-                    bw.write(lastName);
+                    bw.write(lastName + "|");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -105,6 +107,21 @@ public class LocalStorage {
                 e.printStackTrace();
             }
             setUserLastName(lastName);
+        }
+    }
+
+    public void saveUserRoleId(String roleId)  {
+        if(userRoleId == null) {
+            try (FileWriter fw = new FileWriter(file, true)){
+                try (BufferedWriter bw = new BufferedWriter(fw)) {
+                    bw.write(roleId);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            setUserRole(Integer.valueOf(roleId));
         }
     }
 
@@ -140,6 +157,8 @@ public class LocalStorage {
         return userId;
     }
 
+    public Integer getUserRole() {return userRoleId;}
+
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
@@ -155,4 +174,6 @@ public class LocalStorage {
     public void setUserLastName(String userLastName) {
         this.userLastName = userLastName;
     }
+
+    public void setUserRole(Integer userRoleId) {this.userRoleId = userRoleId;}
 }
