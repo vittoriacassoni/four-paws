@@ -89,7 +89,7 @@
          </children>
       </Pane>
       <Pane fx:id="darkPane" onMouseClicked="#closeReportAbandonmentModal" opacity="0.8" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
-      <Pane fx:id="paneReportAbandonment" layoutX="138.0" layoutY="41.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="929.0" styleClass="background" stylesheets="@../stylesheet/Background.css">
+      <Pane fx:id="paneReportAbandonment" layoutX="138.0" layoutY="41.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="929.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
          <children>
             <Label layoutX="47.0" layoutY="277.0" prefHeight="28.0" prefWidth="208.0" text="Animal está abrigado?" textFill="#ff6f61">
                <font>
@@ -105,7 +105,7 @@
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font></TextField>
-            <Button fx:id="btnReportAbandonment" layoutX="585.0" layoutY="529.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" stylesheets="@../stylesheet/Button.css" text="Informar abandono">
+            <Button fx:id="btnReportAbandonment" layoutX="585.0" layoutY="529.0" mnemonicParsing="false" onMouseClicked="#saveReport" prefHeight="42.0" prefWidth="282.0" stylesheets="@../stylesheet/Button.css" text="Informar abandono">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>

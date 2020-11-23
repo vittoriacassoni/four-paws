@@ -28,13 +28,15 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
         try {
             entity.setId(Integer.parseInt(rs.getString("Id")));
             entity.setAddress(rs.getString("Address"));
-            entity.setHostName(rs.getString("HostName"));
-            entity.setHostContact(rs.getString("HostContact"));
+            entity.setTemporaryHome(rs.getBoolean("TemporaryHome"));
+            if(entity.getTemporaryHome() == true) {
+                entity.setHostName(rs.getString("HostName"));
+                entity.setHostContact(rs.getString("HostContact"));
+            }
             entity.setLastSeen(rs.getDate("LastSeen"));
             entity.setUserId(Integer.parseInt(rs.getString("UserId")));
-            entity.setTemporaryHome(rs.getBoolean("TemporaryHome"));
         } catch (SQLException ex) {
-            Logger.getLogger(ReportAbandonmentSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return (E) entity;
     }
@@ -43,21 +45,8 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
     public boolean insert(Entity entity) throws SQLException {
         ReportAbandonment reportAbandonment = (ReportAbandonment) entity;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(Instant.now());
         try (Connection con = getConnection()) {
-            System.out.println(con);
-            if (Validates.validateRequiredField(reportAbandonment.getAddress()) ||
-                    Validates.validateRequiredField(String.valueOf(reportAbandonment.getLastSeen()))) {
-                throw new Exception("Preencha todos os campos!");
-            }
-            if(reportAbandonment.getTemporaryHome()){
-                if (Validates.validateRequiredField(reportAbandonment.getHostName()) ||
-                        Validates.validateRequiredField(reportAbandonment.getHostContact())) {
-                    throw new Exception("Preencha as informações referentes ao anfitrião!");
-                }
-            }
-
-            String SQL = "INSERT INTO [" + super.getTable() + "] (Address, UserId, LastSeen, TemporaryHome, HostName, " +
+            String SQL = "INSERT INTO" + super.getTable() + "(Address, UserId, LastSeen, TemporaryHome, HostName, " +
                     "HostContact, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
@@ -65,16 +54,20 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
                 stmt.setInt(2, reportAbandonment.getUserId());
                 stmt.setString(3, dateFormat.format(reportAbandonment.getLastSeen()));
                 stmt.setBoolean(4, reportAbandonment.getTemporaryHome());
-                stmt.setString(5, reportAbandonment.getHostName());
-                stmt.setString(6, reportAbandonment.getHostContact());
+                if(reportAbandonment.getTemporaryHome()) {
+                    stmt.setString(5, reportAbandonment.getHostName());
+                    stmt.setString(6, reportAbandonment.getHostContact());
+                } else {
+                    stmt.setString(5, null);
+                    stmt.setString(6, null);
+                }
                 stmt.setString(7, Instant.now().toString());
 
                 stmt.execute();
+                return false;
             } catch(Exception error){
                 error.printStackTrace();
             }
-            System.out.println(Instant.now());
-
             return true;
         } catch (Exception e) {
             e.printStackTrace();

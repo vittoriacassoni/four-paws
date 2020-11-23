@@ -25,6 +25,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControllerMain implements Initializable {
     @FXML
@@ -82,34 +84,42 @@ public class ControllerMain implements Initializable {
         primaryStage.show();
     }
 
-    public void saveReport(MouseEvent event) {
+    public void saveReport() {
         try {
-            Date lastSeen = Validates.validateDate(txtLastSeen.getText());
             Integer userId = LocalStorage.getInstance().getUserId();
             Boolean temporaryHome;
-            if (rdCovered.isSelected()){
+            if (rdCovered.isSelected()) {
                 temporaryHome = true;
+                System.out.println("deu true");
             } else {
                 temporaryHome = false;
+                System.out.println("deu false");
             }
 
-            var report = new ReportAbandonment(txtAddress.getText(), lastSeen, userId, temporaryHome, txtHostName.getText(), txtAddressHost.getText());
+            var report = new ReportAbandonment(txtAddress.getText(), userId, temporaryHome, txtHostName.getText(), txtAddressHost.getText());
 
-            if(reportAbandonment.insert(report)){
+            if (reportAbandonment.insert(report, txtLastSeen.getText())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Reportado com sucesso!");
+                alert.setTitle("Sucesso!");
                 alert.setHeaderText(null);
+                alert.setContentText("Reportado com sucesso!");
                 alert.showAndWait();
                 paneReportAbandonment.setVisible(false);
 
                 Audit audit = new Audit();
-                //audit.setUserId(null);
+                audit.setUserId(String.valueOf(userId));
                 audit.setAction("Novo Report");
                 ManageAudit.getInstance().addAudit(audit);
                 ManageAudit.getInstance().activate();
             }
+        } catch (SQLException ex) {
+        Logger.getLogger(ControllerMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch(Exception error) {
-
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro!");
+            alert.setHeaderText(error.getMessage());
+            alert.setContentText(error.getMessage());
+            alert.showAndWait();
         }
 
     }
