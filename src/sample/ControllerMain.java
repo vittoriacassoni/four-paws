@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -25,6 +22,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControllerMain implements Initializable {
     @FXML
@@ -40,7 +39,7 @@ public class ControllerMain implements Initializable {
     Label lblName, lblWelcome;
 
     @FXML
-    TextField txtAddress, txtLastSeen, txtHostName, txtAddressHost;
+    TextField txtAddress, txtLastSeen, txtNameHost, txtAddressHost;
 
     ReportAbandonmentService reportAbandonment = new ReportAbandonmentService();
 
@@ -82,34 +81,44 @@ public class ControllerMain implements Initializable {
         primaryStage.show();
     }
 
-    public void saveReport(MouseEvent event) {
+    public void saveReport() {
         try {
-            Date lastSeen = Validates.validateDate(txtLastSeen.getText());
             Integer userId = LocalStorage.getInstance().getUserId();
             Boolean temporaryHome;
-            if (rdCovered.isSelected()){
+            if (rdCovered.isSelected()) {
                 temporaryHome = true;
+                System.out.println("deu true");
             } else {
                 temporaryHome = false;
+                System.out.println("deu false");
             }
 
-            var report = new ReportAbandonment(txtAddress.getText(), lastSeen, userId, temporaryHome, txtHostName.getText(), txtAddressHost.getText());
+            // Mari - esse tava errado com HostName 
+            //var report = new ReportAbandonment(txtAddress.getText(), userId, temporaryHome, txtHostName.getText(), txtAddressHost.getText());
+            var report = new ReportAbandonment(txtAddress.getText(), userId, temporaryHome, txtNameHost.getText(), txtAddressHost.getText());
 
-            if(reportAbandonment.insert(report)){
+            if (reportAbandonment.insert(report, txtLastSeen.getText())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Reportado com sucesso!");
+                alert.setTitle("Sucesso!");
                 alert.setHeaderText(null);
+                alert.setContentText("Reportado com sucesso!");
                 alert.showAndWait();
                 paneReportAbandonment.setVisible(false);
 
                 Audit audit = new Audit();
-                //audit.setUserId(null);
+                audit.setUserId(String.valueOf(userId));
                 audit.setAction("Novo Report");
                 ManageAudit.getInstance().addAudit(audit);
                 ManageAudit.getInstance().activate();
             }
+        } catch (SQLException ex) {
+        Logger.getLogger(ControllerMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch(Exception error) {
-
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro!");
+            alert.setHeaderText(null);
+            alert.setContentText(error.getMessage());
+            alert.showAndWait();
         }
 
     }
@@ -142,4 +151,38 @@ public class ControllerMain implements Initializable {
         }
     }
 
+    public void signOut() throws IOException, SQLException {
+        if(LocalStorage.checkLocalStorage()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sair");
+            alert.setHeaderText("Você tem certeza que deseja sair? Será preciso fazer o login novamente!");
+            alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+            alert.showAndWait().ifPresent(type -> {
+                System.out.println(type);
+                if (type == ButtonType.YES) {
+                    try {
+                        LocalStorage.getInstance().deleteLocalStorage();
+                        Parent root = FXMLLoader.load(getClass().getResource("ScreenLogin.fxml"));
+                        Stage primaryStage = new Stage();
+                        primaryStage.setTitle("4Paws, Bem-vinde!");
+                        primaryStage.setScene(new Scene(root, 1200, 700));
+                        primaryStage.show();
+
+                        Stage stage = (Stage) lblWelcome.getScene().getWindow();
+                        stage.close();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        } else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ocorreu um erro inesperado!");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+    }
 }

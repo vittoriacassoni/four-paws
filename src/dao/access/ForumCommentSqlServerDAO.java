@@ -55,8 +55,8 @@ public class ForumCommentSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.execute();
             } catch(Exception error){
                 error.printStackTrace();
+                return false;
             }
-
             return true;
         } catch (Exception e) {
             e.printStackTrace();

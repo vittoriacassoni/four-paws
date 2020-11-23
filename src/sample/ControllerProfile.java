@@ -1,15 +1,12 @@
 package sample;
 
+import business.log.threads.ManageAudit;
 import business.services.AdoptionService;
 import business.services.AnimalService;
 import business.services.DonationService;
 import business.services.UserService;
-import dao.access.DonationSqlServerDAO;
+import comuns.access.*;
 import business.singleton.LocalStorage;
-import comuns.access.Adoption;
-import comuns.access.Animal;
-import comuns.access.Donation;
-import comuns.access.User;
 import dao.access.UserSqlServerDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +27,8 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,13 +49,9 @@ public class ControllerProfile implements Initializable {
     @FXML
     TextField txtNameEdit, txtEmailEdit, txtPasswordEdit, txtDescription, txtValue;
 
-    DonationSqlServerDAO donationDAO = new DonationSqlServerDAO();
-
     @FXML
-    TableView tableDonation;
+    TableView tableDonation, tableAdoption;
 
-    @FXML
-    TableView tableAdoption;
 
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
 
@@ -65,10 +60,10 @@ public class ControllerProfile implements Initializable {
     DonationService donationService = new DonationService();
     AdoptionService adoptionService = new AdoptionService();
 
-    Integer id = LocalStorage.getInstance().getUserId();
+    Integer userId = LocalStorage.getInstance().getUserId();
     String name = LocalStorage.getInstance().getUserName();
     String email = LocalStorage.getInstance().getUserEmail();
-    User user = userService.validateId(id);
+    User user = userService.validateId(userId);
 
     public ControllerProfile() throws IOException, SQLException {
 
@@ -100,12 +95,7 @@ public class ControllerProfile implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtName.setText(name);
-        txtNameEdit.setText(name);
-        txtEmail.setText(email);
-        txtEmailEdit.setText(email);
-        txtPasswordEdit.setText(user.getPasswordHash());
-        txtBirthday.setText(user.getDateOfBirth().toString());
+        fillUserInfo();
 
         try {
             listDonation();
@@ -115,8 +105,18 @@ public class ControllerProfile implements Initializable {
         }
     }
 
-    public void listDonation() throws SQLException {
-        List<Donation> donation = donationService.validateId(id);
+    private void fillUserInfo() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        txtName.setText(name);
+        txtNameEdit.setText(name);
+        txtEmail.setText(email);
+        txtEmailEdit.setText(email);
+        txtPasswordEdit.setText(user.getPasswordHash());
+        txtBirthday.setText(dateFormat.format(user.getDateOfBirth()));
+    }
+
+    private void listDonation() throws SQLException {
+        List<Donation> donation = donationService.validateId(userId);
 
         TableColumn value = new TableColumn("Valor Doado");
         value.setCellValueFactory(new PropertyValueFactory<>("value"));
@@ -138,9 +138,9 @@ public class ControllerProfile implements Initializable {
         tableDonation.setFixedCellSize(40);
     }
 
-    public void listAdoptions() throws SQLException {
+    private void listAdoptions() throws SQLException {
 
-        List<Adoption> adoptions = adoptionService.validateId(id);
+        List<Adoption> adoptions = adoptionService.validateId(userId);
         List<Animal> animals = animalService.validateAll();
 
         List<AnimalAdopted> animalAdopteds = new ArrayList<AnimalAdopted>();
@@ -184,7 +184,7 @@ public class ControllerProfile implements Initializable {
 
     public void confirmEdit() {
         try {
-            User user = userService.validateId(id);
+            User user = userService.validateId(userId);
 
             var name = UserService.validateFullName(txtNameEdit.getText());
             UserService.validateEmail(txtEmailEdit.getText());
@@ -223,20 +223,26 @@ public class ControllerProfile implements Initializable {
 
     public void sendNewDonation(MouseEvent mouseEvent) {
         try {
-            var value = Validates.validateRequiredField(txtValue.getText());
-            var description = Validates.validateRequiredField(txtDescription.getText());
+            String description = txtDescription.getText();
+            Double value = Double.valueOf(txtValue.getText());
 
-            String descriptions = (String) txtDescription.getText();
-            Double values = (Double) Double.valueOf(txtValue.getText());
+            var donation = new Donation(value, description, userId);
 
+            if (donationService.insert(donation)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sucesso!");
+                alert.setHeaderText(null);
+                alert.setContentText("Salvo com sucesso!");
+                alert.showAndWait();
 
-            var donation = new Donation( values.toString(), descriptions);
+                listDonation();
+                closeDonationPane(mouseEvent);
 
-            if (donationDAO.insert(donation)) {
-                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
-                newDonationPane.setVisible(false);
-                darkPane.setVisible(false);
-
+                Audit audit = new Audit();
+                audit.setUserId(String.valueOf(userId));
+                audit.setAction("Novo Doação");
+                ManageAudit.getInstance().addAudit(audit);
+                ManageAudit.getInstance().activate();
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);

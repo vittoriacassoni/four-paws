@@ -12,7 +12,7 @@ public class ReportAbandonment extends Entity {
     private Integer userId;
     private Boolean temporaryHome;
 
-    public ReportAbandonment(String address, Date lastSeen, Integer userId,  Boolean temporaryHome, String hostName,
+    public ReportAbandonment(String address, Integer userId,  Boolean temporaryHome, String hostName,
                              String hostContact){
         setAddress(address);
         setLastSeen(lastSeen);

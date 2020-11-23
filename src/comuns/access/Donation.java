@@ -14,18 +14,14 @@ public class Donation extends Entity {
     private Integer userId;
 
 
-    public Donation(Double value, String description) {
+    public Donation(Double value, String description, Integer userId) {
         setValue(value);
         setDescription(description);
-
+        setUserId(userId);
     }
 
     public Donation() {
 
-    }
-
-    public Donation(String descriptions, String description) {
-        super();
     }
 
 
