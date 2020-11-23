@@ -69,7 +69,7 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
                 error.printStackTrace();
                 return false;
             }
-            return true;
+          //  return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
