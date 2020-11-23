@@ -72,6 +72,7 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
                 stmt.execute();
             } catch(Exception error){
                 error.printStackTrace();
+                return false;
             }
             System.out.println(Instant.now());
 
