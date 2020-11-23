@@ -39,7 +39,7 @@ public class ControllerMain implements Initializable {
     Label lblName, lblWelcome;
 
     @FXML
-    TextField txtAddress, txtLastSeen, txtHostName, txtAddressHost;
+    TextField txtAddress, txtLastSeen, txtNameHost, txtAddressHost;
 
     ReportAbandonmentService reportAbandonment = new ReportAbandonmentService();
 
@@ -93,7 +93,9 @@ public class ControllerMain implements Initializable {
                 System.out.println("deu false");
             }
 
-            var report = new ReportAbandonment(txtAddress.getText(), userId, temporaryHome, txtHostName.getText(), txtAddressHost.getText());
+            // Mari - esse tava errado com HostName 
+            //var report = new ReportAbandonment(txtAddress.getText(), userId, temporaryHome, txtHostName.getText(), txtAddressHost.getText());
+            var report = new ReportAbandonment(txtAddress.getText(), userId, temporaryHome, txtNameHost.getText(), txtAddressHost.getText());
 
             if (reportAbandonment.insert(report, txtLastSeen.getText())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -114,7 +116,7 @@ public class ControllerMain implements Initializable {
         } catch(Exception error) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Erro!");
-            alert.setHeaderText(error.getMessage());
+            alert.setHeaderText(null);
             alert.setContentText(error.getMessage());
             alert.showAndWait();
         }

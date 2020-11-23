@@ -46,7 +46,7 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
         ReportAbandonment reportAbandonment = (ReportAbandonment) entity;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try (Connection con = getConnection()) {
-            String SQL = "INSERT INTO" + super.getTable() + "(Address, UserId, LastSeen, TemporaryHome, HostName, " +
+            String SQL = "INSERT INTO " + super.getTable() + " (Address, UserId, LastSeen, TemporaryHome, HostName, " +
                     "HostContact, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
@@ -64,7 +64,6 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
                 stmt.setString(7, Instant.now().toString());
 
                 stmt.execute();
-                return false;
             } catch(Exception error){
                 error.printStackTrace();
                 return false;
