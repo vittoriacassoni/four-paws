@@ -9,6 +9,7 @@ import dao.access.UserSqlServerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -18,9 +19,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ControllerLogin {
+public class ControllerLogin implements Initializable {
     @FXML
     Pane paneRememberPass;
 
@@ -35,6 +38,10 @@ public class ControllerLogin {
 
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
+    
     public void login(ActionEvent event) throws IOException, SQLException, InterruptedException {
         UserService userService = new UserService();
 
@@ -46,11 +53,7 @@ public class ControllerLogin {
             LocalStorage.getInstance().saveUserName(user.getName());
             LocalStorage.getInstance().saveUserLastName(user.getLastName());
 
-            Parent root = FXMLLoader.load(getClass().getResource("ScreenMain.fxml"));
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Seja Bem-Vinde");
-            primaryStage.setScene(new Scene(root, 1200, 700));
-            primaryStage.show();
+            showScreen("ScreenMain.fxml", "Seja Bem-Vinde");
 
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
@@ -71,12 +74,16 @@ public class ControllerLogin {
         }
     }
 
-    public void signUp(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ScreenSignUp.fxml"));
+    private void showScreen(String screen, String title) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(screen));
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Cadastro - Novo Usuário");
+        primaryStage.setTitle(title);
         primaryStage.setScene(new Scene(root, 1200, 700));
         primaryStage.show();
+    }
+
+    public void signUp(MouseEvent event) throws IOException {
+        showScreen("ScreenSignUp.fxml", "Cadastro - Novo Usuário");
     }
 
     public void rememberPass() {

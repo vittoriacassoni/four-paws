@@ -22,7 +22,6 @@ public class ThreadManageAudit extends Thread {
             try {
                 Audit audit = ManageAudit.getInstance().removeAudit();
                 if (audit != null) {
-                    System.out.println("caiu thread");
                     dao.insert(audit);
                     Thread.sleep(1);
                 } else{
