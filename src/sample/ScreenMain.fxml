@@ -15,7 +15,7 @@
                   <Font name="Microsoft JhengHei Bold" size="38.0" />
                </font>
             </Label>
-            <Button fx:id="btnEncontrePet" layoutX="64.0" layoutY="516.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#findPet" prefHeight="60.0" prefWidth="400.0" stylesheets="@../stylesheet/Button.css" text="  Encontre seu pet" textFill="#2f2e41">
+            <Button fx:id="btnFindPet" layoutX="64.0" layoutY="516.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#findPet" prefHeight="60.0" prefWidth="400.0" stylesheets="@../stylesheet/Button.css" text="  Encontre seu pet" textFill="#2f2e41" visible="false">
                <font>
                   <Font name="Microsoft JhengHei" size="24.0" />
                </font></Button>

@@ -3,9 +3,11 @@ package sample;
 import business.Validates;
 import business.log.threads.ManageAudit;
 import business.services.ReportAbandonmentService;
+import business.services.UserService;
 import business.singleton.LocalStorage;
 import comuns.access.Audit;
 import comuns.access.ReportAbandonment;
+import dao.access.UserSqlServerDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,6 +43,9 @@ public class ControllerMain implements Initializable {
     @FXML
     TextField txtAddress, txtLastSeen, txtNameHost, txtAddressHost;
 
+    @FXML
+    Button btnFindPet;
+
     ReportAbandonmentService reportAbandonment = new ReportAbandonmentService();
 
     @Override
@@ -48,6 +53,9 @@ public class ControllerMain implements Initializable {
         try {
             lblName.setText(LocalStorage.getInstance().getUserName());
             lblWelcome.setText("Bem-vinde, " + LocalStorage.getInstance().getUserName());
+            if (LocalStorage.getInstance().getUserRole() == 2) {
+                btnFindPet.isVisible();
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (IOException e) {
@@ -87,10 +95,8 @@ public class ControllerMain implements Initializable {
             Boolean temporaryHome;
             if (rdCovered.isSelected()) {
                 temporaryHome = true;
-                System.out.println("deu true");
             } else {
                 temporaryHome = false;
-                System.out.println("deu false");
             }
 
             // Mari - esse tava errado com HostName 
@@ -103,7 +109,8 @@ public class ControllerMain implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Reportado com sucesso!");
                 alert.showAndWait();
-                paneReportAbandonment.setVisible(false);
+                closeReportAbandonmentModal();
+
 
                 Audit audit = new Audit();
                 audit.setUserId(String.valueOf(userId));

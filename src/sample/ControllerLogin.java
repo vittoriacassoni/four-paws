@@ -52,6 +52,7 @@ public class ControllerLogin implements Initializable {
             LocalStorage.getInstance().saveUserEmail(user.getEmail());
             LocalStorage.getInstance().saveUserName(user.getName());
             LocalStorage.getInstance().saveUserLastName(user.getLastName());
+            LocalStorage.getInstance().saveUserRoleId(String.valueOf(user.getUserRoleld()));
 
             showScreen("ScreenMain.fxml", "Seja Bem-Vinde");
 
