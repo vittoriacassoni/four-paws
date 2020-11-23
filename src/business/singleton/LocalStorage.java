@@ -108,6 +108,22 @@ public class LocalStorage {
         }
     }
 
+    public void deleteLocalStorage(){
+        try{
+            file.delete();
+        } catch (Exception error){
+            error.printStackTrace();
+        }
+    }
+
+    public static boolean checkLocalStorage(){
+        try{
+            return file.exists();
+        } catch(Exception error){
+            error.printStackTrace();
+            return false;
+        }
+    }
     public String getUserEmail() {
         return userEmail;
     }

@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -152,4 +149,38 @@ public class ControllerMain implements Initializable {
         }
     }
 
+    public void signOut() throws IOException, SQLException {
+        if(LocalStorage.checkLocalStorage()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sair");
+            alert.setHeaderText("Você tem certeza que deseja sair? Será preciso fazer o login novamente!");
+            alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+            alert.showAndWait().ifPresent(type -> {
+                System.out.println(type);
+                if (type == ButtonType.YES) {
+                    try {
+                        LocalStorage.getInstance().deleteLocalStorage();
+                        Parent root = FXMLLoader.load(getClass().getResource("ScreenLogin.fxml"));
+                        Stage primaryStage = new Stage();
+                        primaryStage.setTitle("4Paws, Bem-vinde!");
+                        primaryStage.setScene(new Scene(root, 1200, 700));
+                        primaryStage.show();
+
+                        Stage stage = (Stage) lblWelcome.getScene().getWindow();
+                        stage.close();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        } else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ocorreu um erro inesperado!");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+    }
 }

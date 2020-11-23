@@ -72,7 +72,7 @@
                   <Image url="@../assets/icons/chevron-right-solid.png" />
                </image>
             </ImageView>
-            <Pane fx:id="paneMenu" layoutX="370.0" layoutY="66.0" prefHeight="90.0" prefWidth="214.0" style="-fx-background-color: #fff; visibility: false;" stylesheets="@../stylesheet/Background.css">
+            <Pane fx:id="paneMenu" layoutX="370.0" layoutY="66.0" prefHeight="131.0" prefWidth="214.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" visible="false">
                <children>
                   <Button fx:id="btnShowProfile" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onMouseClicked="#showProfile" prefHeight="40.0" prefWidth="208.0" style="-fx-background-radius: 0;" stylesheets="@../stylesheet/ButtonMenu.css" text="Meu perfil" textFill="#2f2e41">
                      <font>
@@ -80,6 +80,11 @@
                      </font>
                   </Button>
                   <Button fx:id="btnReportAnimalAbandonment" layoutX="3.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#showReportAbandonmentModal" prefHeight="40.0" prefWidth="208.0" style="-fx-border-radius: 0;" stylesheets="@../stylesheet/ButtonMenu.css" text="Reportar animal abandonado" textFill="#2f2e41">
+                     <font>
+                        <Font name="Microsoft JhengHei Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnLogOut" layoutX="3.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#signOut" prefHeight="40.0" prefWidth="208.0" style="-fx-background-radius: 0;" stylesheets="@../stylesheet/ButtonMenu.css" text="Sair" textFill="#2f2e41">
                      <font>
                         <Font name="Microsoft JhengHei Bold" size="13.0" />
                      </font>

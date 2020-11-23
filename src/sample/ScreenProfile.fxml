@@ -76,22 +76,6 @@
                   <Font name="Microsoft JhengHei Bold" size="22.0" />
                </font>
             </Label>
-            <Label fx:id="btnDonation" layoutX="534.0" layoutY="67.0" text="Ver mais" textFill="#2f2e41" underline="true">
-               <font>
-                  <Font name="Microsoft JhengHei Bold" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <Label fx:id="btnAdoption" layoutX="534.0" layoutY="373.0" text="Ver mais" textFill="#2f2e41" underline="true">
-               <font>
-                  <Font name="Microsoft JhengHei Bold" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
             <ListView fx:id="listDonations" layoutX="62.0" layoutY="115.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
             <ListView fx:id="listAdoptions" layoutX="62.0" layoutY="401.0" prefHeight="200.0" prefWidth="467.0" style="-fx-border-width: 0;" stylesheets="@../stylesheet/ListView.css" />
             <Button fx:id="btnAddDonation" layoutX="160.0" layoutY="67.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" style="-fx-background-color: #ff6f61; -fx-background-radius: 10;" />
