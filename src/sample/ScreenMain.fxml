@@ -15,7 +15,7 @@
                   <Font name="Microsoft JhengHei Bold" size="38.0" />
                </font>
             </Label>
-            <Button fx:id="btnFindPet" layoutX="64.0" layoutY="516.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#findPet" prefHeight="60.0" prefWidth="400.0" stylesheets="@../stylesheet/Button.css" text="  Encontre seu pet" textFill="#2f2e41" visible="false">
+            <Button fx:id="btnFindPet" layoutX="64.0" layoutY="516.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#findPet" prefHeight="60.0" prefWidth="400.0" stylesheets="@../stylesheet/Button.css" text="  Encontre seu pet" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei" size="24.0" />
                </font></Button>
@@ -85,7 +85,7 @@
                         <Font name="Microsoft JhengHei Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnReportAnimalAbandonment" layoutX="3.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#showReportAbandonmentModal" prefHeight="40.0" prefWidth="208.0" style="-fx-border-radius: 0;" stylesheets="@../stylesheet/ButtonMenu.css" text="Reportar animal abandonado" textFill="#2f2e41" visible="false">
+                  <Button fx:id="btnReportAnimalAbandonment" layoutX="3.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#showReportAbandonmentModal" prefHeight="40.0" prefWidth="208.0" style="-fx-border-radius: 0;" stylesheets="@../stylesheet/ButtonMenu.css" text="Reportar animal abandonado" textFill="#2f2e41">
                      <font>
                         <Font name="Microsoft JhengHei Bold" size="13.0" />
                      </font>

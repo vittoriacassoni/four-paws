@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerChooseAnimal">
    <children>
       <ImageView fitHeight="67.0" fitWidth="52.0" layoutX="49.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -15,12 +15,12 @@
       </ImageView>
       <Pane id="CardAnimal" layoutX="49.0" layoutY="142.0" prefHeight="450.0" prefWidth="340.0" style="-fx-border-color: #FF6F61; -fx-border-width: 2; -fx-border-radius: 20;" stylesheets="@../stylesheet/CardAnimal.css">
          <children>
-            <Label layoutX="147.0" layoutY="139.0" text="Bob" textFill="#ff6f61">
+            <Label fx:id="lblName1" alignment="CENTER" layoutX="1.0" layoutY="139.0" prefHeight="34.0" prefWidth="336.0" style="-fx-text-alignment: center;" text="Bob" textAlignment="CENTER" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="157.0" layoutY="173.0" text="SRD" textFill="#00e0f0">
+            <Label fx:id="lblBreed1" alignment="CENTER" layoutX="2.0" layoutY="173.0" prefHeight="19.0" prefWidth="336.0" text="SRD" textAlignment="CENTER" textFill="#00e0f0">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
@@ -30,12 +30,12 @@
                   <Image url="@../assets/icons/dollar-sign-solid.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../assets/icons/venus-mars-solid.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="15.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="14.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/palette-solid.png" />
                </image>
@@ -50,47 +50,47 @@
                   <Image url="@../assets/icons/calendar-alt-regular.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="235.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="14.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/weight-hanging-solid.png" />
                </image>
             </ImageView>
-            <Label layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
+            <Label fx:id="lblExpense1" layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41">
+            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41" visible="false">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="267.0" text="Marrom Claro" textFill="#2f2e41">
+            <Label fx:id="lblColor1" layoutX="40.0" layoutY="239.0" text="Marrom Claro" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
+            <Label fx:id="lblSize1" layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
+            <Label fx:id="lblAge1" layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="267.0" text="5 KG" textFill="#2f2e41">
+            <Label fx:id="lblWeight1" layoutX="42.0" layoutY="268.0" text="5 KG" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
+            <Label fx:id="lblHistory1" layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="95.0" layoutY="402.0" text="Escolher Bob" textFill="#ff6f61" underline="true">
+            <Label fx:id="btnChooseAnimal1" alignment="CENTER" layoutX="2.0" layoutY="402.0" onMouseClicked="#chooseAnimal1" prefHeight="34.0" prefWidth="336.0" text="Escolher Bob" textAlignment="CENTER" textFill="#ff6f61" underline="true">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="24.0" />
                </font>
@@ -104,12 +104,12 @@
          </children></Pane>
       <Pane id="CardAnimal" layoutX="430.0" layoutY="142.0" prefHeight="450.0" prefWidth="340.0" style="-fx-border-color: #FF6F61; -fx-border-width: 2; -fx-border-radius: 20;" stylesheets="@../stylesheet/CardAnimal.css">
          <children>
-            <Label layoutX="147.0" layoutY="139.0" text="Bob" textFill="#ff6f61">
+            <Label fx:id="lblName2" alignment="CENTER" layoutX="2.0" layoutY="139.0" prefHeight="34.0" prefWidth="336.0" style="-fx-text-alignment: center;" text="Bob" textAlignment="CENTER" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="157.0" layoutY="173.0" text="SRD" textFill="#00e0f0">
+            <Label fx:id="lblBreed2" alignment="CENTER" layoutY="173.0" prefHeight="19.0" prefWidth="340.0" text="SRD" textAlignment="CENTER" textFill="#00e0f0">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
@@ -119,19 +119,19 @@
                   <Image url="@../assets/icons/dollar-sign-solid.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../assets/icons/venus-mars-solid.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="15.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="14.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/palette-solid.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="231.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/icons/Grupo%2035.png" />
+                  <Image url="@../assets/icons/size-dog.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="236.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
@@ -139,47 +139,47 @@
                   <Image url="@../assets/icons/calendar-alt-regular.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="235.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="14.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/weight-hanging-solid.png" />
                </image>
             </ImageView>
-            <Label layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
+            <Label fx:id="lblExpense2" layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41">
+            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41" visible="false">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="267.0" text="Marrom Claro" textFill="#2f2e41">
+            <Label fx:id="lblColor2" layoutX="40.0" layoutY="239.0" text="Marrom Claro" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
+            <Label fx:id="lblSize2" layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
+            <Label fx:id="lblAge2" layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="267.0" text="5 KG" textFill="#2f2e41">
+            <Label fx:id="lblWeight2" layoutX="42.0" layoutY="270.0" text="5 KG" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
+            <Label fx:id="lblHistory2" layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="95.0" layoutY="402.0" text="Escolher Bob" textFill="#ff6f61" underline="true">
+            <Label fx:id="btnChooseAnimal2" alignment="CENTER" layoutX="1.0" layoutY="402.0" onMouseClicked="#chooseAnimal2" prefHeight="34.0" prefWidth="336.0" text="Escolher Bob" textAlignment="CENTER" textFill="#ff6f61" underline="true">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="24.0" />
                </font>
@@ -194,12 +194,12 @@
       </Pane>
       <Pane id="CardAnimal" layoutX="808.0" layoutY="142.0" prefHeight="450.0" prefWidth="340.0" style="-fx-border-color: #FF6F61; -fx-border-width: 2; -fx-border-radius: 20;" stylesheets="@../stylesheet/CardAnimal.css">
          <children>
-            <Label layoutX="147.0" layoutY="139.0" text="Bob" textFill="#ff6f61">
+            <Label fx:id="lblName3" alignment="CENTER" layoutY="139.0" prefHeight="34.0" prefWidth="340.0" style="-fx-text-alignment: center;" text="Bob" textAlignment="CENTER" textFill="#ff6f61">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="157.0" layoutY="173.0" text="SRD" textFill="#00e0f0">
+            <Label fx:id="lblBreed3" alignment="CENTER" layoutX="2.0" layoutY="173.0" prefHeight="19.0" prefWidth="336.0" text="SRD" textFill="#00e0f0">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font>
@@ -209,19 +209,19 @@
                   <Image url="@../assets/icons/dollar-sign-solid.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../assets/icons/venus-mars-solid.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="15.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="14.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/palette-solid.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="17.0" fitWidth="24.0" layoutX="231.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/icons/Grupo%2035.png" />
+                  <Image url="@../assets/icons/size-dog.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="236.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
@@ -229,47 +229,47 @@
                   <Image url="@../assets/icons/calendar-alt-regular.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="235.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="14.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons/weight-hanging-solid.png" />
                </image>
             </ImageView>
-            <Label layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
+            <Label fx:id="lblExpense3" layoutX="41.0" layoutY="211.0" text="Gasto mensal de R$ 150" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41">
+            <Label layoutX="41.0" layoutY="238.0" text="Macho" textFill="#2f2e41" visible="false">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="267.0" text="Marrom Claro" textFill="#2f2e41">
+            <Label fx:id="lblColor3" layoutX="40.0" layoutY="239.0" text="Marrom Claro" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
+            <Label fx:id="lblSize3" layoutX="263.0" layoutY="211.0" text="Pequeno" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
+            <Label fx:id="lblAge3" layoutX="263.0" layoutY="238.0" text="1 Ano" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="267.0" text="5 KG" textFill="#2f2e41">
+            <Label fx:id="lblWeight3" layoutX="42.0" layoutY="270.0" text="5 KG" textFill="#2f2e41">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
+            <Label fx:id="lblHistory3" layoutX="28.0" layoutY="313.0" prefHeight="72.0" prefWidth="285.0" text="&quot;Sou carinhoso, quieto, carente e bastante alegre. Tenho certeza que irão me adorar &quot;" textAlignment="CENTER" textFill="#2f2e41" wrapText="true">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="95.0" layoutY="402.0" text="Escolher Bob" textFill="#ff6f61" underline="true">
+            <Label fx:id="btnChooseAnimal3" alignment="CENTER" layoutX="1.0" layoutY="402.0" onMouseClicked="#chooseAnimal3" prefHeight="34.0" prefWidth="340.0" text="Escolher Bob" textAlignment="CENTER" textFill="#ff6f61" underline="true">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="24.0" />
                </font>

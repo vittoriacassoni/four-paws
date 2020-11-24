@@ -16,6 +16,7 @@ public class Animal extends Entity {
     private String history;
     private Integer adoptionRequirementId;
     private Integer age;
+    private Double maxExpense;
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
@@ -66,6 +67,14 @@ public class Animal extends Entity {
         this.size = size;
     }
 
+    public Double getMaxExpense() {
+        return maxExpense;
+    }
+
+    public void setMaxExpense(Double expense) {
+        this.maxExpense = expense;
+    }
+
     public Double getWeight() {
         return weight;
     }
@@ -97,6 +106,7 @@ public class Animal extends Entity {
     public void setHistory(String history) {
         this.history = history;
     }
+
     public Integer getAge() {
         return age;
     }

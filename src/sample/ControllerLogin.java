@@ -60,13 +60,13 @@ public class ControllerLogin implements Initializable {
             LocalStorage.getInstance().saveUserName(user.getName());
             LocalStorage.getInstance().saveUserLastName(user.getLastName());
             LocalStorage.getInstance().saveUserRoleId(String.valueOf(user.getUserRoleld()));
+            LocalStorage.getInstance().saveAdoptionRequirementId(String.valueOf(user.getAdoptionRequirementId()));
 
             showScreen("ScreenMain.fxml", "Seja Bem-Vinde");
 
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
 
-            //TODO Retirar a DAO, mudar para business!
             Audit audit = new Audit();
             audit.setUserId(String.valueOf(user.getId()));
             audit.setAction("Login");

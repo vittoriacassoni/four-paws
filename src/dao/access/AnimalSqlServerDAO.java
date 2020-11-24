@@ -1,6 +1,8 @@
 package dao.access;
 
+import business.Validates;
 import comuns.access.Animal;
+import comuns.access.User;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
@@ -8,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -15,6 +19,7 @@ import java.util.logging.Logger;
 
 public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
 
+    private String spListAnimalsAdopt = "spFindAnimals";
     public AnimalSqlServerDAO() {
         super(Animal.class);
         setTable("Animal");
@@ -30,12 +35,15 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
             entity.setColor(rs.getString("Color"));
             entity.setSize(rs.getDouble("Size"));
             entity.setWeight(rs.getDouble("Weight"));
+            entity.setAge(rs.getInt("Age"));
             entity.setImage(rs.getString("Image"));
-            entity.setDateOfBirth(rs.getDate("DateOfBirth"));
             entity.setHistory(rs.getString("History"));
             entity.setCreatedAt(rs.getDate("CreatedAt"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
             entity.setDeletedAt(rs.getDate("DeletedAt"));
+            if(rs.findColumn("MaxExpense") > 0){
+                entity.setMaxExpense(rs.getDouble("MaxExpense"));
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,5 +118,51 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
             e.printStackTrace();
         }
         return entities;
+    }
+
+    public List<E> listAnimalsToAdopt(Integer adoptionRequirementId){
+        List<E> entities = new ArrayList<>();
+        try (Connection con = getConnection()) {
+
+            String query = "EXEC " +  spListAnimalsAdopt + " @AdoptionRequirementId=?";
+            PreparedStatement add = con.prepareStatement(query);
+            add.setInt(1, adoptionRequirementId);
+
+            try (ResultSet rs = add.executeQuery()) {
+                while (rs.next()) {
+                    entities.add(fillEntity(rs));
+                }
+            } catch (Exception error) {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return entities;
+    }
+
+    public boolean update(Integer animalId) throws Exception {
+        if(animalId > 0){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try (Connection con = getConnection()) {
+                String SQL = "UPDATE [" + super.getTable() + "] set Adopted = 1 WHERE Id = ?";
+
+                try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                    stmt.setInt(1, animalId);
+                    stmt.execute();
+                } catch(Exception error){
+                    error.printStackTrace();
+                    return false;
+                }
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else{
+            throw new Exception("Selecione um animal válido!");
+        }
+
     }
 }

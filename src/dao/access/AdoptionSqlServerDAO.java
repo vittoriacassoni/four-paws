@@ -1,6 +1,7 @@
 package dao.access;
 
 import comuns.access.Adoption;
+import comuns.access.Donation;
 import comuns.bases.Entity;
 import dao.bases.SqlServerDAO;
 
@@ -8,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -38,7 +40,27 @@ public class AdoptionSqlServerDAO <E extends Entity> extends SqlServerDAO {
 
     @Override
     public boolean insert(Entity entity) throws SQLException {
-        return true;
+        Adoption adoption = (Adoption) entity;
+        try (Connection con = getConnection()) {
+            System.out.println(con);
+
+            String SQL = "INSERT INTO " + super.getTable() + " (UserId, AnimalId, CreatedAt)" +
+                    "VALUES(?, ?, ?)";
+
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setInt(1, adoption.getUserId());
+                stmt.setInt(2, adoption.getAnimalId());
+                stmt.setString(3, Instant.now().toString());
+                stmt.execute();
+            } catch(Exception error){
+                error.printStackTrace();
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

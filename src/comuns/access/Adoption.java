@@ -12,12 +12,9 @@ public class Adoption extends Entity {
     private Date updatedAt;
     private Date deletedAt;
 
-    public Adoption(int animalId, int userId, Date createdAt, Date updatedAt, Date deletedAt) {
+    public Adoption(Integer animalId, Integer userId) {
         setAnimalId(animalId);
         setUserId(userId);
-        setCreatedAt(createdAt);
-        setUpdatedAt(updatedAt);
-        setDeletedAt(deletedAt);
     }
 
     public Adoption() {

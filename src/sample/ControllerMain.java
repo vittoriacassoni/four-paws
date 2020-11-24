@@ -44,7 +44,7 @@ public class ControllerMain implements Initializable {
     TextField txtAddress, txtLastSeen, txtNameHost, txtAddressHost;
 
     @FXML
-    Button btnFindPet, btnDonation, btnReportAnimal, btnRegisterAnimal;
+    Button btnFindPet, btnDonation, btnReportAnimalAbandonment, btnRegisterAnimal;
 
     ReportAbandonmentService reportAbandonment = new ReportAbandonmentService();
 
@@ -67,12 +67,20 @@ public class ControllerMain implements Initializable {
         //TODO: PREENCHER QUANTIDADE DE PETS ADOTADOS
     }
 
-    public void findPet() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ScreenAdoptionRequirement.fxml"));
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Preencha o formulário e encontre seu pet.");
-        primaryStage.setScene(new Scene(root, 1200, 700));
-        primaryStage.show();
+    public void findPet() throws IOException, SQLException {
+        if(LocalStorage.getInstance().getAdoptionRequirementId() > 0){
+            Parent root = FXMLLoader.load(getClass().getResource("ScreenChooseAnimal.fxml"));
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Escolha seu pet.");
+            primaryStage.setScene(new Scene(root, 1200, 700));
+            primaryStage.show();
+        }else{
+            Parent root = FXMLLoader.load(getClass().getResource("ScreenAdoptionRequirement.fxml"));
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Preencha o formulário e encontre seu pet.");
+            primaryStage.setScene(new Scene(root, 1200, 700));
+            primaryStage.show();
+        }
     }
 
     public void accessForum() throws IOException {
@@ -170,7 +178,7 @@ public class ControllerMain implements Initializable {
 
     public void normalProfile() throws IOException, SQLException {
             btnFindPet.setVisible(true);
-            btnReportAnimal.setVisible(true);
+        btnReportAnimalAbandonment.setVisible(true);
     }
 
     public void admProfile() throws IOException, SQLException {

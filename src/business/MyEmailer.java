@@ -5,7 +5,7 @@ import java.util.Properties;
 //import javax.mail.internet.*;
 
 public class MyEmailer {
-    /*private static final String SMTP_HOST_NAME = "smtp.sendgrid.net";
+    private static final String SMTP_HOST_NAME = "smtp.sendgrid.net";
     private static final String SMTP_AUTH_USER = "trabalhos.ftt.2018.1@gmail.com";
     private static final String SMTP_AUTH_PWD = "Trabalhos@30056TT";
 

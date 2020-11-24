@@ -29,6 +29,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
             entity.setImage(rs.getString("Image"));
             entity.setDateOfBirth(rs.getDate("DateOfBirth"));
             entity.setUserRoleld(rs.getInt("UserRoleId"));
+            entity.setAdoptionRequirementId(rs.getInt("AdoptionRequirementId"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
             entity.setDeletedAt(rs.getDate("DeletedAt"));
         } catch (SQLException ex) {

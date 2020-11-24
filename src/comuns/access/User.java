@@ -13,6 +13,7 @@ public class User extends Entity {
     private String image;
     private Date dateOfBirth;
     private int userRoleld;
+    private Integer adoptionRequirementId;
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
@@ -84,6 +85,14 @@ public class User extends Entity {
 
     public void setUserRoleld(Integer userRoleld) {
         this.userRoleld = userRoleld;
+    }
+
+    public int getAdoptionRequirementId() {
+        return adoptionRequirementId;
+    }
+
+    public void setAdoptionRequirementId(Integer adoptionRequirementId) {
+        this.adoptionRequirementId = adoptionRequirementId;
     }
 
     public void setUpdatedAt(Date updatedAt) {
