@@ -28,8 +28,7 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
             entity.setId(Integer.parseInt(rs.getString("Id")));
             entity.setAddress(rs.getString("Address"));
             entity.setTemporaryHome(rs.getBoolean("TemporaryHome"));
-            /*if(entity.getTemporaryHome() == true)*/
-            if (1 == 1){
+            if(entity.getTemporaryHome() == true){
                 entity.setHostName(rs.getString("HostName"));
                 entity.setHostContact(rs.getString("HostContact"));
             }
