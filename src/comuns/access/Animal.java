@@ -12,7 +12,6 @@ public class Animal extends Entity {
     private Double size;
     private Double weight;
     private String image;
-    private Date dateOfBirth;
     private String history;
     private Integer adoptionRequirementId;
     private Integer age;
@@ -20,19 +19,19 @@ public class Animal extends Entity {
     private Date updatedAt;
     private Date deletedAt;
 
-    public Animal(String name, String breed, String color, Double size, Double weight, Integer age) {
+    public Animal() {
+
+    }
+
+    public Animal(String name, String breed, String color, Double size, Double weight, String history, Integer age) {
         setName(name);
         setBreed(breed);
         setColor(color);
         setSize(size);
         setWeight(weight);
+        setHistory(history);
         setAge(age);
     }
-
-    public Animal (){
-
-    }
-
 
     public String getName() {
         return name;
@@ -80,14 +79,6 @@ public class Animal extends Entity {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getHistory() {

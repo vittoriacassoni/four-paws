@@ -22,7 +22,7 @@
                     <Font name="Microsoft JhengHei Bold" size="15.0" />
                   </font>
                 </Label>
-                <TextField fx:id="txtName" layoutX="82.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" promptText="Nome" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                <TextField fx:id="txtName" layoutX="82.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="500.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                   <font>
                     <Font name="Microsoft JhengHei" size="14.0" />
                   </font>
@@ -94,7 +94,7 @@
                     <Font name="Microsoft JhengHei" size="14.0" />
                   </font>
                 </CheckBox>
-                <Button fx:id="btnCadastrar" layoutX="82.0" layoutY="771.0" mnemonicParsing="false" onMouseClicked="#registerPet" prefHeight="40.0" prefWidth="500.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
+                <Button fx:id="btnCadastrar" layoutX="82.0" layoutY="771.0" mnemonicParsing="false" onAction="#registerPet" onMouseClicked="#registerPet" prefHeight="40.0" prefWidth="500.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
                   <font>
                     <Font name="Microsoft JhengHei Bold" size="18.0" />
                   </font>
@@ -105,7 +105,7 @@
                      </font>
                   </Label>
                   <Circle fx:id="imgAnimal" fill="WHITE" layoutX="332.0" layoutY="79.0" radius="46.0" stroke="#ff6f61" strokeType="OUTSIDE" />
-                  <Button layoutX="350.0" layoutY="98.0" mnemonicParsing="false" style="-fx-background-radius: 50; -fx-background-color: #00EEFF;" text="   " />
+                  <Button layoutX="350.0" layoutY="98.0" mnemonicParsing="false" onAction="#registerPet" style="-fx-background-radius: 50; -fx-background-color: #00EEFF;" text="   " />
                   <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="356.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/icons/pen-solid.png" />
@@ -121,11 +121,21 @@
                     <Image url="@../assets/images/undraw_Playful_cat_rchv.png" />
                   </image>
                 </ImageView>
-                <Label layoutX="33.0" layoutY="195.0" text="Cadastro de Animais" textFill="#ff6f61">
+                <Label layoutX="134.0" layoutY="250.0" text="Cadastro de Animais" textFill="#ff6f61">
                   <font>
-                    <Font name="Microsoft JhengHei Bold" size="36.0" />
+                    <Font name="Microsoft JhengHei Bold" size="30.0" />
                   </font>
                 </Label>
+                  <Label layoutX="33.0" layoutY="129.0" text="Conte um pouco de sua história" textFill="#ff6f61">
+                     <font>
+                        <Font name="Microsoft JhengHei Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtHistory" layoutX="33.0" layoutY="166.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="432.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                     <font>
+                        <Font name="Microsoft JhengHei" size="14.0" />
+                     </font>
+                  </TextField>
               </children>
             </Pane>
          </children>

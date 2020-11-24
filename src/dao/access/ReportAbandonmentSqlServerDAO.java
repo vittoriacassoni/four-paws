@@ -1,6 +1,6 @@
 package dao.access;
 
-import business.Validates;
+
 import comuns.access.ReportAbandonment;
 import comuns.access.User;
 import comuns.bases.Entity;
@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +28,8 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
             entity.setId(Integer.parseInt(rs.getString("Id")));
             entity.setAddress(rs.getString("Address"));
             entity.setTemporaryHome(rs.getBoolean("TemporaryHome"));
-            if(entity.getTemporaryHome() == true) {
+            /*if(entity.getTemporaryHome() == true)*/
+            if (1 == 1){
                 entity.setHostName(rs.getString("HostName"));
                 entity.setHostContact(rs.getString("HostContact"));
             }
@@ -68,7 +68,7 @@ public class ReportAbandonmentSqlServerDAO <E extends Entity> extends SqlServerD
                 error.printStackTrace();
                 return false;
             }
-          //  return true;
+          return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;

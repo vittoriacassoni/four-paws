@@ -43,6 +43,13 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println(Instant.now());
         try (Connection con = getConnection()) {
+            System.out.println(con);
+            if (Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
+                    Validates.validateRequiredField(user.getEmail()) || Validates.validateRequiredField(user.getPasswordHash()) ||
+                    Validates.validateRequiredField(user.getDateOfBirth().toString())) {
+                throw new Exception("Preencha todos os campos!");
+            }
+
             String SQL = "INSERT INTO [" + super.getTable() + "] (Name, LastName, Email, PasswordHash, Image, DateOfBirth, " +
                     "UserRoleId, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -51,6 +58,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.setString(2, user.getLastName());
                 stmt.setString(3, user.getEmail());
                 stmt.setString(4, user.getPasswordHash());
+                //TODO getImage?
                 stmt.setString(5, dateFormat.format(user.getDateOfBirth()));
                 stmt.setInt(6, user.getUserRoleld());
                 stmt.setString(7, Instant.now().toString());
@@ -60,6 +68,8 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 error.printStackTrace();
                 return false;
             }
+            System.out.println(Instant.now());
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,6 +83,11 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println(Instant.now());
         try (Connection con = getConnection()) {
+            System.out.println(con);
+            if (Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
+                    Validates.validateRequiredField(user.getEmail()) || Validates.validateRequiredField(user.getPasswordHash())) {
+                throw new Exception("Preencha todos os campos!");
+            }
 
             String SQL = "UPDATE [" + super.getTable() + "] set Name = ? , LastName = ?, Email = ?, PasswordHash = ?, " +
                     "UpdatedAt = ? WHERE Id = ?";
