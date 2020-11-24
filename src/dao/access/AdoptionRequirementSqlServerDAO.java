@@ -39,14 +39,15 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
         return (E) entity;
     }
 
-    @Override
-    public boolean insert(Entity entity) throws SQLException {
+
+    public Integer insertId(Entity entity) throws SQLException {
         AdoptionRequirement adoptionRequirement = (AdoptionRequirement) entity;
         try (Connection con = getConnection()) {
             System.out.println(con);
 
             String SQL = "INSERT INTO " + super.getTable() + " (MaxExpense, RequiredSpace, AgePreference, IsAngry, IsHappy, " +
-                    "IsNeedy, IsCaring, IsQuiet, CreatedAt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "IsNeedy, IsCaring, IsQuiet, CreatedAt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?); " +
+                    "SELECT ID AS LastID FROM AdoptionRequirement WHERE ID = @@Identity;";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
                 stmt.setDouble(1, adoptionRequirement.getMaxExpense());
@@ -58,17 +59,23 @@ public class AdoptionRequirementSqlServerDAO<E extends Entity> extends SqlServer
                 stmt.setBoolean(7, adoptionRequirement.getIsCaring());
                 stmt.setBoolean(8, adoptionRequirement.getIsQuiet());
                 stmt.setString(9, Instant.now().toString());
-                stmt.execute();
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        Integer lastId = rs.getInt("LastId");
+                        return lastId;
+                    }
+                }
             } catch(Exception error){
                 error.printStackTrace();
+                return null;
             }
-            return true;
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
-
+ 
     @Override
     public E select(String userId) throws SQLException {
         E entity = null;

@@ -6,7 +6,9 @@ module four.paws {
     requires java.sql;
     requires java.desktop;
     requires com.microsoft.sqlserver.jdbc;
+    requires junit;
     //requires java.mail;
     opens sample;
     opens comuns.access to javafx.base;
+    opens business.tests to junit;
 }

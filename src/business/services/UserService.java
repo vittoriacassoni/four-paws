@@ -1,5 +1,7 @@
 package business.services;
 
+import business.Validates;
+import comuns.access.ReportAbandonment;
 import comuns.access.User;
 import comuns.bases.Entity;
 import dao.access.UserSqlServerDAO;
@@ -16,6 +18,23 @@ public class UserService {
     DAO dao = new UserSqlServerDAO();
 
     //TODO - CHAMADA DOS METODOS DA DAO E VALIDAÇÕES
+
+    public boolean insert(User user) throws Exception {
+        if (Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
+                Validates.validateRequiredField(user.getEmail()) || Validates.validateRequiredField(user.getPasswordHash()) ||
+                Validates.validateRequiredField(user.getDateOfBirth().toString())) {
+            throw new Exception("Preencha todos os campos!");
+        }
+        return dao.insert(user);
+    }
+
+    public boolean update(User user) throws Exception {
+        if (Validates.validateRequiredField(user.getName()) || Validates.validateRequiredField(user.getLastName()) ||
+                Validates.validateRequiredField(user.getEmail()) || Validates.validateRequiredField(user.getPasswordHash())) {
+            throw new Exception("Preencha todos os campos!");
+        }
+        return dao.update(user);
+    }
 
     //Método para validar o email e senha de login do usuário
     public boolean validateLogin(String email, String passwordHash) throws SQLException {
@@ -39,8 +58,6 @@ public class UserService {
         User validated = (User) dao.selectID(id);
         return validated;
     }
-
-
 
     // Método para validar se a string é um nome completo
     // caso ela não seja retornará um erro, caso contrário devolverá o nome separado por meio de um vetor

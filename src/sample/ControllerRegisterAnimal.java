@@ -3,110 +3,171 @@ package sample;
 import business.Validates;
 import business.log.threads.ManageAudit;
 import business.singleton.LocalStorage;
+import comuns.access.AdoptionRequirement;
 import comuns.access.Animal;
 import comuns.access.Audit;
+import dao.access.AdoptionRequirementSqlServerDAO;
 import dao.access.AnimalSqlServerDAO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 
 
-import javax.swing.*;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ControllerRegisterAnimal implements Initializable {
 
-    @FXML ChoiceBox<String> dropBreeds, dropColors ;
-    @FXML Circle imgAnimal;
-    @FXML TextField txtName;
-    @FXML Spinner spnAge, spnWeight, spnSize;
+    @FXML
+    ChoiceBox<String> dropBreeds, dropColors;
+    @FXML
+    Circle imgAnimal;
+    @FXML
+    TextField txtName;
+    @FXML
+    TextField txtHistory;
+    @FXML
+    Spinner spnAge;
+    @FXML
+    Spinner spnWeight;
+    @FXML
+    Spinner spnSize;
+    @FXML
+    Spinner spnMaxExpense;
+    @FXML
+    Spinner spnRequiredSpace;
+    @FXML
+    CheckBox cbAngry;
+    @FXML
+    CheckBox cbHappy;
+    @FXML
+    CheckBox cbNeedy;
+    @FXML
+    CheckBox cbCaring;
+    @FXML
+    CheckBox cbQuiet;
 
     AnimalSqlServerDAO animalDAO = new AnimalSqlServerDAO();
+    AdoptionRequirementSqlServerDAO adoptionRequirementDAO = new AdoptionRequirementSqlServerDAO();
+
+    Integer userId = LocalStorage.getInstance().getUserId();
+
+    public ControllerRegisterAnimal() throws IOException, SQLException {
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ImagePattern pattern =  new ImagePattern(
-                new Image("@./assets/images/Dog.png")
-        );
-        imgAnimal.setFill(pattern);
-
-        dropBreeds.getItems().addAll("Poodle",  "Maltês", "Golden", "Pug");
+        dropBreeds.getItems().addAll("Poodle", "Maltês", "Golden", "Pug", "Vira-lata", "Outras");
         dropBreeds.getSelectionModel().select(0);
 
-        dropColors.getItems().addAll("Preto", "Branco", "Creme", "Caramelo");
+        dropColors.getItems().addAll("Preto", "Branco", "Creme", "Caramelo", "Outras");
         dropColors.getSelectionModel().select(0);
 
-
-        SpinnerValueFactory<Double> sizeValue = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 2, 0);
+        SpinnerValueFactory<Double> sizeValue = new SpinnerValueFactory.DoubleSpinnerValueFactory(1, Double.MAX_VALUE, 1);
         this.spnSize.setValueFactory(sizeValue);
         spnSize.setEditable(true);
 
-        SpinnerValueFactory<Double> ageValue = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 13, 0);
+        SpinnerValueFactory<Double> weightValue = new SpinnerValueFactory.DoubleSpinnerValueFactory(1, Double.MAX_VALUE, 1);
+        this.spnWeight.setValueFactory(weightValue);
+        spnWeight.setEditable(true);
+
+        SpinnerValueFactory<Integer> ageValue = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1);
         this.spnAge.setValueFactory(ageValue);
         spnAge.setEditable(true);
 
-        SpinnerValueFactory<Double> weightValue = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 60, 0);
-        this.spnWeight.setValueFactory(weightValue);
-        spnWeight.setEditable(true);
+        SpinnerValueFactory<Double> maxExpenseValue = new SpinnerValueFactory.DoubleSpinnerValueFactory(1, Double.MAX_VALUE, 1);
+        this.spnMaxExpense.setValueFactory(maxExpenseValue);
+        spnMaxExpense.setEditable(true);
+
+        SpinnerValueFactory<Double> requiredSpaceValue = new SpinnerValueFactory.DoubleSpinnerValueFactory(1, Double.MAX_VALUE, 1);
+        this.spnRequiredSpace.setValueFactory(requiredSpaceValue);
+        spnRequiredSpace.setEditable(true);
     }
-    public void registerPet(MouseEvent event) throws IOException {
-        try{
-            Integer userId = LocalStorage.getInstance().getUserId();
 
-            Validates.validateRequiredField(txtName.getText()) ;
-            Validates.validateRequiredField(dropBreeds.getValue());
-            Validates.validateRequiredField(dropColors.getValue());
-            Validates.validateRequiredField(spnAge.getValueFactory().getValue().toString());
-            Validates.validateDoubleNumber(spnSize.getValueFactory().getValue().toString());
-            Validates.validateDoubleNumber(spnWeight.getValueFactory().getValue().toString());
-
-            String breed = dropBreeds.getValue();
-            String color = dropBreeds.getValue();
-            String name =  txtName.getText();
-            Double size = (Double) spnSize.getValueFactory().getValue();
-            Double weight = (Double) spnWeight.getValueFactory().getValue();
-            Integer age = (Integer) spnAge.getValueFactory().getValue();
-
-            var animal = new Animal( name,breed, color, size,weight,age);
-
-            if (animalDAO.insert(animal)) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sucesso!");
-                alert.setHeaderText(null);
-                alert.setContentText("Cadastrado com sucesso!");
-                alert.showAndWait();
-
-                Audit audit = new Audit();
-                audit.setUserId(String.valueOf(userId));
-                audit.setAction("Encontrar Pet");
-                ManageAudit.getInstance().addAudit(audit);
-                ManageAudit.getInstance().activate();
-
+    public void registerPet(ActionEvent event) throws IOException {
+        try {
+            Integer adoptionId = insertAdoptionRequirement();
+            if (adoptionId != null) {
+                insertAnimal(adoptionId);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception error) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Salvo!");
+            alert.setHeaderText(null);
+            alert.setContentText("Animal cadastrado com sucesso!");
+            alert.showAndWait();
+        }
+        catch (Exception error) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro!");
             alert.setHeaderText(null);
             alert.setContentText(error.getMessage());
             alert.showAndWait();
         }
+    }
+
+    public void insertAnimal(Integer adoptionId) throws Exception {
+        if (!Validates.validateRequiredField(txtName.getText()) &&
+                !Validates.validateRequiredField(dropBreeds.getValue()) &&
+                !Validates.validateRequiredField(dropColors.getValue()) &&
+                Validates.validateDoubleNumber(spnSize.getValueFactory().getValue().toString()) &&
+                Validates.validateDoubleNumber(spnWeight.getValueFactory().getValue().toString()) &&
+                !Validates.validateRequiredField(txtHistory.getText()) &&
+                !Validates.validateRequiredField(spnAge.getValueFactory().getValue().toString())) {
+
+            String name = txtName.getText();
+            String breed = dropBreeds.getValue();
+            String color = dropColors.getValue();
+            Double size = (Double) spnSize.getValueFactory().getValue();
+            Double weight = (Double) spnWeight.getValueFactory().getValue();
+            String history = txtHistory.getText();
+            Integer age = (Integer) spnAge.getValueFactory().getValue();
+            //TODO ADICIONAR O CAMPO DE IMAGEM!
+            var animal = new Animal(name, breed, color, size, weight, history, age, adoptionId);
+
+            if (animalDAO.insert(animal)) {
+                ManageAudit.getInstance().activate();
+                Audit audit = new Audit();
+                audit.setUserId(userId.toString());
+                audit.setAction("Cadastrar Pet");
+                ManageAudit.getInstance().addAudit(audit);
+                Thread.sleep(1000);
+            }
+        }
+    }
+
+    public Integer insertAdoptionRequirement() throws Exception {
+        if (Validates.validateDoubleNumber(spnMaxExpense.getValueFactory().getValue().toString()) &&
+                Validates.validateDoubleNumber(spnRequiredSpace.getValueFactory().getValue().toString()))
+        {
+            Double maxExpense = (Double) spnMaxExpense.getValueFactory().getValue();
+            Double requiredSpace = (Double) spnRequiredSpace.getValueFactory().getValue();
+            boolean isAngry = cbAngry.isSelected();
+            boolean isHappy = cbHappy.isSelected();
+            boolean isNeedy = cbNeedy.isSelected();
+            boolean isCaring = cbCaring.isSelected();
+            boolean isQuiet = cbQuiet.isSelected();
+            Integer agePreference = (Integer) spnAge.getValueFactory().getValue();
+
+            var adoptionRequirement = new AdoptionRequirement(isAngry, isHappy, isNeedy, isCaring, isQuiet, maxExpense,
+                    requiredSpace, agePreference);
+
+            Integer adoptionId = adoptionRequirementDAO.insertId(adoptionRequirement);
+            if (adoptionId != null) {
+                ManageAudit.getInstance().activate();
+                Audit audit = new Audit();
+                audit.setUserId(userId.toString());
+                audit.setAction("Cadastrar Requisições do PET");
+                ManageAudit.getInstance().addAudit(audit);
+                Thread.sleep(1000);
+                return adoptionId;
+            }
+        }
+        return null;
     }
 }

@@ -138,7 +138,7 @@ public class ControllerProfile implements Initializable {
         tableDonation.setFixedCellSize(40);
     }
 
-    private void listAdoptions() throws SQLException {
+    public void listAdoptions() throws SQLException {
 
         List<Adoption> adoptions = adoptionService.validateId(userId);
         List<Animal> animals = animalService.validateAll();

@@ -14,11 +14,10 @@ public class Validates {
 
     // Método para validar se o valor é um double
     // caso ele não seja retornará um erro, caso contrário devolverá true
-    public static Double validateDoubleNumber(String number) throws Exception {
+    public static boolean validateDoubleNumber(String number) throws Exception {
         try {
             Double result = Double.parseDouble(number);
-
-            return  result;
+            return true;
         } catch(NumberFormatException ex){
            throw new Exception("Número inválido!");
         }

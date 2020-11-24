@@ -32,6 +32,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
             entity.setAdoptionRequirementId(rs.getInt("AdoptionRequirementId"));
             entity.setUpdatedAt(rs.getDate("UpdatedAt"));
             entity.setDeletedAt(rs.getDate("DeletedAt"));
+            entity.setAdoptionRequirementId(Integer.parseInt(rs.getString("Id")));
         } catch (SQLException ex) {
             Logger.getLogger(UserSqlServerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,6 +60,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.setString(2, user.getLastName());
                 stmt.setString(3, user.getEmail());
                 stmt.setString(4, user.getPasswordHash());
+                //TODO getImage?
                 stmt.setString(5, dateFormat.format(user.getDateOfBirth()));
                 stmt.setInt(6, user.getUserRoleld());
                 stmt.setString(7, Instant.now().toString());
@@ -90,7 +92,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
             }
 
             String SQL = "UPDATE [" + super.getTable() + "] set Name = ? , LastName = ?, Email = ?, PasswordHash = ?, " +
-                    "UpdatedAt = ? WHERE Id = ?";
+                    "UpdatedAt = ?, AdoptionRequirementId = ? WHERE Id = ?";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
                 stmt.setString(1, user.getName());
@@ -99,6 +101,7 @@ public class UserSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.setString(4, user.getPasswordHash());
                 stmt.setString(5, Instant.now().toString());
                 stmt.setInt(6, user.getId());
+                stmt.setInt(7, user.getAdoptionRequirementId());
                 stmt.execute();
             } catch(Exception error){
                 error.printStackTrace();
