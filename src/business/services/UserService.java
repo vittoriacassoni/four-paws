@@ -59,8 +59,6 @@ public class UserService {
         return validated;
     }
 
-
-
     // Método para validar se a string é um nome completo
     // caso ela não seja retornará um erro, caso contrário devolverá o nome separado por meio de um vetor
     public static String[] validateFullName(String fullName) throws Exception {

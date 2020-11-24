@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 
 import business.Validates;
 import business.log.threads.ManageAudit;
+import business.services.UserService;
+import business.singleton.LocalStorage;
 import comuns.access.AdoptionRequirement;
 import comuns.access.Audit;
 import dao.access.AdoptionRequirementSqlServerDAO;
@@ -36,8 +38,14 @@ public class ControllerAdoptionRequirement implements Initializable {
 
     @FXML
     CheckBox ckAngry, ckHappy, ckNeedy, ckCaring, ckQuiet;
-    
+
     AdoptionRequirementSqlServerDAO adoptionRequirementDAO = new AdoptionRequirementSqlServerDAO();
+    UserService userService = new UserService();
+
+    Integer userId = LocalStorage.getInstance().getUserId();
+
+    public ControllerAdoptionRequirement() throws IOException, SQLException {
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,31 +73,37 @@ public class ControllerAdoptionRequirement implements Initializable {
                     (Double) spnMaxExpense.getValueFactory().getValue(), (Double) spnRequiredSpace.getValueFactory().getValue(),
                     (Integer) spnAgePreference.getValueFactory().getValue().intValue());
 
-            if (adoptionRequirementDAO.insert(adoptionRequirement)) {
-                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+            Integer adoptionId = adoptionRequirementDAO.insertId(adoptionRequirement);
+            if (adoptionId != null) {
+                {
+                    var User = userService.validateId(userId);
+                    User.setAdoptionRequirementId(adoptionId);
+                    userService.update(User);
 
-                Parent root = FXMLLoader.load(getClass().getResource("ScreenChooseAnimal.fxml"));
-                Stage primaryStage = new Stage();
-                primaryStage.setTitle("Escolher Animal");
-                primaryStage.setScene(new Scene(root, 1200, 700));
-                primaryStage.show();
+                    JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
 
-                Audit audit = new Audit();
-                //TODO - PEGAR ID DO USUARIO DA SESSÃO
-                audit.setUserId("22");
-                audit.setAction("Encontrar Pet");
-                ManageAudit.getInstance().addAudit(audit);
-                ManageAudit.getInstance().activate();
+                    Parent root = FXMLLoader.load(getClass().getResource("ScreenChooseAnimal.fxml"));
+                    Stage primaryStage = new Stage();
+                    primaryStage.setTitle("Escolher Animal");
+                    primaryStage.setScene(new Scene(root, 1200, 700));
+                    primaryStage.show();
 
-            }
-                } catch (SQLException ex) {
-                    Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (Exception error) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Erro!");
-                    alert.setHeaderText(null);
-                    alert.setContentText(error.getMessage());
-                    alert.showAndWait();
+                    Audit audit = new Audit();
+                    audit.setUserId(userId.toString());
+                    audit.setAction("Encontrar Pet");
+                    ManageAudit.getInstance().addAudit(audit);
+                    ManageAudit.getInstance().activate();
+
                 }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception error) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro!");
+            alert.setHeaderText(null);
+            alert.setContentText(error.getMessage());
+            alert.showAndWait();
+        }
     }
 }

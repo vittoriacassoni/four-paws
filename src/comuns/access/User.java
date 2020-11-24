@@ -16,6 +16,7 @@ public class User extends Entity {
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
+    private int adoptionRequirementId;
 
     public User(String name, String lastName, String email, String password, Date dateOfBirth){
        setName(name);
@@ -93,5 +94,15 @@ public class User extends Entity {
     public void setDeletedAt(Date deletedAt) {
         this.deletedAt = deletedAt;
     }
+
+
+    public int getAdoptionRequirementId() {
+        return adoptionRequirementId;
+    }
+
+    public void setAdoptionRequirementId(int adoptionRequirementId) {
+        this.adoptionRequirementId = adoptionRequirementId;
+    }
+
 
 }
