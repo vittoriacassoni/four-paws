@@ -63,9 +63,9 @@ public class ControllerSignUp implements Initializable {
             UserService.validateEmail(txtEmail.getText());
 
             var user = new User(name[0], name[1], txtEmail.getText(), txtPassword.getText(), dateOfBirth);
-            user.setUserRoleld(1);
+            user.setUserRoleld(2);
 
-            if(userDAO.insert(user)){
+            if(userService.insert(user)){
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
                 Stage stage = (Stage) txtDateBirth.getScene().getWindow();
                 stage.close();

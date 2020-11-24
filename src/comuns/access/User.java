@@ -82,7 +82,7 @@ public class User extends Entity {
         return userRoleld;
     }
 
-    public void setUserRoleld(int userRoleld) {
+    public void setUserRoleld(Integer userRoleld) {
         this.userRoleld = userRoleld;
     }
 

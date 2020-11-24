@@ -1,10 +1,12 @@
 package sample;
 
+//import business.MyEmailer;
 import business.log.threads.ManageAudit;
 import business.singleton.LocalStorage;
 import business.services.UserService;
 import comuns.access.Audit;
 import comuns.access.User;
+import comuns.bases.Entity;
 import dao.access.UserSqlServerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+
+//import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,14 +40,17 @@ public class ControllerLogin implements Initializable {
     @FXML
     TextField txtPassword;
 
+    @FXML
+    TextField txtRememberPass;
+
     UserSqlServerDAO userDAO = new UserSqlServerDAO();
+    UserService userService = new UserService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
     
     public void login(ActionEvent event) throws IOException, SQLException, InterruptedException {
-        UserService userService = new UserService();
 
         if (userService.validateLogin(txtEmail.getText(), txtPassword.getText())) {
             var user = (User) userDAO.select(txtEmail.getText());
@@ -52,6 +59,7 @@ public class ControllerLogin implements Initializable {
             LocalStorage.getInstance().saveUserEmail(user.getEmail());
             LocalStorage.getInstance().saveUserName(user.getName());
             LocalStorage.getInstance().saveUserLastName(user.getLastName());
+            LocalStorage.getInstance().saveUserRoleId(String.valueOf(user.getUserRoleld()));
 
             showScreen("ScreenMain.fxml", "Seja Bem-Vinde");
 
@@ -96,10 +104,20 @@ public class ControllerLogin implements Initializable {
         paneDarkBackground.setVisible(false);
     }
 
-    public void closePanelRememberPassword(MouseEvent event){
-        if(paneRememberPass.isVisible()){
-            paneRememberPass.setVisible(false);
-            paneDarkBackground.setVisible(false);
+    /*public void sendEmail() throws Exception {
+        User user = (User) userService.validatePassword(txtRememberPass.getText());
+        if (user != null)
+        {
+            String text = "Solicitação de recuperação de senha!";
+            String password = user.getPasswordHash();
+            String recipient = user.getEmail();
+            String content = "<p>Olá, aumigo!</p>" +
+                    "<p>Conforme sua solicitação na nossa plataforma, segue sua senha de acesso</p>:" +
+                    "<p>" + password + "</p>" +
+                    "<p> #Lambeijos </p>";
+            String subject = "Solicitação de recuperação de senha!";
+            MyEmailer myEmailer = new MyEmailer();
+            myEmailer.SendMail(text, content, recipient, subject);
         }
-    }
+    }*/
 }

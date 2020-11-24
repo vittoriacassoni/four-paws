@@ -92,10 +92,10 @@
             </ImageView>
             </children>
         </Pane>
-      <Pane fx:id="paneDarkBackground" onMouseClicked="#closePanelRememberPassword" opacity="0.8" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
+      <Pane fx:id="paneDarkBackground" onMouseClicked="#closePanel" opacity="0.8" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false" />
       <Pane fx:id="paneRememberPass" layoutX="300.0" layoutY="154.0" prefHeight="350.0" prefWidth="600.0" styleClass="background" stylesheets="@../stylesheet/Background.css" visible="false">
          <children>
-            <TextField layoutX="150.0" layoutY="160.0" prefHeight="40.0" prefWidth="300.0" promptText="Email" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+            <TextField fx:id="txtRememberPass" layoutX="150.0" layoutY="160.0" prefHeight="40.0" prefWidth="300.0" promptText="Email" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                <font>
                   <Font name="Microsoft JhengHei" size="14.0" />
                </font></TextField>
@@ -104,7 +104,7 @@
                   <Font name="Microsoft JhengHei Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="btnRememberPass" layoutX="151.0" layoutY="236.0" mnemonicParsing="false" onAction="#closePanel" prefHeight="40.0" prefWidth="300.0" stylesheets="@../stylesheet/Button.css" text="Recuperar Senha" textFill="WHITE">
+            <Button fx:id="btnRememberPass" layoutX="151.0" layoutY="236.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" stylesheets="@../stylesheet/Button.css" text="Recuperar Senha" textFill="WHITE">
                <font>
                   <Font name="Microsoft JhengHei Bold" size="18.0" />
                </font>

@@ -94,7 +94,7 @@
                     <Font name="Microsoft JhengHei" size="14.0" />
                   </font>
                 </CheckBox>
-                <Button fx:id="btnCadastrar" layoutX="82.0" layoutY="771.0" mnemonicParsing="false" onMouseClicked="#rigisterPet" prefHeight="40.0" prefWidth="500.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
+                <Button fx:id="btnCadastrar" layoutX="82.0" layoutY="771.0" mnemonicParsing="false" onMouseClicked="#registerPet" prefHeight="40.0" prefWidth="500.0" stylesheets="@../stylesheet/Button.css" text="Cadastrar" textFill="WHITE">
                   <font>
                     <Font name="Microsoft JhengHei Bold" size="18.0" />
                   </font>

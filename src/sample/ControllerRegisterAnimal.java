@@ -2,6 +2,7 @@ package sample;
 
 import business.Validates;
 import business.log.threads.ManageAudit;
+import business.singleton.LocalStorage;
 import comuns.access.Animal;
 import comuns.access.Audit;
 import dao.access.AnimalSqlServerDAO;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
@@ -40,7 +42,7 @@ public class ControllerRegisterAnimal implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ImagePattern pattern =  new ImagePattern(
-                new Image("file:///C:/Users/Vitto/Documents/N2LP/four-paws/src/assets/images/Dog.png")
+                new Image("@./assets/images/Dog.png")
         );
         imgAnimal.setFill(pattern);
 
@@ -63,9 +65,9 @@ public class ControllerRegisterAnimal implements Initializable {
         this.spnWeight.setValueFactory(weightValue);
         spnWeight.setEditable(true);
     }
-    public void rigisterPet(MouseEvent event) throws IOException {
-
+    public void registerPet(MouseEvent event) throws IOException {
         try{
+            Integer userId = LocalStorage.getInstance().getUserId();
 
             Validates.validateRequiredField(txtName.getText()) ;
             Validates.validateRequiredField(dropBreeds.getValue());
@@ -84,22 +86,18 @@ public class ControllerRegisterAnimal implements Initializable {
             var animal = new Animal( name,breed, color, size,weight,age);
 
             if (animalDAO.insert(animal)) {
-                ManageAudit.getInstance().activate();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sucesso!");
+                alert.setHeaderText(null);
+                alert.setContentText("Cadastrado com sucesso!");
+                alert.showAndWait();
 
                 Audit audit = new Audit();
-                //TODO - PEGAR ID DO USUARIO DA SESSÃO
-                audit.setUserId(null);
+                audit.setUserId(String.valueOf(userId));
                 audit.setAction("Encontrar Pet");
                 ManageAudit.getInstance().addAudit(audit);
-                Thread.sleep(1000);
+                ManageAudit.getInstance().activate();
 
-                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
-
-                Parent root = FXMLLoader.load(getClass().getResource("ScreenRegisterAnimal.fxml"));
-                Stage primaryStage = new Stage();
-                primaryStage.setTitle("Registrar Animal");
-                primaryStage.setScene(new Scene(root, 1200, 700));
-                primaryStage.show();
             }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerForum.class.getName()).log(Level.SEVERE, null, ex);
