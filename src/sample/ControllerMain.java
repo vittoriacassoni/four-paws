@@ -44,18 +44,20 @@ public class ControllerMain implements Initializable {
     TextField txtAddress, txtLastSeen, txtNameHost, txtAddressHost;
 
     @FXML
-    Button btnFindPet;
+    Button btnFindPet, btnDonation, btnReportAnimal, btnRegisterAnimal;
 
     ReportAbandonmentService reportAbandonment = new ReportAbandonmentService();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            if (LocalStorage.getInstance().getUserRoleId() == 1) {
+                admProfile();
+            } else {
+                normalProfile();
+            }
             lblName.setText(LocalStorage.getInstance().getUserName());
             lblWelcome.setText("Bem-vinde, " + LocalStorage.getInstance().getUserName());
-            if (LocalStorage.getInstance().getUserRole() == 2) {
-                btnFindPet.isVisible();
-            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (IOException e) {
@@ -85,6 +87,14 @@ public class ControllerMain implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("ScreenProfile.fxml"));
         Stage primaryStage = new Stage();
         primaryStage.setTitle("Suas informações.");
+        primaryStage.setScene(new Scene(root, 1200, 700));
+        primaryStage.show();
+    }
+
+    public void showRegisterAnimal() throws  IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("ScreenRegisterAnimal.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Cadastre um novo animal.");
         primaryStage.setScene(new Scene(root, 1200, 700));
         primaryStage.show();
     }
@@ -156,6 +166,16 @@ public class ControllerMain implements Initializable {
         } else{
             paneHost.setVisible(false);
         }
+    }
+
+    public void normalProfile() throws IOException, SQLException {
+            btnFindPet.setVisible(true);
+            btnReportAnimal.setVisible(true);
+    }
+
+    public void admProfile() throws IOException, SQLException {
+            btnDonation.setVisible(true);
+            btnRegisterAnimal.setVisible(true);
     }
 
     public void signOut() throws IOException, SQLException {

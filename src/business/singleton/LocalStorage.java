@@ -37,7 +37,7 @@ public class LocalStorage {
                 setUserEmail(data[1]);
                 setUserName(data[2]);
                 setUserLastName(data[3]);
-                setUserRole(Integer.valueOf(data[4]));
+                setUserRoleId(Integer.valueOf(data[4]));
             }
             reader.close();
         }
@@ -121,7 +121,7 @@ public class LocalStorage {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            setUserRole(Integer.valueOf(roleId));
+            setUserRoleId(Integer.valueOf(roleId));
         }
     }
 
@@ -157,7 +157,7 @@ public class LocalStorage {
         return userId;
     }
 
-    public Integer getUserRole() {return userRoleId;}
+    public Integer getUserRoleId() {return userRoleId;}
 
     public void setUserId(Integer userId) {
         this.userId = userId;
@@ -175,5 +175,5 @@ public class LocalStorage {
         this.userLastName = userLastName;
     }
 
-    public void setUserRole(Integer userRoleId) {this.userRoleId = userRoleId;}
+    public void setUserRoleId(Integer userRoleId) {this.userRoleId = userRoleId;}
 }

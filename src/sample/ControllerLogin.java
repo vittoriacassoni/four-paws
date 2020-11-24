@@ -1,6 +1,6 @@
 package sample;
 
-import business.MyEmailer;
+//import business.MyEmailer;
 import business.log.threads.ManageAudit;
 import business.singleton.LocalStorage;
 import business.services.UserService;
@@ -21,7 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
-import javax.mail.MessagingException;
+//import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -104,7 +104,7 @@ public class ControllerLogin implements Initializable {
         paneDarkBackground.setVisible(false);
     }
 
-    public void sendEmail() throws Exception {
+    /*public void sendEmail() throws Exception {
         User user = (User) userService.validatePassword(txtRememberPass.getText());
         if (user != null)
         {
@@ -119,5 +119,5 @@ public class ControllerLogin implements Initializable {
             MyEmailer myEmailer = new MyEmailer();
             myEmailer.SendMail(text, content, recipient, subject);
         }
-    }
+    }*/
 }
