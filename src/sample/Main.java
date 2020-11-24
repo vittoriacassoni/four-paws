@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Config.getInstance().setDataBase(RepositoryType.SQLSERVER);
         if(LocalStorage.checkLocalStorage()) {
-            Parent root = FXMLLoader.load(getClass().getResource("ScreenLogin.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("ScreenRegisterAnimal.fxml"));
             primaryStage.setTitle("Seja Bem-Vinde!");
             primaryStage.setScene(new Scene(root, 1200, 700));
             primaryStage.show();

@@ -69,27 +69,27 @@
                     <SpinnerValueFactory.IntegerSpinnerValueFactory max="300" min="0" />
                   </valueFactory>
                 </Spinner>
-                <CheckBox layoutX="511.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Alegre" textFill="#2f2e41">
+                <CheckBox fx:id="cbHappy" layoutX="511.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Alegre" textFill="#2f2e41">
                   <font>
                     <Font name="Microsoft JhengHei" size="14.0" />
                   </font>
                 </CheckBox>
-                <CheckBox layoutX="82.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Quieto" textFill="#2f2e41">
+                <CheckBox fx:id="cbQuiet" layoutX="82.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Quieto" textFill="#2f2e41">
                   <font>
                     <Font name="Microsoft JhengHei" size="14.0" />
                   </font>
                 </CheckBox>
-                <CheckBox layoutX="285.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carinhoso" textFill="#2f2e41">
+                <CheckBox fx:id="cbCaring" layoutX="285.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carinhoso" textFill="#2f2e41">
                   <font>
                     <Font name="Microsoft JhengHei" size="14.0" />
                   </font>
                 </CheckBox>
-                <CheckBox layoutX="186.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Bravo" textFill="#2f2e41">
+                <CheckBox fx:id="cbAngry" layoutX="186.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Bravo" textFill="#2f2e41">
                   <font>
                     <Font name="Microsoft JhengHei" size="14.0" />
                   </font>
                 </CheckBox>
-                <CheckBox layoutX="408.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carente" textFill="#2f2e41">
+                <CheckBox fx:id="cbNeedy" layoutX="408.0" layoutY="718.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" stylesheets="@../stylesheet/CheckBox.css" text="Carente" textFill="#2f2e41">
                   <font>
                     <Font name="Microsoft JhengHei" size="14.0" />
                   </font>
@@ -116,26 +116,46 @@
 
             <Pane layoutX="686.0" prefHeight="900.0" prefWidth="500.0" style="-fx-background-color: #fff;" stylesheets="@../stylesheet/Background.css">
               <children>
-                <ImageView fitHeight="434.0" fitWidth="458.0" layoutX="-17.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="319.0" fitWidth="365.0" layoutX="93.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                     <Image url="@../assets/images/undraw_Playful_cat_rchv.png" />
                   </image>
                 </ImageView>
-                <Label layoutX="134.0" layoutY="250.0" text="Cadastro de Animais" textFill="#ff6f61">
+                <Label layoutX="101.0" layoutY="401.0" text="Cadastro de Animais" textFill="#ff6f61">
                   <font>
                     <Font name="Microsoft JhengHei Bold" size="30.0" />
                   </font>
                 </Label>
-                  <Label layoutX="33.0" layoutY="129.0" text="Conte um pouco de sua história" textFill="#ff6f61">
+                  <Label layoutX="46.0" layoutY="123.0" text="Tamanho máximo" textFill="#ff6f61">
                      <font>
                         <Font name="Microsoft JhengHei Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtHistory" layoutX="33.0" layoutY="166.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="432.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
+                  <Label layoutX="46.0" layoutY="225.0" text="Espaço necessário" textFill="#ff6f61">
+                     <font>
+                        <Font name="Microsoft JhengHei Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Spinner fx:id="spnMaxExpense" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="428.0" stylesheets="@../stylesheet/Spinner.css">
+                     <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="200" min="0" />
+                     </valueFactory>
+                  </Spinner>
+                  <Spinner fx:id="spnRequiredSpace" layoutX="49.0" layoutY="257.0" prefHeight="40.0" prefWidth="428.0" stylesheets="@../stylesheet/Spinner.css">
+                     <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="200" min="0" />
+                     </valueFactory>
+                  </Spinner>
+                  <TextField fx:id="txtHistory" layoutX="44.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="429.0" styleClass="text-field" stylesheets="@../stylesheet/TextField.css">
                      <font>
                         <Font name="Microsoft JhengHei" size="14.0" />
                      </font>
                   </TextField>
+                  <Label layoutX="44.0" layoutY="24.0" text="Conte um pouco de sua história" textFill="#ff6f61">
+                     <font>
+                        <Font name="Microsoft JhengHei Bold" size="15.0" />
+                     </font>
+                  </Label>
               </children>
             </Pane>
          </children>
