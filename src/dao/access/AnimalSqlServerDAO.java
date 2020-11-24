@@ -59,7 +59,7 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
             }
 
             String SQL = "INSERT INTO [" + super.getTable() + "] (Name, Breed, Color, Size, Weight, Image, History, " +
-                    "CreatedAt, Age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "CreatedAt, Age, AdoptionRequirementId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement stmt = con.prepareStatement(SQL)) {
                 stmt.setString(1, animal.getName());
@@ -71,6 +71,7 @@ public class AnimalSqlServerDAO<E extends Entity> extends SqlServerDAO {
                 stmt.setString(7, animal.getHistory());
                 stmt.setString(8, Instant.now().toString());
                 stmt.setDouble(9, animal.getAge());
+                stmt.setInt(10, animal.getAdoptionRequirementId());
                 stmt.execute();
             } catch(Exception error){
                 error.printStackTrace();

@@ -91,8 +91,10 @@ public class ControllerRegisterAnimal implements Initializable {
 
     public void registerPet(ActionEvent event) throws IOException {
         try {
-            insertAdoptionRequirement();
-            insertAnimal();
+            Integer adoptionId = insertAdoptionRequirement();
+            if (adoptionId != null) {
+                insertAnimal(adoptionId);
+            }
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Salvo!");
@@ -109,7 +111,7 @@ public class ControllerRegisterAnimal implements Initializable {
         }
     }
 
-    public void insertAnimal() throws Exception {
+    public void insertAnimal(Integer adoptionId) throws Exception {
         if (!Validates.validateRequiredField(txtName.getText()) &&
                 !Validates.validateRequiredField(dropBreeds.getValue()) &&
                 !Validates.validateRequiredField(dropColors.getValue()) &&
@@ -126,7 +128,7 @@ public class ControllerRegisterAnimal implements Initializable {
             String history = txtHistory.getText();
             Integer age = (Integer) spnAge.getValueFactory().getValue();
             //TODO ADICIONAR O CAMPO DE IMAGEM!
-            var animal = new Animal(name, breed, color, size, weight, history, age);
+            var animal = new Animal(name, breed, color, size, weight, history, age, adoptionId);
 
             if (animalDAO.insert(animal)) {
                 ManageAudit.getInstance().activate();
@@ -139,7 +141,7 @@ public class ControllerRegisterAnimal implements Initializable {
         }
     }
 
-    public void insertAdoptionRequirement() throws Exception {
+    public Integer insertAdoptionRequirement() throws Exception {
         if (Validates.validateDoubleNumber(spnMaxExpense.getValueFactory().getValue().toString()) &&
                 Validates.validateDoubleNumber(spnRequiredSpace.getValueFactory().getValue().toString()))
         {
@@ -155,14 +157,17 @@ public class ControllerRegisterAnimal implements Initializable {
             var adoptionRequirement = new AdoptionRequirement(isAngry, isHappy, isNeedy, isCaring, isQuiet, maxExpense,
                     requiredSpace, agePreference);
 
-            if (adoptionRequirementDAO.insert(adoptionRequirement)) {
+            Integer adoptionId = adoptionRequirementDAO.insertId(adoptionRequirement);
+            if (adoptionId != null) {
                 ManageAudit.getInstance().activate();
                 Audit audit = new Audit();
                 audit.setUserId(userId.toString());
                 audit.setAction("Cadastrar Requisições do PET");
                 ManageAudit.getInstance().addAudit(audit);
                 Thread.sleep(1000);
+                return adoptionId;
             }
         }
+        return null;
     }
 }

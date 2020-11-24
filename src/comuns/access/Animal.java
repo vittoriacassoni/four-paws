@@ -23,7 +23,8 @@ public class Animal extends Entity {
 
     }
 
-    public Animal(String name, String breed, String color, Double size, Double weight, String history, Integer age) {
+    public Animal(String name, String breed, String color, Double size, Double weight, String history, Integer age,
+                  Integer adoptionRequirementId) {
         setName(name);
         setBreed(breed);
         setColor(color);
@@ -31,6 +32,7 @@ public class Animal extends Entity {
         setWeight(weight);
         setHistory(history);
         setAge(age);
+        setAdoptionRequirementId(adoptionRequirementId);
     }
 
     public String getName() {
