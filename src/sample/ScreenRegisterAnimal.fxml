@@ -126,7 +126,7 @@
                     <Font name="Microsoft JhengHei Bold" size="30.0" />
                   </font>
                 </Label>
-                  <Label layoutX="46.0" layoutY="123.0" text="Tamanho máximo" textFill="#ff6f61">
+                  <Label layoutX="46.0" layoutY="123.0" text="Gastos médios" textFill="#ff6f61">
                      <font>
                         <Font name="Microsoft JhengHei Bold" size="15.0" />
                      </font>
