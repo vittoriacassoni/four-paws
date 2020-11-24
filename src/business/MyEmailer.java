@@ -16,7 +16,7 @@ public class MyEmailer {
         properties.put("mail.smtp.port", 587);
         properties.put("mail.smtp.auth", "true");
 
-        Authenticator auth = new SMTPAuthenticator();
+        /*Authenticator auth = new SMTPAuthenticator();
         Session mailSession = Session.getDefaultInstance(properties, auth);
 
         MimeMessage message = new MimeMessage(mailSession);
@@ -36,10 +36,10 @@ public class MyEmailer {
         Transport transport = mailSession.getTransport();
         transport.connect();
         transport.sendMessage(message, message.getAllRecipients());
-        transport.close();
+        transport.close();*/
     }
 
-    private class SMTPAuthenticator extends javax.mail.Authenticator {
+   /* private class SMTPAuthenticator extends javax.mail.Authenticator {
         public PasswordAuthentication getPasswordAuthentication() {
             String username = SMTP_AUTH_USER;
             String password = SMTP_AUTH_PWD;

@@ -20,6 +20,7 @@ public class LocalStorage {
     private String userLastName;
     private Integer userId;
     private Integer userRoleId;
+    private Integer adoptionRequirementId;
 
 
     private LocalStorage() throws IOException {
@@ -38,6 +39,7 @@ public class LocalStorage {
                 setUserName(data[2]);
                 setUserLastName(data[3]);
                 setUserRoleId(Integer.valueOf(data[4]));
+                setAdoptionRequirementId(Integer.valueOf(data[5]));
             }
             reader.close();
         }
@@ -114,7 +116,7 @@ public class LocalStorage {
         if(userRoleId == null) {
             try (FileWriter fw = new FileWriter(file, true)){
                 try (BufferedWriter bw = new BufferedWriter(fw)) {
-                    bw.write(roleId);
+                    bw.write(roleId + "|");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -125,9 +127,25 @@ public class LocalStorage {
         }
     }
 
+    public void saveAdoptionRequirementId(String adoptionRequirement)  {
+        if(adoptionRequirementId == null) {
+            try (FileWriter fw = new FileWriter(file, true)){
+                try (BufferedWriter bw = new BufferedWriter(fw)) {
+                    bw.write(adoptionRequirement);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            setAdoptionRequirementId(Integer.valueOf(adoptionRequirement));
+        }
+    }
+
     public void deleteLocalStorage(){
         try{
             file.delete();
+            uniqueInstance = null;
         } catch (Exception error){
             error.printStackTrace();
         }
@@ -157,7 +175,18 @@ public class LocalStorage {
         return userId;
     }
 
-    public Integer getUserRoleId() {return userRoleId;}
+    public Integer getUserRoleId() {
+        return userRoleId;
+    }
+
+    public Integer getAdoptionRequirementId() {
+        return adoptionRequirementId;
+    }
+
+    public void setAdoptionRequirementId(Integer adoptionRequirementId) {
+        this.adoptionRequirementId = adoptionRequirementId;
+    }
+
 
     public void setUserId(Integer userId) {
         this.userId = userId;
